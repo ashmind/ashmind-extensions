@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AshMind.Extensions
 {
@@ -9,6 +8,10 @@ namespace AshMind.Extensions
     {
         public static HashSet<T> ToSet<T>(this IEnumerable<T> enumerable) {
             return new HashSet<T>(enumerable);
+        }
+
+        public static HashSet<T> ToSet<T>(this IEnumerable<T> enumerable, IEqualityComparer<T> comparer) {
+            return new HashSet<T>(enumerable, comparer);
         }
 
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
