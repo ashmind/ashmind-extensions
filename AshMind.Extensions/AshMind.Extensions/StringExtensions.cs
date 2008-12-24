@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AshMind.Extensions {
     public static class StringExtensions {
@@ -11,6 +10,10 @@ namespace AshMind.Extensions {
 
         public static bool IsNotNullOrEmpty(this string value) {
             return !string.IsNullOrEmpty(value);
+        }
+
+        public static string[] Split(this string value, params string[] separator) {
+            return value.Split(separator, StringSplitOptions.None);
         }
         
         public static string Format(this string format, object arg0) {
