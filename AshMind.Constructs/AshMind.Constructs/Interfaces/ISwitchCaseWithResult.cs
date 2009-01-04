@@ -12,5 +12,8 @@ namespace AshMind.Constructs.Interfaces
 
         ISwitchCaseOrOtherwiseWithResult<TBase, TResult> Case<TCase>(TResult result)
             where TCase : class, TBase;
+
+        ISwitchCaseOrOtherwiseWithResult<TBase, TResult> CaseNull(Func<TResult> func);
+        ISwitchCaseOrOtherwiseWithResult<TBase, TResult> CaseNull(TResult result);
     }
 }

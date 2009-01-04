@@ -34,6 +34,16 @@ namespace AshMind.Constructs
                 return cast;
             }
 
+            private bool TryNull() {
+                if (m_matched)
+                    return false;
+
+                if (m_object == null)
+                    m_matched = true;
+
+                return m_matched;
+            }
+
             #region ISwitchCase<TBase> Members
 
             public ISwitchCaseOrOtherwise<TBase> Case<TCase>(Action<TCase> action)
@@ -42,6 +52,13 @@ namespace AshMind.Constructs
                 var cast = this.Try<TCase>();
                 if (cast != null)
                     action(cast);
+
+                return this;
+            }
+
+            public ISwitchCaseOrOtherwise<TBase> CaseNull(Action action) {
+                if (this.TryNull())
+                    action();
 
                 return this;
             }
@@ -76,6 +93,20 @@ namespace AshMind.Constructs
             {
                 var cast = this.Try<TCase>();
                 if (cast != null)
+                    m_result = result;
+
+                return this;
+            }
+
+            public ISwitchCaseOrOtherwiseWithResult<TBase, TResult> CaseNull(Func<TResult> func) {
+                if (this.TryNull())
+                    m_result = func();
+
+                return this;
+            }
+
+            public ISwitchCaseOrOtherwiseWithResult<TBase, TResult> CaseNull(TResult result) {
+                if (this.TryNull())
                     m_result = result;
 
                 return this;
@@ -147,7 +178,7 @@ namespace AshMind.Constructs
 
         #endregion
 
-        public static ISwitchCase<T> Type<T>(T value)
+        public static ISwitchCaseOrTo<T> Type<T>(T value)
             where T : class
         {
             return new CaseReceiver<T, object>(value);

@@ -26,7 +26,7 @@ namespace AshMind.Constructs.Tests {
         }
 
         [Test]
-        public void TestOtherwiseOutOfRangeThrowsCorrect() {
+        public void TestOtherwiseOutOfRangeThrowsCorrectException() {
             var exception = Assert.Throws<ArgumentOutOfRangeException>(
                 () => Switch.Type(new Sgml())
                             .Case<Xml>(x => {})
@@ -34,6 +34,16 @@ namespace AshMind.Constructs.Tests {
             );
 
             Assert.AreEqual("test", exception.ParamName);
+        }
+
+        [Test]
+        public void TestCaseNull() {
+            var result = Switch.Type((Sgml)null).To<bool>()
+                               .CaseNull(true)
+                               .Otherwise(false)
+                               .Result;
+
+            Assert.IsTrue(result);
         }
     }
 }

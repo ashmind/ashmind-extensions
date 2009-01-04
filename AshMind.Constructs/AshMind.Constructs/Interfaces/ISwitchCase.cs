@@ -10,5 +10,7 @@ namespace AshMind.Constructs.Interfaces
     {
         ISwitchCaseOrOtherwise<TBase> Case<TCase>(Action<TCase> action)
             where TCase : class, TBase;
+
+        ISwitchCaseOrOtherwise<TBase> CaseNull(Action action);
     }
 }
