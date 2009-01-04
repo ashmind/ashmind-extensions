@@ -159,6 +159,16 @@ namespace AshMind.Constructs
                 return this;
             }
 
+            IWithResult<TResult> ISwitchCaseOrOtherwiseWithResult<TBase, TResult>.OtherwiseThrow<TException>() {
+                this.OtherwiseThrow<TException>();
+                return this;
+            }
+
+            IWithResult<TResult> ISwitchCaseOrOtherwiseWithResult<TBase, TResult>.OtherwiseOutOfRange(string argumentName) {
+                this.OtherwiseOutOfRange(argumentName);
+                return this;
+            }
+
             #endregion
 
             #region IOtherwiseThrow Members
@@ -166,11 +176,13 @@ namespace AshMind.Constructs
             public void OtherwiseThrow<TException>() 
                 where TException : Exception, new()
             {
-                throw new TException();
+                if (!m_matched)
+                    throw new TException();
             }
 
             public void OtherwiseOutOfRange(string argumentName) {
-                throw new ArgumentOutOfRangeException(argumentName);
+                if (!m_matched)
+                    throw new ArgumentOutOfRangeException(argumentName, m_object, new ArgumentOutOfRangeException().Message);
             }
 
             #endregion
