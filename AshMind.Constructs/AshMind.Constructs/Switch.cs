@@ -9,7 +9,7 @@ namespace AshMind.Constructs
     {
         #region CaseReceiver<TBase> Class
 
-        public class CaseReceiver<TBase, TResult> : ISwitchCase<TBase>, ISwitchCaseWithResult<TBase, TResult>
+        private class CaseReceiver<TBase, TResult> : ISwitchCaseOrTo<TBase>, ISwitchCaseOrOtherwise<TBase>, ISwitchCaseOrOtherwiseWithResult<TBase, TResult>
             where TBase : class
         {
             private readonly TBase m_object;
@@ -36,7 +36,7 @@ namespace AshMind.Constructs
 
             #region ISwitchCase<TBase> Members
 
-            public ISwitchCase<TBase> Case<TCase>(Action<TCase> action)
+            public ISwitchCaseOrOtherwise<TBase> Case<TCase>(Action<TCase> action)
                 where TCase : class, TBase
             {
                 var cast = this.Try<TCase>();
@@ -57,19 +57,11 @@ namespace AshMind.Constructs
                 return new CaseReceiver<TBase, TResult2>(m_object);
             }
 
-            public void Otherwise(Action<TBase> action)
-            {
-                if (m_matched)
-                    return;
-
-                action(m_object);
-            }
-
             #endregion
 
             #region ISwitchCaseWithResult<TBase,TResult> Members
 
-            public ISwitchCaseWithResult<TBase, TResult> Case<TCase>(Func<TCase, TResult> func)
+            public ISwitchCaseOrOtherwiseWithResult<TBase, TResult> Case<TCase>(Func<TCase, TResult> func)
                 where TCase : class, TBase
             {
                 var cast = this.Try<TCase>();
@@ -79,31 +71,13 @@ namespace AshMind.Constructs
                 return this;
             }
 
-            public ISwitchCaseWithResult<TBase, TResult> Case<TCase>(TResult result)
+            public ISwitchCaseOrOtherwiseWithResult<TBase, TResult> Case<TCase>(TResult result)
                 where TCase : class, TBase
             {
                 var cast = this.Try<TCase>();
                 if (cast != null)
                     m_result = result;
 
-                return this;
-            }
-
-            public IWithResult<TResult> Otherwise(Func<TBase, TResult> func)
-            {
-                if (m_matched)
-                    return this;
-
-                m_result = func(m_object);
-                return this;
-            }
-
-            public IWithResult<TResult> Otherwise(TResult result)
-            {
-                if (m_matched)
-                    return this;
-
-                m_result = result;
                 return this;
             }
 
@@ -114,6 +88,58 @@ namespace AshMind.Constructs
             public TResult Result
             {
                 get { return m_result; }
+            }
+
+            #endregion
+
+            #region ISwitchCaseOrOtherwise<TBase> Members
+
+            public void Otherwise(Action<TBase> action) {
+                if (m_matched)
+                    return;
+
+                action(m_object);
+            }
+
+            public void Otherwise(Action action) {
+                if (m_matched)
+                    return;
+
+                action();
+            }
+
+            #endregion
+
+            #region ISwitchCaseOrOtherwiseWithResult<TBase,TResult> Members
+
+            public IWithResult<TResult> Otherwise(Func<TBase, TResult> func) {
+                if (m_matched)
+                    return this;
+
+                m_result = func(m_object);
+                return this;
+            }
+
+            public IWithResult<TResult> Otherwise(TResult result) {
+                if (m_matched)
+                    return this;
+
+                m_result = result;
+                return this;
+            }
+
+            #endregion
+
+            #region IOtherwiseThrow Members
+
+            public void OtherwiseThrow<TException>() 
+                where TException : Exception, new()
+            {
+                throw new TException();
+            }
+
+            public void OtherwiseOutOfRange(string argumentName) {
+                throw new ArgumentOutOfRangeException(argumentName);
             }
 
             #endregion

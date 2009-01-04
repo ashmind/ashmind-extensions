@@ -15,5 +15,25 @@ namespace AshMind.Constructs.Tests {
                   .Otherwise((string)null)
                   .Compile();
         }
+
+        [Test]
+        public void TestOtherwiseThrowThrows() {
+            Assert.Throws<ArgumentException>(
+                () => Switch.Type(new Sgml())
+                            .Case<Xml>(x => {})
+                            .OtherwiseThrow<ArgumentException>()
+            );
+        }
+
+        [Test]
+        public void TestOtherwiseOutOfRangeThrowsCorrect() {
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(
+                () => Switch.Type(new Sgml())
+                            .Case<Xml>(x => {})
+                            .OtherwiseOutOfRange("test")
+            );
+
+            Assert.AreEqual("test", exception.ParamName);
+        }
     }
 }

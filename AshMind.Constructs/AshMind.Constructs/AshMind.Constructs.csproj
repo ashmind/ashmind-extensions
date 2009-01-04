@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{715093AD-1D0B-4FB6-BD0F-801EE56A8EE3}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -49,8 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IExpressable.cs" />
+    <Compile Include="Interfaces\IOtherwiseThrow.cs" />
     <Compile Include="Interfaces\ISwitchCase.cs" />
     <Compile Include="Interfaces\IExpressionSwitchTo.cs" />
+    <Compile Include="Interfaces\ISwitchCaseOrOtherwise.cs" />
+    <Compile Include="Interfaces\ISwitchCaseOrOtherwiseWithResult.cs" />
+    <Compile Include="Interfaces\ISwitchCaseOrTo.cs" />
     <Compile Include="Interfaces\ISwitchCaseWithResult.cs" />
     <Compile Include="Interfaces\IExpressionSwitchCase.cs" />
     <Compile Include="Interfaces\IWithResult.cs" />
