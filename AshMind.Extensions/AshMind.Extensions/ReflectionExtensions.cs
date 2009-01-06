@@ -24,8 +24,16 @@ namespace AshMind.Extensions
             return member.GetCustomAttributes<TAttribute>(false).Single();
         }
 
-        public static bool IsSubclassOf<T>(this Type type) {
+        public static bool IsSubclassOf<T>(this Type type) 
+            where T : class
+        {
             return type.IsSubclassOf(typeof(T));
+        }
+
+        public static bool HasInterface<T>(this Type type)
+            where T : class
+        {
+            return type.GetInterfaces().Contains(typeof(T));
         }
     }
 }
