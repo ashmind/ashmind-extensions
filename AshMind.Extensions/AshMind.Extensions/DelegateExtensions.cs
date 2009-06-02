@@ -7,7 +7,7 @@ namespace AshMind.Extensions {
     /// Provides a set of static (Shared in Visual Basic) methods for operations on delegates. 
     /// </summary>
     public static class DelegateExtensions {
-        /// <summary>.
+        /// <summary>
         /// Converts Func&lt;T, bool&gt; into a Predicate&lt;T&gt;.
         /// </summary>
         /// <param name="function">Function to convert.</param>

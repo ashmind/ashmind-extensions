@@ -20,7 +20,39 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Determines the specified value in between two other values, inclusive.
+        /// Determines the specified value is greater than or equal to another value.
+        /// </summary>
+        /// <typeparam name="TComparable">Type of the value to check.</typeparam>
+        /// <typeparam name="T">Type that the value can be compared with.</typeparam>
+        /// <param name="left">The value to compare</param>
+        /// <param name="right">Value to compare with</param>
+        /// <returns>
+        /// True if <paramref name="left" /> is greater than or equal to <paramref name="right" />; otherwise, false.
+        /// </returns>
+        public static bool IsGreaterThanOrEqual<TComparable, T>(this TComparable left, T right)
+            where TComparable : IComparable<T> 
+        {
+            return !left.IsLesserThan(right);
+        }
+
+        /// <summary>
+        /// Determines the specified value is lesset than or equal to another value.
+        /// </summary>
+        /// <typeparam name="TComparable">Type of the value to check.</typeparam>
+        /// <typeparam name="T">Type that the value can be compared with.</typeparam>
+        /// <param name="left">The value to compare</param>
+        /// <param name="right">Value to compare with</param>
+        /// <returns>
+        /// True if <paramref name="left" /> is lesser than or equal to <paramref name="right" />; otherwise, false.
+        /// </returns>
+        public static bool IsLesserThanOrEqual<TComparable, T>(this TComparable left, T right)
+            where TComparable : IComparable<T> 
+        {
+            return !left.IsGreaterThan(right);
+        }
+
+        /// <summary>
+        /// Determines the specified value is between two other values, inclusive.
         /// </summary>
         /// <typeparam name="TComparable">Type of the value to check.</typeparam>
         /// <typeparam name="T">Type that the value can be compared with.</typeparam>
