@@ -53,6 +53,7 @@
     <Compile Include="DelegateExtensions.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="FormattableExtensions.cs" />
     <Compile Include="Int32Extensions.cs" />
     <Compile Include="ReflectionExtensions.cs" />
     <Compile Include="TimeSpanExtensions.cs" />
