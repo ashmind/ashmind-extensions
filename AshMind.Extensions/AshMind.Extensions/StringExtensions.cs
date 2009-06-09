@@ -31,5 +31,51 @@ namespace AshMind.Extensions {
         public static bool Contains(this string original, string value, StringComparison comparisonType) {
             return original.IndexOf(value, comparisonType) >= 0;
         }
+        
+        public static string SubstringBefore(this string original, string value) {
+            return original.SubstringBefore(original.IndexOf(value));
+        }
+
+        public static string SubstringBefore(this string original, string value, StringComparison comparisonType) {
+            return original.SubstringBefore(original.IndexOf(value, comparisonType));
+        }
+
+        public static string SubstringBeforeLast(this string original, string value) {
+            return original.SubstringBefore(original.LastIndexOf(value));
+        }
+
+        public static string SubstringBeforeLast(this string original, string value, StringComparison comparisonType) {
+            return original.SubstringBefore(original.LastIndexOf(value, comparisonType));
+        }
+
+        private static string SubstringBefore(this string original, int index) {
+            if (index <= 0)
+                return string.Empty;
+
+            return original.Substring(0, index);
+        }
+
+        public static string SubstringAfter(this string original, string value) {
+            return original.SubstringAfter(original.IndexOf(value));
+        }
+
+        public static string SubstringAfter(this string original, string value, StringComparison comparisonType) {
+            return original.SubstringAfter(original.IndexOf(value, comparisonType));
+        }
+
+        public static string SubstringAfterLast(this string original, string value) {
+            return original.SubstringAfter(original.LastIndexOf(value));
+        }
+
+        public static string SubstringAfterLast(this string original, string value, StringComparison comparisonType) {
+            return original.SubstringAfter(original.LastIndexOf(value, comparisonType));
+        }
+
+        private static string SubstringAfter(this string original, int index) {
+            if (index <= 0)
+                return string.Empty;
+
+            return original.Substring(index, original.Length - index);
+        }
     }
 }
