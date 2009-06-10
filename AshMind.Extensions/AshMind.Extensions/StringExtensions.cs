@@ -7,14 +7,41 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on String.
     /// </summary>
     public static class StringExtensions {
+        /// <summary>
+        /// Indicates whether the specified <see cref="String" /> object is a null reference (<c>Nothing</c> in Visual Basic) or 
+        /// an <see cref="string.Empty">Empty</see> string.
+        /// </summary>
+        /// <param name="value">A <see cref="String" /> value.</param>
+        /// <returns>
+        ///    <c>true</c> if the <paramref name="value"/> is a null reference (<c>Nothing</c> in Visual Basic) or an empty string (""); otherwise, <c>false</c>.
+        /// </returns>
+        /// <seealso cref="IsNotNullOrEmpty" />
         public static bool IsNullOrEmpty(this string value) {
             return string.IsNullOrEmpty(value);
         }
 
+        /// <summary>
+        /// Indicates whether the specified <see cref="String" /> object is not a null reference (<c>Nothing</c> in Visual Basic) and 
+        /// not an <see cref="string.Empty">Empty</see> string.
+        /// </summary>
+        /// <param name="value">A <see cref="String" /> value.</param>
+        /// <returns>
+        ///    <c>false</c> if the <paramref name="value"/> is a null reference (<c>Nothing</c> in Visual Basic) or an empty string (""); otherwise, <c>true</c>.
+        /// </returns>
+        /// <seealso cref="IsNullOrEmpty" />
         public static bool IsNotNullOrEmpty(this string value) {
             return !string.IsNullOrEmpty(value);
         }
 
+        /// <summary>
+        /// Returns a string array that contains the substrings in this string that are delimited by elements of a specified string array.
+        /// </summary>
+        /// <param name="value">A <see cref="String" /> value to split.</param>
+        /// <param name="separator">An array of strings that delimit the substrings in this string, an empty array that contains no delimiters, or a null reference (<c>Nothing</c> in Visual Basic).</param>
+        /// <returns>
+        ///     An array whose elements contain the substrings in this string that are delimited by one or more strings in <paramref name="separator" />.
+        /// </returns>
+        /// <seealso cref="string.Split(string[], System.StringSplitOptions)" />
         public static string[] Split(this string value, params string[] separator) {
             return value.Split(separator, StringSplitOptions.None);
         }
