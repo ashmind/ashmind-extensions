@@ -60,6 +60,7 @@
     <Compile Include="EnumerableExtensionsTests.cs" />
     <Compile Include="ListExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AshMind.Extensions\AshMind.Extensions.csproj">

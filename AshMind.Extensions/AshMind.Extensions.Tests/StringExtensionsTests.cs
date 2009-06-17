@@ -29,19 +29,19 @@ namespace AshMind.Extensions.Tests {
         [Test]
         [Row("abcdabcd", "bc",  "dabcd")]
         [Row("abcdefgh", "x",   "")]
-        [Row("abcdefgh", "a",   "")]
+        [Row("abcdefgh", "h",   "")]
         [Row("abcdefgh", "cd",  "efgh")]
         public void TestSubstringAfter(string value, string delimiter, string expectedResult) {
-            Assert.AreEqual(expectedResult, value.SubstringBefore(delimiter));
+            Assert.AreEqual(expectedResult, value.SubstringAfter(delimiter));
         }
 
         [Test]
         [Row("abcdabcd", "bc",  "d")]
         [Row("abcdefgh", "x",   "")]
-        [Row("abcdefgh", "a",   "")]
+        [Row("abcdefgh", "h",   "")]
         [Row("abcdefgh", "cd",  "efgh")]
         public void TestSubstringAfterLast(string value, string delimiter, string expectedResult) {
-            Assert.AreEqual(expectedResult, value.SubstringBeforeLast(delimiter));
+            Assert.AreEqual(expectedResult, value.SubstringAfterLast(delimiter));
         }
     }
 }
