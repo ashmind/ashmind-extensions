@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,6 +54,10 @@
     <Compile Include="Collections\WeakKeyDictionary.cs" />
     <Compile Include="Collections\WeakKeyReference.cs" />
     <Compile Include="Collections\WeakKeyComparer.cs" />
+    <Compile Include="IO\Transactional\File.cs" />
+    <Compile Include="IO\Transactional\Internal\IKernelTransaction.cs" />
+    <Compile Include="IO\Transactional\Internal\KtmTransactionHandle.cs" />
+    <Compile Include="IO\Transactional\NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeakReference.cs" />
   </ItemGroup>
