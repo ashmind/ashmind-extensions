@@ -43,5 +43,22 @@ namespace AshMind.Extensions.Tests {
         public void TestSubstringAfterLast(string value, string delimiter, string expectedResult) {
             Assert.AreEqual(expectedResult, value.SubstringAfterLast(delimiter));
         }
+
+        [Test]
+        [Row("abcdabcd", "ab",       "cdabcd")]
+        [Row("abcdabcd", "xy",       "abcdabcd")]
+        [Row("abcdabcd", "abcdabcd", "")]
+        public void TestRemoveStart(string value, string prefix, string expectedResult) {
+            Assert.AreEqual(expectedResult, value.RemoveStart(prefix));
+        }
+
+
+        [Test]
+        [Row("abcdabcd", "cd",       "abcdab")]
+        [Row("abcdabcd", "xy",       "abcdabcd")]
+        [Row("abcdabcd", "abcdabcd", "")]
+        public void TestRemoveEnd(string value, string suffix, string expectedResult) {
+            Assert.AreEqual(expectedResult, value.RemoveEnd(suffix));
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace AshMind.Extensions {
             where TValue : TDefault 
         {
             TValue value;
-            bool succeeded = dictionary.TryGetValue(key, out value);
+            var succeeded = dictionary.TryGetValue(key, out value);
             return succeeded ? value : @default;
         }
     }

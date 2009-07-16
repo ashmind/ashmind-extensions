@@ -172,5 +172,35 @@ namespace AshMind.Extensions {
 
             return original.Substring(index, original.Length - index);
         }
+
+        /// <summary>
+        /// Removes a leading occurence of the specified value, if present.
+        /// </summary>
+        /// <param name="original">The <see cref="String" /> value to remove from.</param>
+        /// <param name="prefix">The <see cref="String" /> value to be removed if present.</param>
+        /// <returns>
+        ///     The string that remains after an occurrence of <paramref name="prefix" /> is removed from the start of <paramref name="original" /> string.
+        /// </returns>
+        public static string RemoveStart(this string original, string prefix) {
+            if (!original.StartsWith(prefix))
+                return original;
+
+            return original.Substring(prefix.Length);
+        }
+
+        /// <summary>
+        /// Removes a trailing occurence of the specified value, if present.
+        /// </summary>
+        /// <param name="original">The <see cref="String" /> value to remove from.</param>
+        /// <param name="suffix">The <see cref="String" /> value to be removed if present.</param>
+        /// <returns>
+        ///     The string that remains after an occurrence of <paramref name="suffix" /> is removed from the end of <paramref name="original" /> string.
+        /// </returns>
+        public static string RemoveEnd(this string original, string suffix) {
+            if (!original.EndsWith(suffix))
+                return original;
+
+            return original.Substring(0, original.Length - suffix.Length);
+        }
     }
 }
