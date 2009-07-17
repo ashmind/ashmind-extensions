@@ -21,8 +21,12 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Test]
-        public void TestInsertRangeWorksCorrectly() {
-            IList<int> list = new List<int> { 0, 1, 2, 3, 4 };
+        [Row(typeof(List<int>))]
+        [Row(typeof(Collection<int>))]
+        public void TestInsertRangeWorksCorrectly<TList>()
+            where TList : IList<int>
+        {
+            var list = (IList<int>)Activator.CreateInstance(typeof(TList), new List<int> { 0, 1, 2, 3, 4 });
             list.InsertRange(3, new[] { 21, 22, 23 });
 
             Assert.AreElementsEqual(
@@ -30,10 +34,14 @@ namespace AshMind.Extensions.Tests {
                 list
             );
         }
-
+        
         [Test]
-        public void TestRemoveRangeWorksCorrectly() {
-            IList<int> list = new List<int> { 0, 1, 2, 3, 4 };
+        [Row(typeof(List<int>))]
+        [Row(typeof(Collection<int>))]
+        public void TestRemoveRangeWorksCorrectly<TList>()
+            where TList : IList<int>
+        {
+            var list = (IList<int>)Activator.CreateInstance(typeof(TList), new List<int> { 0, 1, 2, 3, 4 });
             list.RemoveRange(1, 3);
 
             Assert.AreElementsEqual(new[] { 0, 4 }, list);
