@@ -30,5 +30,13 @@ namespace AshMind.Extensions.Tests {
                 list
             );
         }
+
+        [Test]
+        public void TestRemoveRangeWorksCorrectly() {
+            IList<int> list = new List<int> { 0, 1, 2, 3, 4 };
+            list.RemoveRange(1, 3);
+
+            Assert.AreElementsEqual(new[] { 0, 4 }, list);
+        }
     }
 }

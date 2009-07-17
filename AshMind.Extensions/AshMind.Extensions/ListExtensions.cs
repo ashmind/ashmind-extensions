@@ -45,5 +45,24 @@ namespace AshMind.Extensions {
                 currentIndex += 1;
             }
         }
+
+        /// <summary>
+        /// Removes a range of elements from the <see cref="IList{T}"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
+        /// <param name="list">The list to remove range from.</param>
+        /// <param name="index">The zero-based starting index of the range of elements to remove.</param>
+        /// <param name="count">The number of elements to remove.</param>
+        public static void RemoveRange<T>(this IList<T> list, int index, int count) {
+            var concreteList = list as List<T>;
+            if (concreteList != null) {
+                concreteList.RemoveRange(index, count);
+                return;
+            }
+
+            for (var offset = count - 1; offset >= 0; offset--) {
+                list.RemoveAt(index + offset);
+            }
+        }
     }
 }

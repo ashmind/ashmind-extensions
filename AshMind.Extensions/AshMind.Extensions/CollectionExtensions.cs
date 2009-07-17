@@ -14,7 +14,7 @@ namespace AshMind.Extensions {
             values.ForEach(collection.Add);
         }
 
-        public static void RemoveRange<T>(this ICollection<T> collection, IEnumerable<T> values) {
+        public static void RemoveAll<T>(this ICollection<T> collection, IEnumerable<T> values) {
             values.ForEach(item => collection.Remove(item));
         }
 
@@ -29,6 +29,10 @@ namespace AshMind.Extensions {
         /// </param>
         /// <returns>The number of elements that were removed from the collection.</returns>
         public static int RemoveWhere<T>(this ICollection<T> collection, Func<T, bool> predicate) {
+            var concreteList = collection as List<T>;
+            if (concreteList != null)
+                concreteList.RemoveAll(predicate.AsPredicate());
+
             var list = collection as IList<T>;
             if (list != null)
                 return RemoveFromListWhere(list, predicate);
@@ -43,7 +47,7 @@ namespace AshMind.Extensions {
                     itemsToRemove.Add(item);
             }
 
-            collection.RemoveRange(itemsToRemove);
+            collection.RemoveAll(itemsToRemove);
             return itemsToRemove.Count;
         }
 
