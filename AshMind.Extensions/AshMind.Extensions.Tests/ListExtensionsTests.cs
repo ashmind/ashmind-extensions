@@ -19,5 +19,16 @@ namespace AshMind.Extensions.Tests {
             var collection = new ReadOnlyCollection<int>(new[] { 1, 2, 4 });
             Assert.AreSame(collection, collection.AsReadOnly());
         }
+
+        [Test]
+        public void TestInsertRangeWorksCorrectly() {
+            IList<int> list = new List<int> { 0, 1, 2, 3, 4 };
+            list.InsertRange(3, new[] { 21, 22, 23 });
+
+            Assert.AreElementsEqual(
+                new[] { 0, 1, 2, 21, 22, 23, 3, 4 },
+                list
+            );
+        }
     }
 }

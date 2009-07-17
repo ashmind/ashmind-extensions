@@ -20,5 +20,30 @@ namespace AshMind.Extensions {
         public static ReadOnlyCollection<T> AsReadOnly<T>(this IList<T> list) {
             return (list as ReadOnlyCollection<T>) ?? new ReadOnlyCollection<T>(list);
         }
+
+        /// <summary>
+        /// Inserts the elements of a collection into the <see cref="IList{T}"/> at the specified index.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
+        /// <param name="list">The list to which new elements will be inserted.</param>
+        /// <param name="index">The zero-based index at which the new elements should be inserted.</param>
+        /// <param name="collection">
+        /// The collection whose elements should be inserted into the <see cref="IList{T}"/>. The collection itself cannot
+        /// be a null reference (<c>Nothing</c> in Visual Basic), but it can contain elements that are a null 
+        /// reference (<c>Nothing</c> in Visual Basic), if type <typeparamref name="T"/> is a reference type.
+        /// </param>
+        public static void InsertRange<T>(this IList<T> list, int index, IEnumerable<T> collection) {
+            var concreteList = list as List<T>;
+            if (concreteList != null) {
+                concreteList.InsertRange(index, collection);
+                return;
+            }
+
+            var currentIndex = index;
+            foreach (var item in collection) {
+                list.Insert(currentIndex, item);
+                currentIndex += 1;
+            }
+        }
     }
 }

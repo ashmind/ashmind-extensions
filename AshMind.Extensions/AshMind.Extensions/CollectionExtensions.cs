@@ -5,6 +5,12 @@ using System.Linq;
 namespace AshMind.Extensions {
     public static class CollectionExtensions {
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> values) {
+            var list = collection as List<T>;
+            if (list != null) {
+                list.AddRange(values);
+                return;
+            }
+
             values.ForEach(collection.Add);
         }
 
