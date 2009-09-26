@@ -22,7 +22,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Test]
-        public void TestHavingMaxReturnsSingleValue() {
+        public void TestHavingMaxForSingleValueReturnsIt() {
             var items = new[] { new { Name = "Andrey", Salary = 15000 } };
 
             Assert.AreElementsEqual(
