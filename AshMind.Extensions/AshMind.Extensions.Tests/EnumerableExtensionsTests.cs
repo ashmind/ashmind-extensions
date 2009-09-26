@@ -22,6 +22,23 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Test]
+        public void TestHavingMaxReturnsSingleValue() {
+            var items = new[] { new { Name = "Andrey", Salary = 15000 } };
+
+            Assert.AreElementsEqual(
+                items.HavingMax(p => p.Salary),
+                new[] { items[0] }
+            );
+        }
+
+        [Test]
+        public void TestHavingMaxReturnsSingleValueWhenItIsDefaultForType() {
+            var items = new[] { new { Name = "Andrey", Level = 0 } };
+
+            Assert.AreElementsEqual(items.HavingMax(p => p.Level), items);
+        }
+
+        [Test]
         public void TestHavingMinReturnsAllMinValues() {
             var items = new[] {
                 new { Name = "Andrey",  Salary = 9000 },
