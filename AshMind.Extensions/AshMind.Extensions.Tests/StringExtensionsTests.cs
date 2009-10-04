@@ -10,7 +10,7 @@ namespace AshMind.Extensions.Tests {
     public class StringExtensionsTests {
         [Test]
         [Row("ab18ba18", "18",  "ab")]
-        [Row("abcdefgh", "x",   "")]
+        [Row("abcdefgh", "x",   "abcdefgh")]
         [Row("abcdefgh", "a",   "")]
         [Row("abcdefgh", "fg",  "abcde")]
         public void TestSubstringBefore(string value, string delimiter, string expectedResult) {
@@ -19,7 +19,7 @@ namespace AshMind.Extensions.Tests {
 
         [Test]
         [Row("ab18ba18", "18",  "ab18ba")]
-        [Row("abcdefgh", "x",   "")]
+        [Row("abcdefgh", "x",   "abcdefgh")]
         [Row("abcdefgh", "a",   "")]
         [Row("abcdefgh", "fg",  "abcde")]
         public void TestSubstringBeforeLast(string value, string delimiter, string expectedResult) {
@@ -28,7 +28,7 @@ namespace AshMind.Extensions.Tests {
 
         [Test]
         [Row("abcdabcd", "bc",  "dabcd")]
-        [Row("abcdefgh", "x",   "")]
+        [Row("abcdefgh", "x",   "abcdefgh")]
         [Row("abcdefgh", "h",   "")]
         [Row("abcdefgh", "cd",  "efgh")]
         public void TestSubstringAfter(string value, string delimiter, string expectedResult) {
@@ -37,7 +37,7 @@ namespace AshMind.Extensions.Tests {
 
         [Test]
         [Row("abcdabcd", "bc",  "d")]
-        [Row("abcdefgh", "x",   "")]
+        [Row("abcdefgh", "x",   "abcdefgh")]
         [Row("abcdefgh", "h",   "")]
         [Row("abcdefgh", "cd",  "efgh")]
         public void TestSubstringAfterLast(string value, string delimiter, string expectedResult) {

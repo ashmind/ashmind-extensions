@@ -65,7 +65,7 @@ namespace AshMind.Extensions {
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <returns>
-        ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringBefore(this string original, string value) {
             return original.SubstringBefore(original.IndexOf(value));
@@ -78,7 +78,7 @@ namespace AshMind.Extensions {
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringBefore(this string original, string value, StringComparison comparisonType) {
             return original.SubstringBefore(original.IndexOf(value, comparisonType));
@@ -90,7 +90,7 @@ namespace AshMind.Extensions {
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <returns>
-        ///     Substring before the last occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring before the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringBeforeLast(this string original, string value) {
             return original.SubstringBefore(original.LastIndexOf(value));
@@ -103,15 +103,15 @@ namespace AshMind.Extensions {
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring preceding the last occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring preceding the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringBeforeLast(this string original, string value, StringComparison comparisonType) {
             return original.SubstringBefore(original.LastIndexOf(value, comparisonType));
         }
 
         private static string SubstringBefore(this string original, int index) {
-            if (index <= 0)
-                return string.Empty;
+            if (index < 0)
+                return original;
 
             return original.Substring(0, index);
         }
@@ -122,7 +122,7 @@ namespace AshMind.Extensions {
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <returns>
-        ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringAfter(this string original, string value) {
             return original.SubstringAfter(original.IndexOf(value) + value.Length);
@@ -135,7 +135,7 @@ namespace AshMind.Extensions {
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringAfter(this string original, string value, StringComparison comparisonType) {
             return original.SubstringAfter(original.IndexOf(value, comparisonType) + value.Length);
@@ -147,7 +147,7 @@ namespace AshMind.Extensions {
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <returns>
-        ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringAfterLast(this string original, string value) {
             return original.SubstringAfter(original.LastIndexOf(value) + value.Length);
@@ -160,15 +160,15 @@ namespace AshMind.Extensions {
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the empty string ("").
+        ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         public static string SubstringAfterLast(this string original, string value, StringComparison comparisonType) {
             return original.SubstringAfter(original.LastIndexOf(value, comparisonType) + value.Length);
         }
 
         private static string SubstringAfter(this string original, int index) {
-            if (index <= 0)
-                return string.Empty;
+            if (index < 0)
+                return original;
 
             return original.Substring(index, original.Length - index);
         }
