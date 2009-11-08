@@ -17,12 +17,30 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Test]
-        public void TestAsFunc() {
+        public void TestPredicateAsFunction() {
             Predicate<string> predicate = x => x == "test";
-            var func = predicate.AsFunc();
+            var func = predicate.AsFunction();
 
             Assert.AreSame(predicate.Target, func.Target);
             Assert.AreSame(predicate.Method, func.Method);
+        }
+
+        [Test]
+        public void TestAsComparison() {
+            Func<string, string, int> func = (x, y) => x.CompareTo(y);
+            var comparison = func.AsComparison();
+
+            Assert.AreSame(func.Target, comparison.Target);
+            Assert.AreSame(func.Method, comparison.Method);
+        }
+
+        [Test]
+        public void TestComparisonAsFunction() {
+            Comparison<string> comparison = (x, y) => x.CompareTo(y);
+            var func = comparison.AsFunction();
+
+            Assert.AreSame(comparison.Target, func.Target);
+            Assert.AreSame(comparison.Method, func.Method);
         }
     }
 }
