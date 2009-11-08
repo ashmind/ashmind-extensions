@@ -8,7 +8,7 @@ namespace AshMind.Extensions.Tests {
     [TestFixture]
     public class DelegateExtensionTests {
         [Test]
-        public void TestAsPredicate() {
+        public void TestFunctionAsPredicate() {
             Func<string, bool> func = x => x == "test";
             var predicate = func.AsPredicate();
 
@@ -26,7 +26,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Test]
-        public void TestAsComparison() {
+        public void TestFunctionAsComparison() {
             Func<string, string, int> func = (x, y) => x.CompareTo(y);
             var comparison = func.AsComparison();
 
@@ -41,6 +41,26 @@ namespace AshMind.Extensions.Tests {
 
             Assert.AreSame(comparison.Target, func.Target);
             Assert.AreSame(comparison.Method, func.Method);
+        }
+
+        [Test]
+        public void TestComparisonToComparer() {
+            Comparison<string> comparison = (x, y) => x.CompareTo(y);
+            var comparer = comparison.ToComparer();
+
+            Assert.AreEqual(comparison("a", "b"), comparer.Compare("a", "b"));
+            Assert.AreEqual(comparison("b", "a"), comparer.Compare("b", "a"));
+            Assert.AreEqual(comparison("a", "a"), comparer.Compare("a", "a"));
+        }
+
+        [Test]
+        public void TestFunctionToComparer() {
+            Func<string, string, int> func = (x, y) => x.CompareTo(y);
+            var comparer = func.ToComparer();
+
+            Assert.AreEqual(func("a", "b"), comparer.Compare("a", "b"));
+            Assert.AreEqual(func("b", "a"), comparer.Compare("b", "a"));
+            Assert.AreEqual(func("a", "a"), comparer.Compare("a", "a"));
         }
     }
 }

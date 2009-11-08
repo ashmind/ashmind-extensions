@@ -7,6 +7,22 @@ namespace AshMind.Extensions {
     /// Provides a set of static (Shared in Visual Basic) methods for operations on delegates. 
     /// </summary>
     public static class DelegateExtensions {
+        #region DelegateBasedComparer Class
+
+        private class DelegateBasedComparer<T> : IComparer<T> {
+            private readonly Comparison<T> comparison;
+
+            public DelegateBasedComparer(Comparison<T> comparison) {
+                this.comparison = comparison;
+            }
+
+            public int Compare(T x, T y) {
+                return comparison(x, y);
+            }
+        }
+
+        #endregion
+
         /// <summary>
         /// Converts Func&lt;T, bool&gt; into a <see cref="Predicate&lt;T&gt;" />.
         /// </summary>
@@ -45,6 +61,24 @@ namespace AshMind.Extensions {
 
         private static TDelegate As<TDelegate>(Delegate @delegate) {
             return (TDelegate)(object)Delegate.CreateDelegate(typeof(TDelegate), @delegate.Target, @delegate.Method);
+        }
+
+        /// <summary>
+        /// Converts <see cref="Comparison&lt;T&gt;" /> into an <see cref="IComparer&lt;T&gt;" />.
+        /// </summary>
+        /// <param name="comparison">A comparison to convert.</param>
+        /// <returns><see cref="IComparer&lt;T&gt;" /> that acts identical to the original comparison.</returns>
+        public static IComparer<T> ToComparer<T>(this Comparison<T> comparison) {
+            return new DelegateBasedComparer<T>(comparison);
+        }
+
+        /// <summary>
+        /// Converts Func&lt;T, T, int&gt; into an <see cref="IComparer&lt;T&gt;" />.
+        /// </summary>
+        /// <param name="function">A function to convert.</param>
+        /// <returns><see cref="IComparer&lt;T&gt;" /> that acts identical to the original function.</returns>
+        public static IComparer<T> ToComparer<T>(this Func<T, T, int> function) {
+            return new DelegateBasedComparer<T>(function.AsComparison());
         }
     }
 }
