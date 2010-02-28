@@ -48,9 +48,7 @@ namespace AshMind.Algorithms.Differencing {
         /// </summary>
         private class DifferenceData {
             /// <summary>Number of elements (lines).</summary>
-            public int Length {
-                get { return this.Data.Length; }
-            }
+            public int Length { get; private set; }
             public T[] Data { get; private set; }
 
             /// <summary>
@@ -65,8 +63,9 @@ namespace AshMind.Algorithms.Differencing {
             /// </summary>
             /// <param name="data">reference to the buffer</param>
             public DifferenceData(IEnumerable<T> data) {
-                this.Data = data.ToArray();
-                this.Changed = new bool[Length + 2];
+                this.Data = (data as T[]) ?? data.ToArray();
+                this.Length = this.Data.Length; // this little bit of caching really helps performance
+                this.Changed = new bool[this.Length + 2];
             }
         }
 
@@ -95,16 +94,16 @@ namespace AshMind.Algorithms.Differencing {
             var dataB = new DifferenceData(second);
 
             var max = dataA.Length + dataB.Length + 1;
-            /// vector for the (0,0) to (x,y) search
+            // vector for the (0,0) to (x,y) search
             var downVector = new int[2 * max + 2];
-            /// vector for the (u,v) to (N,M) search
+            // vector for the (u,v) to (N,M) search
             var upVector = new int[2 * max + 2];
 
             LCS(dataA, 0, dataA.Length, dataB, 0, dataB.Length, downVector, upVector);
 
             Optimize(dataA);
             Optimize(dataB);
-            return CreateDiffs(dataA, dataB);
+            return CalculateDifferences(dataA, dataB);
         }
 
 
@@ -152,7 +151,7 @@ namespace AshMind.Algorithms.Differencing {
             DifferenceData dataA, int lowerA, int upperA,
             DifferenceData dataB, int lowerB, int upperB,
             int[] downVector, int[] upVector
-            ) {
+        ) {
             var max = dataA.Length + dataB.Length + 1;
 
             var downK = lowerA - lowerB; // the k-line to start the forward search
@@ -262,7 +261,7 @@ namespace AshMind.Algorithms.Differencing {
             DifferenceData dataA, int lowerA, int upperA,
             DifferenceData dataB, int lowerB, int upperB,
             int[] downVector, int[] upVector
-            ) {
+        ) {
             // Fast walkthrough equal lines at the start
             while (lowerA < upperA && lowerB < upperB && comparer.Equals(dataA.Data[lowerA], dataB.Data[lowerB])) {
                 lowerA++; lowerB++;
@@ -301,37 +300,35 @@ namespace AshMind.Algorithms.Differencing {
         /// producing an edit script in forward order.  
         /// </summary>
         /// dynamic array
-        private IEnumerable<Difference> CreateDiffs(DifferenceData dataA, DifferenceData dataB) {
-            var lineA = 0;
-            var lineB = 0;
-            while (lineA < dataA.Length || lineB < dataB.Length) {
-                if ((lineA < dataA.Length) && (!dataA.Changed[lineA])
-                    && (lineB < dataB.Length) && (!dataB.Changed[lineB])) {
+        private IEnumerable<Difference> CalculateDifferences(DifferenceData dataA, DifferenceData dataB) {
+            var indexA = 0;
+            var indexB = 0;
+            while (indexA < dataA.Length || indexB < dataB.Length) {
+                if ((indexA < dataA.Length) && (!dataA.Changed[indexA])
+                    && (indexB < dataB.Length) && (!dataB.Changed[indexB])) {
                     // equal lines
-                    lineA++;
-                    lineB++;
+                    indexA += 1;
+                    indexB += 1;
 
                 }
                 else {
                     // maybe deleted and/or inserted lines
-                    var startA = lineA;
-                    var startB = lineB;
+                    var startA = indexA;
+                    var startB = indexB;
 
-                    while (lineA < dataA.Length && (lineB >= dataB.Length || dataA.Changed[lineA]))
-                        // while (LineA < dataA.Length && dataA.modified[LineA])
-                        lineA++;
+                    while (indexA < dataA.Length && (indexB >= dataB.Length || dataA.Changed[indexA]))
+                        indexA += 1;
 
-                    while (lineB < dataB.Length && (lineA >= dataA.Length || dataB.Changed[lineB]))
-                        // while (LineB < dataB.Length && dataB.modified[LineB])
-                        lineB++;
+                    while (indexB < dataB.Length && (indexA >= dataA.Length || dataB.Changed[indexB]))
+                        indexB += 1;
 
-                    if ((startA < lineA) || (startB < lineB)) {
+                    if (startA < indexA || startB < indexB) {
                         // store a new difference-item
                         yield return new Difference {
                             FirstStartIndex = startA,
                             SecondStartIndex = startB,
-                            CountOfDeletedInFirst = lineA - startA,
-                            CountOfInsertedInSecond = lineB - startB
+                            CountOfDeletedInFirst = indexA - startA,
+                            CountOfInsertedInSecond = indexB - startB
                         };
                     }
                 }
