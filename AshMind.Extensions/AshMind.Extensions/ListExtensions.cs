@@ -64,5 +64,21 @@ namespace AshMind.Extensions {
                 list.RemoveAt(index + offset);
             }
         }
+
+        /// <summary>
+        /// Produces a limited range of elements from the <see cref="IList{T}"/>. 
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
+        /// <param name="list">The list to produce range from.</param>
+        /// <param name="index">The zero-based element index at which the range starts.</param>
+        /// <param name="count">The number of elements in the range.</param>
+        /// <returns>
+        /// An <see cref="IEnumerable{T}"/> containing all elements from the specified range.
+        /// </returns>
+        public static IEnumerable<T> EnumerateRange<T>(this IList<T> list, int index, int count) {
+            for (var i = index; i < index + count; i++) {
+                yield return list[i];
+            }
+        }
     }
 }

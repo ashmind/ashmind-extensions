@@ -95,7 +95,7 @@ namespace AshMind.Extensions {
             return type.IsSubclassOf(typeof(T));
         }
 
-        public static bool IsGenericDefinedAs(this Type type, Type otherType) {
+        public static bool IsGenericTypeDefinedAs(this Type type, Type otherType) {
             if (!type.IsGenericType)
                 return false;
 
