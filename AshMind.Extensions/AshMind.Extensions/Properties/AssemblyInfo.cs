@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -8,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AshMind.Extensions")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Handy Labs")]
+[assembly: AssemblyCompany("Andrey Shchekin")]
 [assembly: AssemblyProduct("AshMind.Extensions")]
-[assembly: AssemblyCopyright("Copyright © Handy Labs 2007")]
+[assembly: AssemblyCopyright("Copyright © Andrey Shchekin 2007–2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
