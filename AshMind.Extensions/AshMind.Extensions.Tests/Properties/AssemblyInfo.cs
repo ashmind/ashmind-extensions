@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AshMind.Extensions.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2009")]
+[assembly: AssemblyCopyright("Copyright © Andrey Shchekin 2009–2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
