@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace AshMind.Extensions {
     public static class CollectionExtensions {
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> values) {
+            if (collection == null)
+                throw new ArgumentNullException("collection");
+            if (values == null)
+                throw new ArgumentNullException("values");
+            Contract.EndContractBlock();
+
             var list = collection as List<T>;
             if (list != null) {
                 list.AddRange(values);
@@ -15,6 +22,12 @@ namespace AshMind.Extensions {
         }
 
         public static void RemoveAll<T>(this ICollection<T> collection, IEnumerable<T> values) {
+            if (collection == null)
+                throw new ArgumentNullException("collection");
+            if (values == null)
+                throw new ArgumentNullException("values");
+            Contract.EndContractBlock();
+
             values.ForEach(item => collection.Remove(item));
         }
 
@@ -63,6 +76,12 @@ namespace AshMind.Extensions {
         /// </param>
         /// <returns>The number of elements that were removed from the collection.</returns>
         public static int RemoveWhere<T>(this ICollection<T> collection, Func<T, int, bool> predicate) {
+            if (collection == null)
+                throw new ArgumentNullException("collection");
+            if (predicate == null)
+                throw new ArgumentNullException("predicate");
+            Contract.EndContractBlock();
+
             var list = collection as IList<T>;
             if (list != null)
                 return RemoveFromListWhere(list, predicate);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     public static class EnumerableExtensions {
@@ -26,6 +27,9 @@ namespace AshMind.Extensions {
         public static bool Any<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate) {
             if (source == null)
                 throw new ArgumentNullException("source");
+            if (predicate == null)
+                throw new ArgumentNullException("predicate");
+            Contract.EndContractBlock();
 
             var index = 0;
             foreach (var item in source) {
@@ -54,6 +58,7 @@ namespace AshMind.Extensions {
         public static HashSet<TSource> ToSet<TSource>(this IEnumerable<TSource> source) {
             if (source == null)
                 throw new ArgumentNullException("source");
+            Contract.EndContractBlock();
 
             return new HashSet<TSource>(source);
         }
@@ -77,6 +82,7 @@ namespace AshMind.Extensions {
         public static HashSet<TSource> ToSet<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer) {
             if (source == null)
                 throw new ArgumentNullException("source");
+            Contract.EndContractBlock();
 
             return new HashSet<TSource>(source, comparer);
         }
@@ -90,6 +96,9 @@ namespace AshMind.Extensions {
         public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action) {
             if (source == null)
                 throw new ArgumentNullException("source");
+            if (action == null)
+                throw new ArgumentNullException("action");
+            Contract.EndContractBlock();
 
             var index = 0;
             foreach (var item in source) {
@@ -102,6 +111,7 @@ namespace AshMind.Extensions {
         public static IEnumerable<TSource> Except<TSource>(this IEnumerable<TSource> source, TSource item) {
             if (source == null)
                 throw new ArgumentNullException("source");
+            Contract.EndContractBlock();
 
             foreach (var eachItem in source) {
                 if (Equals(eachItem, item))

@@ -1,19 +1,22 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions", "AshMind.Extensions\AshMind.Extensions.csproj", "{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Tests", "AshMind.Extensions.Tests\AshMind.Extensions.Tests.csproj", "{0D8B285D-F71C-4BE2-8758-32E1FFAA4DA2}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Libraries", ".Libraries", "{90D98CD3-2372-4D1C-BAC0-A9DF36C96134}"
+	ProjectSection(SolutionItems) = preProject
+		..\.Libraries\Microsoft.Contracts.dll = ..\.Libraries\Microsoft.Contracts.dll
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gallio", "Gallio", "{1864E982-D846-4E16-8B5C-A2F19E4901EB}"
 	ProjectSection(SolutionItems) = preProject
-		.Libraries\Gallio\Gallio.dll = .Libraries\Gallio\Gallio.dll
-		.Libraries\Gallio\Gallio35.dll = .Libraries\Gallio\Gallio35.dll
-		.Libraries\Gallio\MbUnit.dll = .Libraries\Gallio\MbUnit.dll
-		.Libraries\Gallio\MbUnit35.dll = .Libraries\Gallio\MbUnit35.dll
+		..\.Libraries\Gallio\Gallio.dll = ..\.Libraries\Gallio\Gallio.dll
+		..\.Libraries\Gallio\Gallio35.dll = ..\.Libraries\Gallio\Gallio35.dll
+		..\.Libraries\Gallio\MbUnit.dll = ..\.Libraries\Gallio\MbUnit.dll
+		..\.Libraries\Gallio\MbUnit35.dll = ..\.Libraries\Gallio\MbUnit35.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions", "AshMind.Extensions\AshMind.Extensions.csproj", "{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Tests", "AshMind.Extensions.Tests\AshMind.Extensions.Tests.csproj", "{0D8B285D-F71C-4BE2-8758-32E1FFAA4DA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

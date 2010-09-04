@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Framework", "Framework\Framework.csproj", "{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net", "Net\Net.csproj", "{75465BE1-1786-4BAE-8549-9B8BC4787EFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

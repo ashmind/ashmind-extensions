@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -16,6 +17,7 @@ namespace AshMind.Extensions {
         ///    <c>true</c> if the <paramref name="value"/> is a null reference (<c>Nothing</c> in Visual Basic) or an empty string (""); otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="IsNotNullOrEmpty" />
+        [Pure]
         public static bool IsNullOrEmpty(this string value) {
             return string.IsNullOrEmpty(value);
         }
@@ -29,6 +31,7 @@ namespace AshMind.Extensions {
         ///    <c>false</c> if the <paramref name="value"/> is a null reference (<c>Nothing</c> in Visual Basic) or an empty string (""); otherwise, <c>true</c>.
         /// </returns>
         /// <seealso cref="IsNullOrEmpty" />
+        [Pure]
         public static bool IsNotNullOrEmpty(this string value) {
             return !string.IsNullOrEmpty(value);
         }
@@ -42,6 +45,7 @@ namespace AshMind.Extensions {
         ///     An array whose elements contain the substrings in this string that are delimited by one or more strings in <paramref name="separator" />.
         /// </returns>
         /// <seealso cref="string.Split(string[], System.StringSplitOptions)" />
+        [Pure]
         public static string[] Split(this string value, params string[] separator) {
             return value.Split(separator, StringSplitOptions.None);
         }
@@ -55,6 +59,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     <c>true</c> if the value parameter occurs within this string, or if value is the empty string (""); otherwise, <c>false</c>.
         /// </returns>
+        [Pure]
         public static bool Contains(this string original, string value, StringComparison comparisonType) {
             return original.IndexOf(value, comparisonType) >= 0;
         }
@@ -67,6 +72,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringBefore(this string original, string value) {
             return original.SubstringBefore(original.IndexOf(value));
         }
@@ -80,6 +86,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringBefore(this string original, string value, StringComparison comparisonType) {
             return original.SubstringBefore(original.IndexOf(value, comparisonType));
         }
@@ -92,6 +99,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring before the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringBeforeLast(this string original, string value) {
             return original.SubstringBefore(original.LastIndexOf(value));
         }
@@ -105,6 +113,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring preceding the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringBeforeLast(this string original, string value, StringComparison comparisonType) {
             return original.SubstringBefore(original.LastIndexOf(value, comparisonType));
         }
@@ -124,6 +133,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringAfter(this string original, string value) {
             return original.SubstringAfter(original.IndexOf(value) + value.Length);
         }
@@ -137,6 +147,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringAfter(this string original, string value, StringComparison comparisonType) {
             return original.SubstringAfter(original.IndexOf(value, comparisonType) + value.Length);
         }
@@ -149,6 +160,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringAfterLast(this string original, string value) {
             return original.SubstringAfter(original.LastIndexOf(value) + value.Length);
         }
@@ -162,6 +174,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string SubstringAfterLast(this string original, string value, StringComparison comparisonType) {
             return original.SubstringAfter(original.LastIndexOf(value, comparisonType) + value.Length);
         }
@@ -181,6 +194,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     The string that remains after an occurrence of <paramref name="prefix" /> is removed from the start of <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string RemoveStart(this string original, string prefix) {
             if (!original.StartsWith(prefix))
                 return original;
@@ -196,6 +210,7 @@ namespace AshMind.Extensions {
         /// <returns>
         ///     The string that remains after an occurrence of <paramref name="suffix" /> is removed from the end of <paramref name="original" /> string.
         /// </returns>
+        [Pure]
         public static string RemoveEnd(this string original, string suffix) {
             if (!original.EndsWith(suffix))
                 return original;
