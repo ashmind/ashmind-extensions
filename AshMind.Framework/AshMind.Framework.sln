@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Framework", "AshMind.Framework.csproj", "{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Framework", "Framework\AshMind.Framework.csproj", "{2904A1A4-F010-4A3B-8CE2-EBC2CF3FE1F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
