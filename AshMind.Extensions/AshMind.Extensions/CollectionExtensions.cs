@@ -11,10 +11,16 @@ namespace AshMind.Extensions {
             if (values == null)
                 throw new ArgumentNullException("values");
             Contract.EndContractBlock();
-
+            
             var list = collection as List<T>;
             if (list != null) {
                 list.AddRange(values);
+                return;
+            }
+
+            var set = collection as HashSet<T>;
+            if (set != null) {
+                set.UnionWith(values);
                 return;
             }
 

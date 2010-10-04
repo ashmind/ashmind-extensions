@@ -5,6 +5,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Fram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net", "Net\Net.csproj", "{75465BE1-1786-4BAE-8549-9B8BC4787EFD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Libraries", ".Libraries", "{118A4D57-EABA-4C6F-B3DF-A3D7207D6C04}"
+	ProjectSection(SolutionItems) = preProject
+		..\.Libraries\Microsoft.Contracts.dll = ..\.Libraries\Microsoft.Contracts.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions", "..\AshMind.Extensions\AshMind.Extensions\AshMind.Extensions.csproj", "{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Tests", "Net.Tests\Net.Tests.csproj", "{9DD031BA-49F1-4199-B700-FCD99AC80696}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +28,19 @@ Global
 		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75465BE1-1786-4BAE-8549-9B8BC4787EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E80F9D47-F969-45F2-BF1F-BCD39BD698D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD031BA-49F1-4199-B700-FCD99AC80696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD031BA-49F1-4199-B700-FCD99AC80696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD031BA-49F1-4199-B700-FCD99AC80696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD031BA-49F1-4199-B700-FCD99AC80696}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E80F9D47-F969-45F2-BF1F-BCD39BD698D2} = {118A4D57-EABA-4C6F-B3DF-A3D7207D6C04}
 	EndGlobalSection
 EndGlobal
