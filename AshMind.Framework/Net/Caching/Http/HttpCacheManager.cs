@@ -34,14 +34,28 @@ namespace AshMind.Net.Caching.Http {
             if (entry != null && !string.IsNullOrEmpty(entry.ETag))
                 request.Headers[HttpRequestHeader.IfNoneMatch] = entry.ETag;
 
-            return new CacheBoundWebRequest(request, r => GetResponse((HttpWebRequest)r));
+            return new CacheBoundWebRequest(
+                request,
+                r => GetImmediateResponse((HttpWebRequest)r),
+                (r, getResponse) => GetFinalResponse((HttpWebRequest)r, getResponse)
+            );
         }
 
         public virtual bool CanCache(string requestMethod) {
             return requestMethod.Equals("GET", StringComparison.InvariantCultureIgnoreCase); 
         }
 
-        public WebResponse GetResponse(HttpWebRequest request) {
+        public WebResponse GetImmediateResponse(HttpWebRequest request) {
+            Contract.Requires<ArgumentNullException>(request != null);
+
+            var entry = this.cache.GetEntry(request);
+            if (entry != null && entry.Expires != null && entry.Expires > DateTimeOffset.Now)
+                return entry.Response;
+
+            return null;
+        }
+
+        public WebResponse GetFinalResponse(HttpWebRequest request, Func<WebResponse> getResponse) {
             Contract.Requires<ArgumentNullException>(request != null);
             Contract.Ensures(Contract.Result<WebResponse>() != null);
 
@@ -51,7 +65,7 @@ namespace AshMind.Net.Caching.Http {
 
             var response = (HttpWebResponse)null;
             try {
-                response = (HttpWebResponse)request.GetResponse();
+                response = (HttpWebResponse)getResponse();
             }
             catch (WebException ex) { // BCL designers should have known better, I think
                 response = ((HttpWebResponse)ex.Response);

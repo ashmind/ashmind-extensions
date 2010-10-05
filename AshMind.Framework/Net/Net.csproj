@@ -94,7 +94,6 @@
     <Compile Include="Caching\Http\Behaviors\ProxyHttpCacheBehavior.cs" />
     <Compile Include="Caching\Http\Behaviors\EndUserHttpCacheBehavior.cs" />
     <Compile Include="Caching\Http\CacheControl.cs" />
-    <Compile Include="Caching\CachedWebResponse.cs" />
     <Compile Include="Caching\Http\HttpCacheContract.cs" />
     <Compile Include="Caching\Http\IHttpCache.cs" />
     <Compile Include="Caching\Http\HttpMemoryCache.cs" />

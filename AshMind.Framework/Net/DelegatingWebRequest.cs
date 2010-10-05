@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AshMind.Net {
     public class DelegatingWebRequest : WebRequest {
-        public WebRequest InnerRequest { get; private set; }
+       public WebRequest InnerRequest { get; private set; }
 
         public DelegatingWebRequest(WebRequest request) {
             this.InnerRequest = request;
