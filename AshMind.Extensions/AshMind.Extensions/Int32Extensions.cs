@@ -15,7 +15,7 @@ namespace AshMind.Extensions {
         /// <param name="left">Minimum value that can cause true to be returned</param>
         /// <param name="right">Maximum value that can cause true to be returned</param>
         /// <returns>
-        /// True if the specified value is between the minimm and maximum; otherwise, false.
+        /// True if the specified value is between the minimum and maximum; otherwise, false.
         /// </returns>
         public static bool IsBetween(this int value, int left, int right) {
             return value >= left && value <= right;
