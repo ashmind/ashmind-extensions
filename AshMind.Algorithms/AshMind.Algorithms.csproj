@@ -52,6 +52,8 @@
     <Compile Include="Distancing\DamerauLevenshteinDistanceAlgorithm.cs" />
     <Compile Include="Distancing\IDistanceAlgorithm.cs" />
     <Compile Include="Distancing\LevenshteinDistanceAlgorithm.cs" />
+    <Compile Include="Hashing\Fnv64HashAlgorithm.cs" />
+    <Compile Include="Hashing\Fnv32HashAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
