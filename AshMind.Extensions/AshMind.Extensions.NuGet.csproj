@@ -50,6 +50,6 @@
     <Delete Files="@(_XmlOld)" />
   </Target>
   <Target Name="CreateNuGetPackage">
-    <Exec WorkingDirectory="$(OutDir)" Command="nuget pack AshMind.Extensions.nuspec" />
+    <Exec WorkingDirectory="$(OutDir)" Command="nuget pack AshMind.Extensions.nuspec -symbols" />
   </Target>
 </Project>
