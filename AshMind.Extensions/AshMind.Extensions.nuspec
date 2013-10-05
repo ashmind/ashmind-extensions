@@ -2,11 +2,10 @@
 <package>
   <metadata>
     <id>AshMind.Extensions</id>
-    <version>1.1.0</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
+    <version>1.1.1</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
     <authors>Andrey Shchekin</authors>
     <owners>Andrey Shchekin</owners>
-    <licenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</licenseUrl>
-    <projectUrl>https://github.com/ashmind/argument</projectUrl>
+    <projectUrl>https://github.com/ashmind/ashmind-extensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       Extension methods that could have been written by BCL authors
