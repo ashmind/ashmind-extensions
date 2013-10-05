@@ -8,9 +8,10 @@
     <licenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/ashmind/argument</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>Argument validation methods, for example:
-this.user = Argument.NotNull("user", user).</summary>
-    <description>Extension methods that could have been written by BCL authors. No magic, just things missing from BCL.</description>
+    <description>
+      Extension methods that could have been written by BCL authors
+      (with one or two Ruby-like things thrown in the mix).
+    </description>
     <releaseNotes>Improved support for newer .NET versions.</releaseNotes>
     <copyright>Copyright (c) 2013 Andrey Shchekin</copyright>
     <tags>extensions</tags>
