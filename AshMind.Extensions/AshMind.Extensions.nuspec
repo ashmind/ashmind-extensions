@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>AshMind.Extensions</id>
+    <version>1.1.0</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
+    <authors>Andrey Shchekin</authors>
+    <owners>Andrey Shchekin</owners>
+    <licenseUrl>https://github.com/ashmind/argument/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/ashmind/argument</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Argument validation methods, for example:
+this.user = Argument.NotNull("user", user).</summary>
+    <description>Extension methods that could have been written by BCL authors. No magic, just things missing from BCL.</description>
+    <releaseNotes>Improved support for newer .NET versions.</releaseNotes>
+    <copyright>Copyright (c) 2013 Andrey Shchekin</copyright>
+    <tags>extensions</tags>
+
+    <references>
+      <reference file="AshMind.Extensions.dll" /> <!-- No reference to code contracts. -->
+    </references>
+  </metadata>
+</package>
