@@ -7,6 +7,20 @@ using Xunit.Extensions;
 namespace AshMind.Extensions.Tests {
     public class EnumerableExtensionsTests {
         [Fact]
+        public void EmptyIfNull_WhenEnumerableIsNotNull_ReturnsSameEnumerable() {
+            var enumerable = Enumerable.Empty<int>();
+            Assert.Same(enumerable, enumerable.EmptyIfNull());
+        }
+
+        [Fact]
+        public void EmptyIfNull_WhenEnumerableIsNull_ReturnsEmptyEnmumerable() {
+            var enumerable = (IEnumerable<int>)null;
+            var result = enumerable.EmptyIfNull();
+            Assert.NotNull(result);
+            Assert.Equal(Enumerable.Empty<int>(), result);
+        }
+
+        [Fact]
         public void Any_ReceivesCorrectIndex() {
             var list = new List<int> { 0, 1, 2, 3 };
             list.Any((item, index) => {

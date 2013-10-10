@@ -9,7 +9,19 @@ using PureAttribute = System.Diagnostics.Contracts.PureAttribute;
 #endif
 
 namespace AshMind.Extensions {
+    /// <summary>
+    /// Provides a set of extension methods for operations on <see cref="IEnumerable{T}" />. 
+    /// </summary>
     public static class EnumerableExtensions {
+        /// <summary>Returns the elements of the specified sequence or an empty sequence if the sequence is <c>null</c>.</summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">The sequence to process.</param>
+        /// <returns><paramref name="source"/> if it is not <c>null</c>; otherwise, <see cref="Enumerable.Empty{TSource}"/>.</returns>
+        [Pure]
+        public static IEnumerable<TSource> EmptyIfNull<TSource>([CanBeNull] this IEnumerable<TSource> source) {
+            return source ?? Enumerable.Empty<TSource>();
+        }
+
         /// <summary>
         /// Determines whether any element of a sequence satisfies a condition.
         /// </summary>
