@@ -187,9 +187,15 @@ namespace AshMind.Extensions {
             return type.GetGenericTypeDefinition() == otherType;
         }
 
+        /// <summary>
+        /// Determines whether the specified interface is implemented by the specified type.
+        /// </summary>
+        /// <typeparam name="TInterface">The interface that might be implemented by the <paramref name="type"/>.</typeparam>
+        /// <param name="type">The type for which the fact of implementation will be dermined.</param>
+        /// <returns><c>true</c> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <c>false</c>.</returns>
         [Pure]
-        public static bool HasInterface<T>([NotNull] this Type type)
-            where T : class
+        public static bool HasInterface<TInterface>([NotNull] this Type type)
+            where TInterface : class
         {
             if (type == null)
                 throw new ArgumentNullException("type");
@@ -197,7 +203,26 @@ namespace AshMind.Extensions {
             Contract.EndContractBlock();
             #endif
 
-            return type.GetInterfaces().Contains(typeof(T));
+            return type.HasInterface(typeof(TInterface));
+        }
+
+        /// <summary>
+        /// Determines whether a given interface is implemented by a specified type.
+        /// </summary>
+        /// <param name="type">The type for which the fact of implementation will be dermined.</param>
+        /// <param name="interfaceType">The interface that might be implemented by the <paramref name="type"/>.</param>
+        /// <returns><c>true</c> if <paramref name="type"/> implements <paramref name="interfaceType"/>; otherwise, <c>false</c>.</returns>
+        [Pure]
+        public static bool HasInterface([NotNull] this Type type, [NotNull] Type interfaceType) {
+            if (type == null)
+                throw new ArgumentNullException("type");
+            if (interfaceType == null)
+                throw new ArgumentNullException("interfaceType");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return type.GetInterfaces().Contains(interfaceType);
         }
 
         public static void SetValue([NotNull] this PropertyInfo property, [CanBeNull] object obj, [CanBeNull] object value) {
