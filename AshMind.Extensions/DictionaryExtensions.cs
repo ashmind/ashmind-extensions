@@ -29,6 +29,39 @@ namespace AshMind.Extensions {
             return succeeded ? value : @default;
         }
 
+        /// <summary>Gets the value associated with the specified key, or adds and returns the new value if the key was not found.</summary>
+        /// <param name="dictionary">The dictionary to get value from.</param>
+        /// <param name="key">The key of the value to get or add.</param>
+        /// <param name="value">The value to add if <paramref name="key" /> is not found.</param>
+        /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
+        /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
+        /// <returns>The value associated with the specified key, if the key is found; otherwise, the <paramref name="value"/>.</returns>
+        public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, [CanBeNull] TValue value) {
+            TValue found;
+            if (dictionary.TryGetValue(key, out found))
+                return found;
+
+            dictionary.Add(key, value);
+            return value;
+        }
+
+        /// <summary>Gets the value associated with the specified key, or adds and returns a new value by using the specified function if the key was not found.</summary>
+        /// <param name="dictionary">The dictionary to get value from.</param>
+        /// <param name="key">The key of the value to get or add.</param>
+        /// <param name="valueFactory">The function used to generate a value for the <paramref name="key" /> if it was not found.</param>
+        /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
+        /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
+        /// <returns>The value associated with the specified key, if the key is found; otherwise, the value returned by <paramref name="valueFactory"/>.</returns>
+        public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, [NotNull] [InstantHandle] Func<TKey, TValue> valueFactory) {
+            TValue found;
+            if (dictionary.TryGetValue(key, out found))
+                return found;
+
+            var value = valueFactory(key);
+            dictionary.Add(key, value);
+            return value;
+        }
+
         #if IReadOnlyDictionary
         /// <summary>
         /// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="ReadOnlyDictionary{TKey, TValue}" />.

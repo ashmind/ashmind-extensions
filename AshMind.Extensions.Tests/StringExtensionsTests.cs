@@ -11,7 +11,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "a", "")]
         [InlineData("abcdefgh", "fg", "abcde")]
-        public void TestSubstringBefore(string value, string delimiter, string expectedResult) {
+        public void SubstringBefore(string value, string delimiter, string expectedResult) {
             Assert.Equal(expectedResult, value.SubstringBefore(delimiter));
         }
 
@@ -20,7 +20,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "a", "")]
         [InlineData("abcdefgh", "fg", "abcde")]
-        public void TestSubstringBeforeLast(string value, string delimiter, string expectedResult) {
+        public void SubstringBeforeLast(string value, string delimiter, string expectedResult) {
             Assert.Equal(expectedResult, value.SubstringBeforeLast(delimiter));
         }
 
@@ -29,7 +29,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "h", "")]
         [InlineData("abcdefgh", "cd", "efgh")]
-        public void TestSubstringAfter(string value, string delimiter, string expectedResult) {
+        public void SubstringAfter(string value, string delimiter, string expectedResult) {
             Assert.Equal(expectedResult, value.SubstringAfter(delimiter));
         }
 
@@ -38,7 +38,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "h", "")]
         [InlineData("abcdefgh", "cd", "efgh")]
-        public void TestSubstringAfterLast(string value, string delimiter, string expectedResult) {
+        public void SubstringAfterLast(string value, string delimiter, string expectedResult) {
             Assert.Equal(expectedResult, value.SubstringAfterLast(delimiter));
         }
 
@@ -46,7 +46,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdabcd", "ab", "cdabcd")]
         [InlineData("abcdabcd", "xy", "abcdabcd")]
         [InlineData("abcdabcd", "abcdabcd", "")]
-        public void TestRemoveStart(string value, string prefix, string expectedResult) {
+        public void RemoveStart(string value, string prefix, string expectedResult) {
             Assert.Equal(expectedResult, value.RemoveStart(prefix));
         }
 
@@ -55,7 +55,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdabcd", "cd", "abcdab")]
         [InlineData("abcdabcd", "xy", "abcdabcd")]
         [InlineData("abcdabcd", "abcdabcd", "")]
-        public void TestRemoveEnd(string value, string suffix, string expectedResult) {
+        public void RemoveEnd(string value, string suffix, string expectedResult) {
             Assert.Equal(expectedResult, value.RemoveEnd(suffix));
         }
     }

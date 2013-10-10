@@ -11,7 +11,7 @@ namespace AshMind.Extensions.Tests {
         public delegate ICollection<int> CollectionFactory(params int[] values);
             
         [Fact]
-        public void TestRemoveWhereForListProvidesCorrectIndex() {
+        public void RemoveWhere_ForList_ProvidesCorrectIndex() {
             var list = new List<int> {0, 1, 2, 3};
             list.RemoveWhere((item, index) => {
                 Assert.Equal(item, index);
@@ -21,7 +21,7 @@ namespace AshMind.Extensions.Tests {
 
         [Theory]
         [PropertyData("Collections")]
-        public void TestRemoveWhereWithIndexRemovesFrom(Expression<CollectionFactory> factory) {
+        public void RemoveWhere_WithIndex_RemovesFrom(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             collection.RemoveWhere((item, index) => item == 2);
             Assert.Equal(new[] { 1, 3, 4, 5 }, collection.ToArray());
@@ -29,7 +29,7 @@ namespace AshMind.Extensions.Tests {
 
         [Theory]
         [PropertyData("Collections")]
-        public void TestRemoveWhereRemovesFrom(Expression<CollectionFactory> factory) {
+        public void RemoveWhere_RemovesFrom(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             collection.RemoveWhere(item => item == 2);
             Assert.Equal(new[] { 1, 3, 4, 5 }, collection.ToArray());
@@ -37,7 +37,7 @@ namespace AshMind.Extensions.Tests {
 
         [Theory]
         [PropertyData("Collections")]
-        public void TestRemoveWhereReturnsCorrectCount(Expression<CollectionFactory> factory) {
+        public void RemoveWhere_ReturnsCorrectCount(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             var count = collection.RemoveWhere(item => item > 2);
 
@@ -46,7 +46,7 @@ namespace AshMind.Extensions.Tests {
 
         [Theory]
         [PropertyData("Collections")]
-        public void TestRemoveWhereWithIndexReturnsCorrectCount(Expression<CollectionFactory> factory) {
+        public void RemoveWhere_WithIndex_ReturnsCorrectCount(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             var count = collection.RemoveWhere(item => item > 2);
 

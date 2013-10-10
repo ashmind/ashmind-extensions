@@ -17,7 +17,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(0)]
         [InlineData(Double.PositiveInfinity)]
         [InlineData(Double.NegativeInfinity)]
-        public void TestIsInfinityIsEqualToDoubleIsInfinity(double value) {
+        public void IsInfinity_IsEqual_ToDoubleIsInfinity(double value) {
             Assert.Equal(value.IsInfinity(), Double.IsInfinity(value));
         }
 
@@ -25,7 +25,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(0)]
         [InlineData(Double.PositiveInfinity)]
         [InlineData(Double.NegativeInfinity)]
-        public void TestIsPositiveInfinityIsEqualToDoubleIsPositiveInfinity(double value) {
+        public void IsPositiveInfinity_IsEqual_ToDoubleIsPositiveInfinity(double value) {
             Assert.Equal(value.IsPositiveInfinity(), Double.IsPositiveInfinity(value));
         }
 
@@ -33,7 +33,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(0)]
         [InlineData(Double.PositiveInfinity)]
         [InlineData(Double.NegativeInfinity)]
-        public void TestIsNegativeInfinityIsEqualToDoubleIsNegativeInfinity(double value) {
+        public void IsNegativeInfinity_IsEqual_ToDoubleIsNegativeInfinity(double value) {
             Assert.Equal(value.IsNegativeInfinity(), Double.IsNegativeInfinity(value));
         }
     }

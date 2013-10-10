@@ -7,7 +7,7 @@ using Xunit.Extensions;
 namespace AshMind.Extensions.Tests {
     public class EnumerableExtensionsTests {
         [Fact]
-        public void TestAnyReceivesCorrectIndex() {
+        public void Any_ReceivesCorrectIndex() {
             var list = new List<int> { 0, 1, 2, 3 };
             list.Any((item, index) => {
                 Assert.Equal(item, index);
@@ -18,7 +18,7 @@ namespace AshMind.Extensions.Tests {
         [Theory]
         [InlineData(2, true)]
         [InlineData(5, false)]
-        public void TestAnyProducesExpectedResult(int input, bool expected) {
+        public void Any_ProducesExpectedResult(int input, bool expected) {
             var list = new List<int> { 0, 1, 2, 3 };
             var result = list.Any((item, index) => item == input);
 
@@ -28,7 +28,7 @@ namespace AshMind.Extensions.Tests {
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void TestToSetIncludesAllItems(bool withComparer) {
+        public void ToSet_IncludesAllItems(bool withComparer) {
             var list = new[] { 0, 1, 2, 3 };
             var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
 
@@ -38,7 +38,7 @@ namespace AshMind.Extensions.Tests {
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void TestToSetCollapsesDuplicateItems(bool withComparer) {
+        public void ToSet_CollapsesDuplicateItems(bool withComparer) {
             var list = new[] { 0, 1, 2, 3, 2 };
             var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
 
@@ -46,7 +46,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestToSetUsesCorrectComparer() {
+        public void ToSet_UsesCorrectComparer() {
             var list = new[] { "a", "b" };
             var set = list.ToSet(StringComparer.InvariantCultureIgnoreCase);
 
@@ -54,7 +54,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestHavingMaxReturnsAllMaxValues() {
+        public void HavingMax_ReturnsAllMaxValues() {
             var items = new[] {
                 new { Name = "Andrey",  Salary = 15000 },
                 new { Name = "Stan",    Salary = 9000 },
@@ -68,7 +68,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestHavingMaxForSingleValueReturnsIt() {
+        public void HavingMax_ForSingleValue_ReturnsIt() {
             var items = new[] { new { Name = "Andrey", Salary = 15000 } };
 
             Assert.Equal(
@@ -78,14 +78,14 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestHavingMaxReturnsSingleValueWhenItIsDefaultForType() {
+        public void HavingMax_ForSingleValueThatIsDefaultForType_ReturnsIt() {
             var items = new[] { new { Name = "Andrey", Level = 0 } };
 
             Assert.Equal(items.HavingMax(p => p.Level), items);
         }
 
         [Fact]
-        public void TestHavingMinReturnsAllMinValues() {
+        public void HavingMin_ReturnsAllMinValues() {
             var items = new[] {
                 new { Name = "Andrey",  Salary = 9000 },
                 new { Name = "Stan",    Salary = 9000 },

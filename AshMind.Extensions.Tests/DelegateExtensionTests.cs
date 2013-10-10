@@ -6,7 +6,7 @@ using Xunit;
 namespace AshMind.Extensions.Tests {
     public class DelegateExtensionTests {
         [Fact]
-        public void TestFunctionAsPredicate() {
+        public void Function_AsPredicate() {
             Func<string, bool> func = x => x == "test";
             var predicate = func.AsPredicate();
 
@@ -15,7 +15,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestPredicateAsFunction() {
+        public void Predicate_AsFunction() {
             Predicate<string> predicate = x => x == "test";
             var func = predicate.AsFunction();
 
@@ -24,7 +24,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestFunctionAsComparison() {
+        public void Function_AsComparison() {
             Func<string, string, int> func = (x, y) => x.CompareTo(y);
             var comparison = func.AsComparison();
 
@@ -33,7 +33,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestComparisonAsFunction() {
+        public void Comparison_AsFunction() {
             Comparison<string> comparison = (x, y) => x.CompareTo(y);
             var func = comparison.AsFunction();
 
@@ -42,7 +42,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestComparisonToComparer() {
+        public void Comparison_ToComparer() {
             Comparison<string> comparison = (x, y) => x.CompareTo(y);
             var comparer = comparison.ToComparer();
 
@@ -52,7 +52,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void TestFunctionToComparer() {
+        public void Function_ToComparer() {
             Func<string, string, int> func = (x, y) => x.CompareTo(y);
             var comparer = func.ToComparer();
 
