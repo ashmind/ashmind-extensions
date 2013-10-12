@@ -7,6 +7,14 @@ using Xunit.Extensions;
 namespace AshMind.Extensions.Tests {
     public class StringExtensionsTests {
         [Theory]
+        [InlineData(null,  null)]
+        [InlineData("",    null)]
+        [InlineData("abc", "abc")]
+        public void NullIfEmpty(string value, string expectedResult) {
+            Assert.Equal(expectedResult, value.NullIfEmpty());
+        }
+
+        [Theory]
         [InlineData("ab18ba18", "18",  "ab")]
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "a", "")]

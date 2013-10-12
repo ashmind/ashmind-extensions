@@ -12,13 +12,10 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on String.
     /// </summary>
     public static class StringExtensions {
-        /// <summary>
-        /// Indicates whether the specified <see cref="String" /> object is a null reference (<c>Nothing</c> in Visual Basic) or 
-        /// an <see cref="string.Empty">Empty</see> string.
-        /// </summary>
-        /// <param name="value">A <see cref="String" /> value.</param>
+        /// <summary>Indicates whether the specified string is <c>null</c> or an <see cref="string.Empty">Empty</see> string.</summary>
+        /// <param name="value">The string to test.</param>
         /// <returns>
-        ///    <c>true</c> if the <paramref name="value"/> is a null reference (<c>Nothing</c> in Visual Basic) or an empty string (""); otherwise, <c>false</c>.
+        ///    <c>true</c> if the <paramref name="value"/> is <c>null</c> or an empty string (""); otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="IsNotNullOrEmpty" />
         [Pure]
@@ -26,19 +23,29 @@ namespace AshMind.Extensions {
             return string.IsNullOrEmpty(value);
         }
 
-        /// <summary>
-        /// Indicates whether the specified <see cref="String" /> object is not a null reference (<c>Nothing</c> in Visual Basic) and 
-        /// not an <see cref="string.Empty">Empty</see> string.
-        /// </summary>
-        /// <param name="value">A <see cref="String" /> value.</param>
+        /// <summary>Indicates whether the specified string is not <c>null</c> or an <see cref="string.Empty">Empty</see> string.</summary>
+        /// <param name="value">The string to test.</param>
         /// <returns>
-        ///    <c>false</c> if the <paramref name="value"/> is a null reference (<c>Nothing</c> in Visual Basic) or an empty string (""); otherwise, <c>true</c>.
+        ///    <c>true</c> if the <paramref name="value"/> is not <c>null</c> or an empty string (""); otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="IsNullOrEmpty" />
         [Pure]
         [Obsolete("It is often hard to notice `Not` if you are not aware if it. Please use !x.IsNullOrEmpty() instead.")]
         public static bool IsNotNullOrEmpty([CanBeNull] this string value) {
             return !string.IsNullOrEmpty(value);
+        }
+
+        /// <summary>Return the specified string if it is not <see cref="string.Empty">Empty</see>, or <c>null</c> otherwise.</summary>
+        /// <param name="value">The string to test.</param>
+        /// <example> 
+        /// <code>var displayName = name.NullIfEmpty() ?? "Unknown";</code>
+        /// </example>
+        /// <returns>
+        ///    <paramref name="value"/> if it is an empty string (""); otherwise, <c>null</c>.
+        /// </returns>
+        [Pure] [CanBeNull]
+        public static string NullIfEmpty([CanBeNull] this string value) {
+            return !string.IsNullOrEmpty(value) ? value : null;
         }
 
         #if String_IsNullOrWhiteSpace
