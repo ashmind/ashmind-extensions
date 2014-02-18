@@ -23,6 +23,7 @@
     <None Include="app.config" />
     <Content Include="AshMind.Extensions.nuspec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +47,6 @@
     <ItemGroup>
       <_XmlOld Include="$(OutDir)**/*.xml.old" />
     </ItemGroup>
-    
     <Delete Files="@(_XmlOld)" />
   </Target>
   <Target Name="CreateNuGetPackage">
