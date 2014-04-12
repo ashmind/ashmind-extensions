@@ -64,6 +64,21 @@ namespace AshMind.Extensions {
         #endif
 
         /// <summary>
+        /// Returns a string array that contains the substrings in this string that are delimited by a specified string.
+        /// </summary>
+        /// <param name="value">A <see cref="String" /> value to split.</param>
+        /// <param name="separator">An string that delimits the substrings in this string, or a null reference (<c>Nothing</c> in Visual Basic).</param>
+        /// <returns>
+        ///     An array whose elements contain the substrings in this string that are delimited by <paramref name="separator" />.
+        /// </returns>
+        /// <seealso cref="string.Split(string[], System.StringSplitOptions)" />
+        [Pure]
+        [NotNull]
+        public static string[] Split([NotNull] this string value, [CanBeNull] string separator) {
+            return value.Split(separator, StringSplitOptions.None);
+        }
+
+        /// <summary>
         /// Returns a string array that contains the substrings in this string that are delimited by elements of a specified string array.
         /// </summary>
         /// <param name="value">A <see cref="String" /> value to split.</param>

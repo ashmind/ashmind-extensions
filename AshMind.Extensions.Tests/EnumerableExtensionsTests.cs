@@ -4,6 +4,8 @@ using System.Linq;
 using Xunit;
 using Xunit.Extensions;
 
+// ReSharper disable PossibleNullReferenceException
+
 namespace AshMind.Extensions.Tests {
     public class EnumerableExtensionsTests {
         [Fact]
@@ -110,6 +112,63 @@ namespace AshMind.Extensions.Tests {
                 items.HavingMin(p => p.Salary),
                 new[] { items[0], items[1] }
             );
+        }
+
+        [Theory]
+        [InlineData("A",                 "A:0")]
+        [InlineData("A,A,A",             "A:0,1,2")]
+        [InlineData("A,A,A,B,C,C,A,A,B", "A:0,1,2; B:3; C:4,5; A:6,7; B:8")]
+        public void GroupAdjacentBy_GroupsByKeyCorrectly(string itemsString, string expected) {
+            var items = itemsString.Split(',').Select((key, index) => new { key, index });
+            var grouped = items.GroupAdjacentBy(x => x.key, x => x.index);
+            var groupedString = string.Join("; ", grouped.Select(g => g.Key + ":" + string.Join(",", g)));
+
+            Assert.Equal(expected, groupedString);
+        }
+
+        [Fact]
+        public void GroupAdjacentBy_ReturnsEmptySequence_WhenPassedEmpty() {
+            var grouped = (new string[0]).GroupAdjacentBy(x => x);
+            Assert.Empty(grouped);
+        }
+
+        [Fact]
+        public void GroupAdjacentBy_DoesNotCallKeySelectorImmediately() {
+            var items = new[] { new { key = 1 } };
+            var selectorCalled = false;
+
+            items.GroupAdjacentBy(x => {
+                selectorCalled = true;
+                return x.key;
+            });
+
+            Assert.False(selectorCalled);
+        }
+
+        [Fact]
+        public void GroupAdjacentBy_DoesNotCallElementSelectorImmediately() {
+            var items = new[] { new { key = 1 } };
+            var selectorCalled = false;
+
+            items.GroupAdjacentBy(x => x.key, x => {
+                selectorCalled = true;
+                return x;
+            });
+
+            Assert.False(selectorCalled);
+        }
+
+        [Fact]
+        public void GroupAdjacentBy_DoesNotCallResultSelectorImmediately() {
+            var items = new[] { new { key = 1 } };
+            var selectorCalled = false;
+
+            items.GroupAdjacentBy(x => x.key, x => x, (_, xs) => {
+                selectorCalled = true;
+                return xs;
+            });
+
+            Assert.False(selectorCalled);
         }
 
         //[StaticTestFactory]

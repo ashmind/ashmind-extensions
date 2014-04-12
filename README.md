@@ -149,9 +149,33 @@
 
     void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action)
 
+    IEnumerable<IGrouping<TKey, TSource>> GroupAdjacentBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+
+    IEnumerable<IGrouping<TKey, TSource>> GroupAdjacentBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
+
+    IEnumerable<IGrouping<TKey, TElement>> GroupAdjacentBy<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
+
+    IEnumerable<IGrouping<TKey, TElement>> GroupAdjacentBy<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer)
+
+    IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TKey, IEnumerable<TSource>, TResult> resultSelector)
+
+    IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TElement, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, Func<TKey, IEnumerable<TElement>, TResult> resultSelector)
+
+    IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TKey, IEnumerable<TSource>, TResult> resultSelector, IEqualityComparer<TKey> comparer)
+
+    IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TElement, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, Func<TKey, IEnumerable<TElement>, TResult> resultSelector, IEqualityComparer<TKey> comparer)
+
     IEnumerable<TSource> HavingMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
 
     IEnumerable<TSource> HavingMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+
+    IEnumerable<TSource> OnAfterEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+
+    IEnumerable<TSource> OnAfterLast<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+
+    IEnumerable<TSource> OnBeforeEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+
+    IEnumerable<TSource> OnBeforeFirst<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
 
     HashSet<TSource> ToSet<TSource>(this IEnumerable<TSource> source)
 
@@ -286,9 +310,9 @@
 
     InvocationExpression Invoke(this Expression expression, Expression[] arguments)
 
-    UnaryExpression IsFalse(this Expression expression, MethodInfo method)
-
     UnaryExpression IsFalse(this Expression expression)
+
+    UnaryExpression IsFalse(this Expression expression, MethodInfo method)
 
     UnaryExpression IsTrue(this Expression expression)
 
@@ -548,6 +572,8 @@
     string RemoveEnd(this string original, string suffix)
 
     string RemoveStart(this string original, string prefix)
+
+    String[] Split(this string value, string separator)
 
     String[] Split(this string value, String[] separator)
 

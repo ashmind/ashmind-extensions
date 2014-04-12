@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using AshMind.Extensions.Internal;
 
 #if Contracts
 using System.Diagnostics.Contracts;
@@ -13,11 +14,20 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on <see cref="IEnumerable{T}" />. 
     /// </summary>
     public static class EnumerableExtensions {
+        #region Identity
+
+        private class Functions<TElement> {
+            [NotNull]
+            public static Func<TElement, TElement> Identity = x => x;
+        }
+
+        #endregion
+
         /// <summary>Returns the elements of the specified sequence or an empty sequence if the sequence is <c>null</c>.</summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The sequence to process.</param>
         /// <returns><paramref name="source"/> if it is not <c>null</c>; otherwise, <see cref="Enumerable.Empty{TSource}"/>.</returns>
-        [Pure]
+        [Pure] [NotNull]
         public static IEnumerable<TSource> EmptyIfNull<TSource>([CanBeNull] this IEnumerable<TSource> source) {
             return source ?? Enumerable.Empty<TSource>();
         }
@@ -40,7 +50,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Enumerable.Any{T}" />
         [Pure]
-        public static bool Any<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Func<TSource, int, bool> predicate) {
+        public static bool Any<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Func<TSource, int, bool> predicate) {
             if (source == null)
                 throw new ArgumentNullException("source");
             if (predicate == null)
@@ -73,7 +83,7 @@ namespace AshMind.Extensions {
         ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
         /// </returns>
         [Pure] [NotNull]
-        public static HashSet<TSource> ToSet<TSource>([NotNull] this IEnumerable<TSource> source) {
+        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source) {
             if (source == null)
                 throw new ArgumentNullException("source");
             #if Contracts
@@ -99,7 +109,7 @@ namespace AshMind.Extensions {
         ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
         /// </returns>
         [Pure] [NotNull]
-        public static HashSet<TSource> ToSet<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
+        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
             if (source == null)
                 throw new ArgumentNullException("source");
             #if Contracts
@@ -109,11 +119,11 @@ namespace AshMind.Extensions {
             return new HashSet<TSource>(source, comparer);
         }
 
-        public static void ForEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource> action) {
+        public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource> action) {
             source.ForEach((item, index) => action(item));
         }
 
-        public static void ForEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource, int> action) {
+        public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource, int> action) {
             if (source == null)
                 throw new ArgumentNullException("source");
             if (action == null)
@@ -129,7 +139,7 @@ namespace AshMind.Extensions {
             }
         }
 
-        [Pure]
+        [Pure] [NotNull]
         public static IEnumerable<TSource> Except<TSource>([NotNull] this IEnumerable<TSource> source, [CanBeNull] TSource item) {
             if (source == null)
                 throw new ArgumentNullException("source");
@@ -145,7 +155,17 @@ namespace AshMind.Extensions {
             }
         }
 
-        [Pure]
+        /// <summary>
+        /// Creates a new sequence that consists of the original sequence followed by the provided item.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <param name="source">The source sequence to concatenate.</param>
+        /// <param name="item">The item to concatenate with the source sequence.</param>
+        /// <returns>
+        /// An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains all elements from <paramref name="source" />, then value of <paramref name="item" />.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        [Pure] [NotNull]
         public static IEnumerable<TSource> Concat<TSource>([NotNull] this IEnumerable<TSource> source, [CanBeNull] TSource item) {
             if (source == null)
                 throw new ArgumentNullException("source");
@@ -156,18 +176,18 @@ namespace AshMind.Extensions {
             yield return item;
         }
 
-        [Pure]
-        public static IEnumerable<TSource> HavingMax<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Func<TSource, TValue> selector) {
+        [Pure] [NotNull]
+        public static IEnumerable<TSource> HavingMax<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] Func<TSource, TValue> selector) {
             return source.HavingMaxOrMin(selector, 1);
         }
 
-        [Pure]
-        public static IEnumerable<TSource> HavingMin<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Func<TSource, TValue> selector) {
+        [Pure] [NotNull]
+        public static IEnumerable<TSource> HavingMin<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] Func<TSource, TValue> selector) {
             return source.HavingMaxOrMin(selector, -1);
         }
 
-        [Pure]
-        private static IEnumerable<TSource> HavingMaxOrMin<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Func<TSource, TValue> selector, int comparison) {
+        [Pure] [NotNull]
+        private static IEnumerable<TSource> HavingMaxOrMin<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] Func<TSource, TValue> selector, int comparison) {
             if (source == null)
                 throw new ArgumentNullException("source");
 
@@ -196,6 +216,349 @@ namespace AshMind.Extensions {
             }
 
             return selectedItems;
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a specified key selector function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <returns>
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<IGrouping<TKey, TSource>> GroupAdjacentBy<TSource, TKey>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] Func<TSource, TKey> keySelector
+        ) {
+            if (source == null) throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return source.GroupAdjacentBy(keySelector, Functions<TSource>.Identity, null);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a specified key selector function and compares the keys by using a specified comparer.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+        /// <returns>
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<IGrouping<TKey, TSource>> GroupAdjacentBy<TSource, TKey>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer
+        ) {
+            if (source == null)      throw new ArgumentNullException("source");
+            if (keySelector == null) throw new ArgumentNullException("keySelector");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return source.GroupAdjacentBy(keySelector, Functions<TSource>.Identity, comparer);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a specified key selector function and projects the elements for each group by using a specified function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <typeparam name="TElement">The type of the elements in the <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <returns>
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<IGrouping<TKey, TElement>> GroupAdjacentBy<TSource, TKey, TElement>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] [InstantHandle] Func<TSource, TKey> keySelector,
+            [NotNull] [InstantHandle] Func<TSource, TElement> elementSelector
+        ) {
+            if (source == null)          throw new ArgumentNullException("source");
+            if (keySelector == null)     throw new ArgumentNullException("keySelector");
+            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return source.GroupAdjacentBy(keySelector, elementSelector, null);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a key selector function. The keys are compared by using a comparer and each group's elements are projected by using a specified function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <typeparam name="TElement">The type of the elements in the <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+        /// <returns>
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<IGrouping<TKey, TElement>> GroupAdjacentBy<TSource, TKey, TElement>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] [InstantHandle] Func<TSource, TKey> keySelector,
+            [NotNull] [InstantHandle] Func<TSource, TElement> elementSelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer
+        ) {
+            if (source == null)          throw new ArgumentNullException("source");
+            if (keySelector == null)     throw new ArgumentNullException("keySelector");
+            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return source.GroupAdjacentBy(keySelector, elementSelector, Grouping<TKey, TElement>.Create, comparer);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a specified key selector function and creates a result value from each group and its key.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="resultSelector">A function to create a result value from each group.</param>
+        /// <returns>
+        /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TResult>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [NotNull] Func<TKey, IEnumerable<TSource>, TResult> resultSelector
+        ) {
+            return source.GroupAdjacentBy(keySelector, Functions<TSource>.Identity, resultSelector, null);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a specified key selector function and creates a result value from each group and its key. The elements of each group are projected by using a specified function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <typeparam name="TElement">The type of the elements in each <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <param name="resultSelector">A function to create a result value from each group.</param>
+        /// <returns>
+        /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TElement, TResult>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [NotNull] Func<TSource, TElement> elementSelector,
+            [NotNull] Func<TKey, IEnumerable<TElement>, TResult> resultSelector
+        ) {
+            return source.GroupAdjacentBy(keySelector, elementSelector, resultSelector, null);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements in a sequence according to a specified key selector function and creates a result value from each group and its key. The keys are compared by using a specified comparer.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="resultSelector">A function to create a result value from each group.</param>
+        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys with.</param>
+        /// <returns>
+        /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TResult>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [NotNull] Func<TKey, IEnumerable<TSource>, TResult> resultSelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer
+        ) {
+            return source.GroupAdjacentBy(keySelector, Functions<TSource>.Identity, resultSelector, comparer);
+        }
+
+        /// <summary>
+        /// Groups the adjacent elements of a sequence according to a specified key selector function and creates a result value from each group and its key. Key values are compared by using a specified comparer, and the elements of each group are projected by using a specified function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+        /// <typeparam name="TElement">The type of the elements in each <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <param name="resultSelector">A function to create a result value from each group.</param>
+        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys with.</param>
+        /// <returns>
+        /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TElement, TResult>(
+            [NotNull] this IEnumerable<TSource> source,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [NotNull] Func<TSource, TElement> elementSelector,
+            [NotNull] Func<TKey, IEnumerable<TElement>, TResult> resultSelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer
+        ) {
+            if (source == null)          throw new ArgumentNullException("source");
+            if (keySelector == null)     throw new ArgumentNullException("keySelector");
+            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
+            if (resultSelector == null)  throw new ArgumentNullException("resultSelector");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            comparer = comparer ?? EqualityComparer<TKey>.Default;
+
+            var lastKey = default(TKey);
+            var lastGroup = (List<TElement>)null;
+            foreach (var item in source) {
+                var key = keySelector(item);
+
+                if (lastGroup == null || !comparer.Equals(lastKey, key)) {
+                    if (lastGroup != null)
+                        yield return resultSelector(lastKey, lastGroup);
+
+                    lastGroup = new List<TElement>();
+                    lastKey = key;
+                }
+
+                lastGroup.Add(elementSelector(item));
+            }
+
+            if (lastGroup != null)
+                yield return resultSelector(lastKey, lastGroup);
+        }
+
+        /// <summary>
+        /// Registers an action to be executed before the first element of a sequence is returned during enumeration.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="action">An action that should be performed before first item is returned during enumeration.</param>
+        /// <returns>
+        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning the first item.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TSource> OnBeforeFirst<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            var first = true;
+            foreach (var value in source) {
+                if (first) {
+                    first = false;
+                    action(value);
+                }
+
+                yield return value;
+            }
+        }
+
+        /// <summary>
+        /// Registers an action to be executed before each element of a sequence is returned during enumeration.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="action">An action that should be performed before each item is returned during enumeration.</param>
+        /// <returns>
+        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning each item.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TSource> OnBeforeEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            foreach (var value in source) {
+                action(value);
+                yield return value;
+            }
+        }
+
+        /// <summary>
+        /// Registers an action to be executed after each element of a sequence is returned during enumeration.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="action">An action that should be performed after each item is returned during enumeration.</param>
+        /// <returns>
+        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning each item.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TSource> OnAfterEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            foreach (var value in source) {
+                yield return value;
+                action(value);
+            }
+        }
+
+        /// <summary>
+        /// Registers an action to be executed after the last element of a sequence is returned during enumeration.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="action">An action that should be performed after the last item is returned during enumeration.</param>
+        /// <returns>
+        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning the last item.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IEnumerable<TSource> OnAfterLast<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            TSource last = default(TSource);
+            var empty = true;
+            foreach (var value in source) {
+                empty = false;
+                last = value;
+                yield return value;
+            }
+
+            if (!empty)
+                action(last);
         }
     }
 }

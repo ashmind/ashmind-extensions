@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="FormattableExtensions.cs" />
     <Compile Include="Int32Extensions.cs" />
+    <Compile Include="Internal\Grouping.cs" />
     <Compile Include="ListExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionExtensions.cs" />
