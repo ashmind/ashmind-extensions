@@ -171,9 +171,13 @@
 
     IEnumerable<TSource> OnAfterEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
 
+    IEnumerable<TSource> OnAfterEach<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action)
+
     IEnumerable<TSource> OnAfterLast<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
 
     IEnumerable<TSource> OnBeforeEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+
+    IEnumerable<TSource> OnBeforeEach<TSource>(this IEnumerable<TSource> source, Action<TSource, int> action)
 
     IEnumerable<TSource> OnBeforeFirst<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
 

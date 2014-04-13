@@ -508,6 +508,33 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
+        /// Registers an action to be executed before each element of a sequence is returned during enumeration.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="action">An action that should be performed before each item is returned during enumeration, receiving an item and its index.</param>
+        /// <returns>
+        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning each item.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        [Pure]
+        [NotNull]
+        public static IEnumerable<TSource> OnBeforeEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource, int> action) {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            var index = 0;
+            foreach (var value in source) {
+                action(value, index);
+                yield return value;
+                index += 1;
+            }
+        }
+
+        /// <summary>
         /// Registers an action to be executed after each element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
@@ -528,6 +555,33 @@ namespace AshMind.Extensions {
             foreach (var value in source) {
                 yield return value;
                 action(value);
+            }
+        }
+
+        /// <summary>
+        /// Registers an action to be executed after each element of a sequence is returned during enumeration.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="action">An action that should be performed after each item is returned during enumeration, receiving an item and its index.</param>
+        /// <returns>
+        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning each item.
+        /// </returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        [Pure]
+        [NotNull]
+        public static IEnumerable<TSource> OnAfterEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource, int> action) {
+            if (source == null) throw new ArgumentNullException("source");
+            if (action == null) throw new ArgumentNullException("action");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            var index = 0;
+            foreach (var value in source) {
+                yield return value;
+                action(value, index);
+                index += 1;
             }
         }
 
