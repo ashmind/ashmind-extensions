@@ -25,7 +25,11 @@ namespace AshMind.Extensions.ReadMeGenerator {
             //var docMap = MapAssemblyDocs(extensionsAssembly);
 
             foreach (var type in extensionTypes.OrderBy(t => t.Name)) {
-                writer.WriteLine("## {0}", type.Name);
+                writer.Write("## ");
+                if (type.IsDefined<ObsoleteAttribute>(false))
+                    writer.Write("[Obsolete] ");
+
+                writer.WriteLine(type.Name);
                 writer.WriteLine();
 
                 var methods = type.GetMethods(BindingFlags.Static | BindingFlags.Public);
@@ -45,6 +49,9 @@ namespace AshMind.Extensions.ReadMeGenerator {
         }
 
         private void WriteMethod([NotNull] TextWriter writer, [NotNull] MethodInfo method) {
+            if (method.IsDefined<ObsoleteAttribute>(false))
+                writer.Write("[Obsolete] ");
+
             WriteType(writer, method.ReturnType);
             writer.Write(" {0}", method.Name);
             if (method.IsGenericMethod)

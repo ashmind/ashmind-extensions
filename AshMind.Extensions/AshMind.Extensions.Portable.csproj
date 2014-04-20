@@ -37,13 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="ExpressionExtensions.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ExpressionExtensions.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="CharExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
@@ -52,11 +45,6 @@
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="ExpressionExtensions.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ExpressionExtensions.tt</DependentUpon>
-    </Compile>
     <Compile Include="FormattableExtensions.cs" />
     <Compile Include="Int32Extensions.cs" />
     <Compile Include="Internal\Grouping.cs" />

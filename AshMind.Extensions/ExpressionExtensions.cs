@@ -9,6 +9,7 @@ namespace AshMind.Extensions {
     /// <summary>
     /// Provides a set of extension methods for operations on <see cref="Expression"/>.
     /// </summary>
+    [Obsolete("Will be removed later on (around 2.0): signficantly increases library size without providing that much benefit.")]
     public static class ExpressionExtensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.BinaryExpression" /> that represents an arithmetic addition operation that does not have overflow checking.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.Add" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>

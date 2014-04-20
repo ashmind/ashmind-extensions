@@ -119,7 +119,7 @@
 
     TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
 
-    TDefault GetValueOrDefault<TKey, TValue, TDefault>(this IDictionary<TKey, TValue> dictionary, TKey key, TDefault default)
+    [Obsolete] TDefault GetValueOrDefault<TKey, TValue, TDefault>(this IDictionary<TKey, TValue> dictionary, TKey key, TDefault default)
 
     TValue GetValueOrDefault<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dictionary, TKey key)
 
@@ -194,7 +194,7 @@
     HashSet<TSource> ToSet<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
 
 
-## ExpressionExtensions
+## [Obsolete] ExpressionExtensions
 
     BinaryExpression Add(this Expression left, Expression right)
 
@@ -538,6 +538,10 @@
 
 ## ReflectionExtensions
 
+    TDelegate CreateDelegate<TDelegate>(this MethodInfo method)
+
+    TDelegate CreateDelegate<TDelegate>(this MethodInfo method, object target)
+
     TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider provider, bool inherit)
 
     TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider provider)
@@ -549,8 +553,6 @@
     Object[] GetCustomAttributes(this ICustomAttributeProvider provider, Type attributeType)
 
     Object[] GetCustomAttributes(this ICustomAttributeProvider provider)
-
-    object GetValue(this PropertyInfo property, object obj)
 
     bool HasInterface<TInterface>(this Type type)
 
@@ -566,14 +568,12 @@
 
     bool IsSubclassOf<T>(this Type type)
 
-    void SetValue(this PropertyInfo property, object obj, object value)
-
 
 ## StringExtensions
 
     bool Contains(this string original, string value, StringComparison comparisonType)
 
-    bool IsNotNullOrEmpty(this string value)
+    [Obsolete] bool IsNotNullOrEmpty(this string value)
 
     bool IsNullOrEmpty(this string value)
 

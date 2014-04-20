@@ -128,6 +128,7 @@ namespace AshMind.Extensions {
     /// <summary>
     /// Provides a set of extension methods for operations on <see cref="Expression"/>.
     /// </summary>
+    [Obsolete("Will be removed later on (around 2.0): signficantly increases library size without providing that much benefit.")]
     public static class ExpressionExtensions {<#
         foreach (var method in typeof(Expression).GetMethods(BindingFlags.Public | BindingFlags.Static).OrderBy(m => m.Name)) { 
             var parameters = method.GetParameters();
