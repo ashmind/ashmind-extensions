@@ -205,7 +205,8 @@ namespace AshMind.Extensions {
         public static char ToLower(this char c) {
             return Char.ToLower(c);
         }
-       
+
+        #if Char_ToUpperOrLower_Culture
         /// <summary>
         ///   Converts the value of a specified Unicode character to its lowercase equivalent using specified culture-specific formatting information.
         /// </summary>
@@ -221,6 +222,7 @@ namespace AshMind.Extensions {
         public static char ToLower(this char c, [NotNull] CultureInfo culture) {
             return Char.ToLower(c, culture);
         }
+        #endif
 
         /// <summary>
         ///   Converts the value of a Unicode character to its lowercase equivalent using the casing rules of the invariant culture.
@@ -248,6 +250,7 @@ namespace AshMind.Extensions {
             return Char.ToUpper(c);
         }
 
+        #if Char_ToUpperOrLower_Culture
         /// <summary>
         ///   Converts the value of a specified Unicode character to its uppercase equivalent using specified culture-specific formatting information.
         /// </summary>
@@ -263,6 +266,7 @@ namespace AshMind.Extensions {
         public static char ToUpper(this char c, [NotNull] CultureInfo culture) {
             return Char.ToUpper(c, culture);
         }
+        #endif
 
         /// <summary>
         ///   Converts the value of a Unicode character to its uppercase equivalent using the casing rules of the invariant culture.

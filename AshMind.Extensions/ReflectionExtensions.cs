@@ -9,11 +9,16 @@ using System.Diagnostics.Contracts;
 using PureAttribute = System.Diagnostics.Contracts.PureAttribute;
 #endif
 
+#if !TypeInfo
+using TypeInfo = System.Type;
+#endif
+
 namespace AshMind.Extensions {
     /// <summary>
     /// Provides a set of extension methods for operations on reflection classes.
     /// </summary>
     public static class ReflectionExtensions {
+        #if ICustomAttributeProvider
         /// <summary>
         /// Gets the custom attributes of the specified type defined on this member.
         /// </summary>
@@ -133,9 +138,10 @@ namespace AshMind.Extensions {
 
             return provider.IsDefined(typeof(TAttribute), inherit);
         }
+        #endif
 
         [Pure]
-        public static bool IsSameAsOrSubclassOf([NotNull] this Type type, [NotNull] Type otherType)
+        public static bool IsSameAsOrSubclassOf([NotNull] this TypeInfo type, [NotNull] Type otherType)
         {
             if (type == null)
                 throw new ArgumentNullException("type");
@@ -145,11 +151,15 @@ namespace AshMind.Extensions {
             Contract.EndContractBlock();
             #endif
 
+            #if TypeInfo
+            return type == otherType.GetTypeInfo() || type.IsSubclassOf(otherType);
+            #else
             return type == otherType || type.IsSubclassOf(otherType);
+            #endif
         }
 
         [Pure]
-        public static bool IsSameAsOrSubclassOf<TClass>([NotNull] this Type type)
+        public static bool IsSameAsOrSubclassOf<TClass>([NotNull] this TypeInfo type)
         {
             if (type == null)
                 throw new ArgumentNullException("type");
@@ -161,7 +171,7 @@ namespace AshMind.Extensions {
         }
 
         [Pure]
-        public static bool IsSubclassOf<T>([NotNull] this Type type) 
+        public static bool IsSubclassOf<T>([NotNull] this TypeInfo type) 
             where T : class
         {
             if (type == null)
@@ -174,7 +184,7 @@ namespace AshMind.Extensions {
         }
 
         [Pure]
-        public static bool IsGenericTypeDefinedAs([NotNull] this Type type, [NotNull] Type otherType) {
+        public static bool IsGenericTypeDefinedAs([NotNull] this TypeInfo type, [NotNull] Type otherType) {
             if (type == null)
                 throw new ArgumentNullException("type");
             #if Contracts
@@ -187,6 +197,44 @@ namespace AshMind.Extensions {
             return type.GetGenericTypeDefinition() == otherType;
         }
 
+        #if MethodInfo_CreateDelegate
+        /// <summary>
+        /// Creates a delegate of the specified type from a specified method.
+        /// </summary>
+        /// <typeparam name="TDelegate">The type of the delegate to create.</typeparam>
+        /// <param name="method">The method to create the delegate for.</param>
+        /// <returns>The delegate for this method.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
+        [Pure] [NotNull]
+        public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method) {
+            if (method == null) throw new ArgumentNullException("method");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate));
+        }
+
+        /// <summary>
+        /// Creates a delegate of the specified type with the specified target from a specified method.
+        /// </summary>
+        /// <typeparam name="TDelegate">The type of the delegate to create.</typeparam>
+        /// <param name="method">The method to create the delegate for.</param>
+        /// <param name="target">The object targeted by the delegate.</param>
+        /// <returns>The delegate for this method.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
+        [Pure] [NotNull]
+        public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method, object target) {
+            if (method == null) throw new ArgumentNullException("method");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate), target);
+        }
+        #endif
+
+        #if !TypeInfo
         /// <summary>
         /// Determines whether the specified interface is implemented by the specified type.
         /// </summary>
@@ -194,7 +242,7 @@ namespace AshMind.Extensions {
         /// <param name="type">The type for which the fact of implementation will be dermined.</param>
         /// <returns><c>true</c> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <c>false</c>.</returns>
         [Pure]
-        public static bool HasInterface<TInterface>([NotNull] this Type type)
+        public static bool HasInterface<TInterface>([NotNull] this TypeInfo type)
             where TInterface : class
         {
             if (type == null)
@@ -213,7 +261,7 @@ namespace AshMind.Extensions {
         /// <param name="interfaceType">The interface that might be implemented by the <paramref name="type"/>.</param>
         /// <returns><c>true</c> if <paramref name="type"/> implements <paramref name="interfaceType"/>; otherwise, <c>false</c>.</returns>
         [Pure]
-        public static bool HasInterface([NotNull] this Type type, [NotNull] Type interfaceType) {
+        public static bool HasInterface([NotNull] this TypeInfo type, [NotNull] Type interfaceType) {
             if (type == null)
                 throw new ArgumentNullException("type");
             if (interfaceType == null)
@@ -224,7 +272,9 @@ namespace AshMind.Extensions {
 
             return type.GetInterfaces().Contains(interfaceType);
         }
+        #endif
 
+        #if !Net45_Property_SetValue
         public static void SetValue([NotNull] this PropertyInfo property, [CanBeNull] object obj, [CanBeNull] object value) {
             if (property == null)
                 throw new ArgumentNullException("property");
@@ -245,5 +295,6 @@ namespace AshMind.Extensions {
 
             return property.GetValue(obj, null);
         }
+        #endif
     }
 }

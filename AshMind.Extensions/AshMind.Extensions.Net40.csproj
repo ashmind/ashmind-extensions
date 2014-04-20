@@ -20,7 +20,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\lib\net40\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net40\</IntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; ICustomAttributeProvider; Char_ToUpperOrLower_Culture</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\lib\net40\AshMind.Extensions.xml</DocumentationFile>
@@ -64,7 +64,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\lib\net40\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net40\</IntermediateOutputPath>
-    <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions</DefineConstants>
+    <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; ICustomAttributeProvider; Char_ToUpperOrLower_Culture</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\lib\net40\AshMind.Extensions.xml</DocumentationFile>

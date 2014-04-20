@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using JetBrains.Annotations;
 
 namespace AshMind.Extensions {
@@ -64,10 +65,17 @@ namespace AshMind.Extensions {
             return As<Func<T, T, int>>(comparison);
         }
 
+        #if MethodInfo_CreateDelegate
+        [NotNull]
+        private static TDelegate As<TDelegate>([NotNull] Delegate @delegate) {
+            return (TDelegate)(object)@delegate.GetMethodInfo().CreateDelegate(typeof(TDelegate), @delegate.Target);
+        }
+        #else
         [NotNull]
         private static TDelegate As<TDelegate>([NotNull] Delegate @delegate) {
             return (TDelegate)(object)Delegate.CreateDelegate(typeof(TDelegate), @delegate.Target, @delegate.Method);
         }
+        #endif
 
         /// <summary>
         /// Converts <see cref="Comparison&lt;T&gt;" /> into an <see cref="IComparer&lt;T&gt;" />.
