@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
 using AshMind.Extensions.Internal;
@@ -16,9 +17,9 @@ namespace AshMind.Extensions {
     public static class EnumerableExtensions {
         #region Identity
 
-        private class Functions<TElement> {
+        private static class Functions<TElement> {
             [NotNull]
-            public static Func<TElement, TElement> Identity = x => x;
+            public static readonly Func<TElement, TElement> Identity = x => x;
         }
 
         #endregion
@@ -70,55 +71,6 @@ namespace AshMind.Extensions {
             return false;
         }
 
-        /// <summary>
-        ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" />.
-        /// </summary>
-        /// <typeparam name="TSource">
-        ///   The type of the elements of <paramref name="source"/>.
-        /// </typeparam>
-        /// <param name="source">
-        ///   The <see cref="IEnumerable{T}" /> to create a <see cref="HashSet{T}" /> from.
-        /// </param>
-        /// <returns>
-        ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
-        /// </returns>
-        [Pure] [NotNull]
-        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source) {
-            if (source == null)
-                throw new ArgumentNullException("source");
-            #if Contracts
-            Contract.EndContractBlock();
-            #endif
-
-            return new HashSet<TSource>(source);
-        }
-
-        /// <summary>
-        ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" /> according to a specified comparer.
-        /// </summary>
-        /// <typeparam name="TSource">
-        ///   The type of the elements of <paramref name="source"/>.
-        /// </typeparam>
-        /// <param name="source">
-        ///   The <see cref="IEnumerable{T}" /> to create a <see cref="HashSet{T}" /> from.
-        /// </param>
-        /// <param name="comparer">
-        ///   The <see cref="IEqualityComparer{T}" /> to compare items.
-        /// </param>
-        /// <returns>
-        ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
-        /// </returns>
-        [Pure] [NotNull]
-        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
-            if (source == null)
-                throw new ArgumentNullException("source");
-            #if Contracts
-            Contract.EndContractBlock();
-            #endif
-
-            return new HashSet<TSource>(source, comparer);
-        }
-
         public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource> action) {
             source.ForEach((item, index) => action(item));
         }
@@ -162,9 +114,9 @@ namespace AshMind.Extensions {
         /// <param name="source">The source sequence to concatenate.</param>
         /// <param name="item">The item to concatenate with the source sequence.</param>
         /// <returns>
-        /// An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains all elements from <paramref name="source" />, then value of <paramref name="item" />.
+        /// An <see cref="IEnumerable{T}"/> that contains all elements from <paramref name="source" />, then value of <paramref name="item" />.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TSource> Concat<TSource>([NotNull] this IEnumerable<TSource> source, [CanBeNull] TSource item) {
             if (source == null)
@@ -223,12 +175,12 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
         /// <returns>
-        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="IGrouping{TKey, TSource}"/> object contains a sequence of objects and a key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<IGrouping<TKey, TSource>> GroupAdjacentBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
@@ -247,13 +199,13 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
-        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+        /// <param name="comparer">An <see cref="IEqualityComparer{T}"/> to compare keys.</param>
         /// <returns>
-        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="IGrouping{TKey, TValue}"/> object contains a sequence of objects and a key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<IGrouping<TKey, TSource>> GroupAdjacentBy<TSource, TKey>(
             [NotNull] this IEnumerable<TSource> source,
@@ -274,14 +226,14 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-        /// <typeparam name="TElement">The type of the elements in the <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <typeparam name="TElement">The type of the elements in the <see cref="IGrouping{TKey, TValue}"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{TValue}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
-        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="IGrouping{TKey, TValue}"/>.</param>
         /// <returns>
-        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="IGrouping{TKey, TValue}"/> object contains a sequence of objects and a key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<IGrouping<TKey, TElement>> GroupAdjacentBy<TSource, TKey, TElement>(
             [NotNull] this IEnumerable<TSource> source,
@@ -303,15 +255,15 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-        /// <typeparam name="TElement">The type of the elements in the <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <typeparam name="TElement">The type of the elements in the <see cref="IGrouping{TKey, TValue}"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
-        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
-        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="IGrouping{TKey, TValue}"/>.</param>
+        /// <param name="comparer">An <see cref="IEqualityComparer{TKey}"/> to compare keys.</param>
         /// <returns>
-        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="T:System.Linq.IGrouping`2"/> object contains a sequence of objects and a key.
+        /// An IEnumerable&lt;IGrouping&lt;TKey, TSource&gt;&gt; in C# or IEnumerable(Of IGrouping(Of TKey, TSource)) in Visual Basic where each <see cref="IGrouping{TKey, TValue}"/> object contains a sequence of objects and a key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<IGrouping<TKey, TElement>> GroupAdjacentBy<TSource, TKey, TElement>(
             [NotNull] this IEnumerable<TSource> source,
@@ -335,13 +287,13 @@ namespace AshMind.Extensions {
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
         /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
         /// <param name="resultSelector">A function to create a result value from each group.</param>
         /// <returns>
         /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
@@ -356,16 +308,16 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-        /// <typeparam name="TElement">The type of the elements in each <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
+        /// <typeparam name="TElement">The type of the elements in each <see cref="IGrouping{TKey, TValue}"/>.</typeparam>
         /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
-        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="IGrouping{TKey, TValue}"/>.</param>
         /// <param name="resultSelector">A function to create a result value from each group.</param>
         /// <returns>
         /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="elementSelector"/> or <paramref name="resultSelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TElement, TResult>(
             [NotNull] this IEnumerable<TSource> source,
@@ -382,14 +334,14 @@ namespace AshMind.Extensions {
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
         /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
         /// <param name="resultSelector">A function to create a result value from each group.</param>
-        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys with.</param>
+        /// <param name="comparer">An <see cref="IEqualityComparer{TKey}"/> to compare keys with.</param>
         /// <returns>
         /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TResult>(
             [NotNull] this IEnumerable<TSource> source,
@@ -405,17 +357,17 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-        /// <typeparam name="TElement">The type of the elements in each <see cref="T:System.Linq.IGrouping`2"/>.</typeparam>
+        /// <typeparam name="TElement">The type of the elements in each <see cref="IGrouping{TKey, TValue}"/>.</typeparam>
         /// <typeparam name="TResult">The type of the result value returned by <paramref name="resultSelector"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> whose elements to group.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
-        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="T:System.Linq.IGrouping`2"/>.</param>
+        /// <param name="elementSelector">A function to map each source element to an element in an <see cref="IGrouping{TKey, TValue}"/>.</param>
         /// <param name="resultSelector">A function to create a result value from each group.</param>
-        /// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to compare keys with.</param>
+        /// <param name="comparer">An <see cref="IEqualityComparer{TKey}"/> to compare keys with.</param>
         /// <returns>
         /// A collection of elements of type <typeparamref name="TResult"/> where each element represents a projection over a group and its key.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="keySelector"/> or <paramref name="resultSelector"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TResult> GroupAdjacentBy<TSource, TKey, TElement, TResult>(
             [NotNull] this IEnumerable<TSource> source,
@@ -458,12 +410,12 @@ namespace AshMind.Extensions {
         /// Registers an action to be executed before the first element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
         /// <param name="action">An action that should be performed before first item is returned during enumeration.</param>
         /// <returns>
         /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning the first item.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TSource> OnBeforeFirst<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
             if (source == null) throw new ArgumentNullException("source");
@@ -487,12 +439,12 @@ namespace AshMind.Extensions {
         /// Registers an action to be executed before each element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
         /// <param name="action">An action that should be performed before each item is returned during enumeration.</param>
         /// <returns>
         /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning each item.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TSource> OnBeforeEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
             if (source == null) throw new ArgumentNullException("source");
@@ -511,12 +463,12 @@ namespace AshMind.Extensions {
         /// Registers an action to be executed before each element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
         /// <param name="action">An action that should be performed before each item is returned during enumeration, receiving an item and its index.</param>
         /// <returns>
         /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning each item.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
         [Pure]
         [NotNull]
         public static IEnumerable<TSource> OnBeforeEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource, int> action) {
@@ -538,12 +490,12 @@ namespace AshMind.Extensions {
         /// Registers an action to be executed after each element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
         /// <param name="action">An action that should be performed after each item is returned during enumeration.</param>
         /// <returns>
         /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning each item.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TSource> OnAfterEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
             if (source == null) throw new ArgumentNullException("source");
@@ -562,12 +514,12 @@ namespace AshMind.Extensions {
         /// Registers an action to be executed after each element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
         /// <param name="action">An action that should be performed after each item is returned during enumeration, receiving an item and its index.</param>
         /// <returns>
         /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning each item.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
         [Pure]
         [NotNull]
         public static IEnumerable<TSource> OnAfterEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource, int> action) {
@@ -589,12 +541,12 @@ namespace AshMind.Extensions {
         /// Registers an action to be executed after the last element of a sequence is returned during enumeration.
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> which should be used as a template for the result sequence.</param>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
         /// <param name="action">An action that should be performed after the last item is returned during enumeration.</param>
         /// <returns>
         /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning the last item.
         /// </returns>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
         [Pure] [NotNull]
         public static IEnumerable<TSource> OnAfterLast<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
             if (source == null) throw new ArgumentNullException("source");
@@ -613,6 +565,137 @@ namespace AshMind.Extensions {
 
             if (!empty)
                 action(last);
+        }
+
+        /// <summary>
+        ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="ICollection{T}" />.
+        /// </summary>
+        /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence to convert.</param>
+        /// <returns>
+        /// Either <paramref name="source"/> if it can be cast to <see cref="ICollection{T}"/>; or a new ICollection&lt;T&gt; created from <c>source</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+        [Pure] [NotNull]
+        public static ICollection<TElement> AsCollection<TElement>([NotNull] this IEnumerable<TElement> source) {
+            if (source == null) throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return (source as ICollection<TElement>) ?? source.ToList();
+        }
+
+        #if IReadOnlyCollection
+        /// <summary>
+        ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IReadOnlyCollection{T}" />.
+        /// </summary>
+        /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence to convert.</param>
+        /// <returns>
+        /// Either <paramref name="source"/> if it can be cast to <see cref="IReadOnlyCollection{T}"/>; or a new IReadOnlyCollection&lt;T&gt; created from <c>source</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+        [Pure]
+        [NotNull]
+        public static IReadOnlyCollection<TElement> AsReadOnlyCollection<TElement>([NotNull] this IEnumerable<TElement> source) {
+            if (source == null) throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return (source as IReadOnlyCollection<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
+        }
+        #endif
+
+        /// <summary>
+        ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IList{T}" />.
+        /// </summary>
+        /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence to convert.</param>
+        /// <returns>
+        /// Either <paramref name="source"/> if it can be cast to <see cref="IList{T}"/>; or a new IList&lt;T&gt; created from <c>source</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+        [Pure]
+        [NotNull]
+        public static IList<TElement> AsList<TElement>([NotNull] this IEnumerable<TElement> source) {
+            if (source == null) throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return (source as IList<TElement>) ?? source.ToList();
+        }
+
+        #if IReadOnlyList
+        /// <summary>
+        ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IReadOnlyList{T}" />.
+        /// </summary>
+        /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence to convert.</param>
+        /// <returns>
+        /// Either <paramref name="source"/> if it can be cast to <see cref="IReadOnlyList{T}"/>; or a new IReadOnlyList&lt;T&gt; created from <c>source</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+        [Pure] [NotNull]
+        public static IReadOnlyList<TElement> AsReadOnlyList<TElement>([NotNull] this IEnumerable<TElement> source) {
+            if (source == null) throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return (source as IReadOnlyList<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
+        }
+        #endif
+        
+        /// <summary>
+        ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" />.
+        /// </summary>
+        /// <typeparam name="TSource">
+        ///   The type of the elements of <paramref name="source"/>.
+        /// </typeparam>
+        /// <param name="source">
+        ///   The <see cref="IEnumerable{T}" /> to create a <see cref="HashSet{T}" /> from.
+        /// </param>
+        /// <returns>
+        ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
+        /// </returns>
+        [Pure] [NotNull]
+        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source) {
+            if (source == null)
+                throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return new HashSet<TSource>(source);
+        }
+
+        /// <summary>
+        ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" /> according to a specified comparer.
+        /// </summary>
+        /// <typeparam name="TSource">
+        ///   The type of the elements of <paramref name="source"/>.
+        /// </typeparam>
+        /// <param name="source">
+        ///   The <see cref="IEnumerable{T}" /> to create a <see cref="HashSet{T}" /> from.
+        /// </param>
+        /// <param name="comparer">
+        ///   The <see cref="IEqualityComparer{T}" /> to compare items.
+        /// </param>
+        /// <returns>
+        ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
+        /// </returns>
+        [Pure] [NotNull]
+        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
+            if (source == null)
+                throw new ArgumentNullException("source");
+            #if Contracts
+            Contract.EndContractBlock();
+            #endif
+
+            return new HashSet<TSource>(source, comparer);
         }
     }
 }

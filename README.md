@@ -139,6 +139,14 @@
 
     bool Any<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate)
 
+    ICollection<TElement> AsCollection<TElement>(this IEnumerable<TElement> source)
+
+    IList<TElement> AsList<TElement>(this IEnumerable<TElement> source)
+
+    IReadOnlyCollection<TElement> AsReadOnlyCollection<TElement>(this IEnumerable<TElement> source)
+
+    IReadOnlyList<TElement> AsReadOnlyList<TElement>(this IEnumerable<TElement> source)
+
     IEnumerable<TSource> Concat<TSource>(this IEnumerable<TSource> source, TSource item)
 
     IEnumerable<TSource> EmptyIfNull<TSource>(this IEnumerable<TSource> source)

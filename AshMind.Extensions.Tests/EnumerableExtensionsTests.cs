@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Xunit;
 using Xunit.Extensions;
@@ -39,34 +40,6 @@ namespace AshMind.Extensions.Tests {
             var result = list.Any((item, index) => item == input);
 
             Assert.Equal(expected, result);
-        }
-
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void ToSet_IncludesAllItems(bool withComparer) {
-            var list = new[] { 0, 1, 2, 3 };
-            var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
-
-            Assert.Equal(list, set);
-        }
-
-        [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void ToSet_CollapsesDuplicateItems(bool withComparer) {
-            var list = new[] { 0, 1, 2, 3, 2 };
-            var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
-
-            Assert.Equal(list.Distinct(), set);
-        }
-
-        [Fact]
-        public void ToSet_UsesCorrectComparer() {
-            var list = new[] { "a", "b" };
-            var set = list.ToSet(StringComparer.InvariantCultureIgnoreCase);
-
-            Assert.False(set.Add("A"));
         }
 
         [Fact]
@@ -169,6 +142,90 @@ namespace AshMind.Extensions.Tests {
             });
 
             Assert.False(selectorCalled);
+        }
+
+        [Fact]
+        public void AsList_UsesSameInstance_ForList() {
+            var list = new List<int>();
+            Assert.Same(list, list.AsList());
+        }
+
+        [Fact]
+        public void AsList_CreatesNewList_ForEnumerable() {
+            var enumerable = Enumerable.Range(1, 5);
+            // ReSharper disable PossibleMultipleEnumeration
+            Assert.Equal(enumerable, enumerable.AsList());
+            // ReSharper restore PossibleMultipleEnumeration
+        }
+
+        [Fact]
+        public void AsReadOnlyList_UsesSameInstance_ForReadOnlyCollection() {
+            var list = new List<int>();
+            Assert.Same(list, list.AsReadOnlyList());
+        }
+
+        [Fact]
+        public void AsReadOnlyList_CreatesNewList_ForEnumerable() {
+            var enumerable = Enumerable.Range(1, 5);
+            // ReSharper disable PossibleMultipleEnumeration
+            Assert.Equal(enumerable, enumerable.AsReadOnlyList());
+            // ReSharper restore PossibleMultipleEnumeration
+        }
+
+        [Fact]
+        public void AsCollection_UsesSameInstance_ForCollection() {
+            var collection = new Collection<int>();
+            Assert.Same(collection, collection.AsCollection());
+        }
+
+        [Fact]
+        public void AsCollection_CreatesNewCollection_ForEnumerable() {
+            var enumerable = Enumerable.Range(1, 5);
+            // ReSharper disable PossibleMultipleEnumeration
+            Assert.Equal(enumerable, enumerable.AsCollection());
+            // ReSharper restore PossibleMultipleEnumeration
+        }
+
+        [Fact]
+        public void AsReadOnlyCollection_UsesSameInstance_ForReadOnlyCollection() {
+            var collection = new Collection<int>();
+            Assert.Same(collection, collection.AsReadOnlyCollection());
+        }
+
+        [Fact]
+        public void AsReadOnlyCollection_CreatesNewCollection_ForEnumerable() {
+            var enumerable = Enumerable.Range(1, 5);
+            // ReSharper disable PossibleMultipleEnumeration
+            Assert.Equal(enumerable, enumerable.AsReadOnlyCollection());
+            // ReSharper restore PossibleMultipleEnumeration
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void ToSet_IncludesAllItems(bool withComparer) {
+            var list = new[] { 0, 1, 2, 3 };
+            var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
+
+            Assert.Equal(list, set);
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void ToSet_CollapsesDuplicateItems(bool withComparer) {
+            var list = new[] { 0, 1, 2, 3, 2 };
+            var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
+
+            Assert.Equal(list.Distinct(), set);
+        }
+
+        [Fact]
+        public void ToSet_UsesCorrectComparer() {
+            var list = new[] { "a", "b" };
+            var set = list.ToSet(StringComparer.InvariantCultureIgnoreCase);
+
+            Assert.False(set.Add("A"));
         }
 
         //[StaticTestFactory]

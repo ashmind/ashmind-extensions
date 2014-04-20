@@ -129,7 +129,7 @@ namespace AshMind.Extensions {
 
         /// <summary>
         /// Searches for the specified object and returns the index of the last occurrence within the range of elements
-        /// in the <see cref="T:System.Array" /> that contains the specified number of elements and ends at the specified index.
+        /// in the <see cref="Array" /> that contains the specified number of elements and ends at the specified index.
         /// </summary>
         /// 
         /// <typeparam name="T">The type of the elements of the array.</typeparam>
