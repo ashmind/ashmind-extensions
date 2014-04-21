@@ -6,6 +6,39 @@ using Xunit;
 namespace AshMind.Extensions.Tests {
     public class DictionaryExtensionsTests {
         [Fact]
+        public void GetValueOrDefault_GetsDefault_IfValueIsNotPresent_ForReferenceType() {
+            var dictionary = new Dictionary<string, string>();
+            Assert.Null(dictionary.GetValueOrDefault("key"));
+        }
+
+        [Fact]
+        public void GetValueOrDefault_GetsDefault_IfValueIsNotPresent_ForValueType() {
+            var dictionary = new Dictionary<string, int>();
+            Assert.Equal(0, dictionary.GetValueOrDefault("key"));
+        }
+
+        [Fact]
+        public void GetValueOrDefault_GetsValue_IfValueIsPresent() {
+            var dictionary = new Dictionary<string, string> {
+                { "key", "value" }
+            };
+            Assert.Equal("value", dictionary.GetValueOrDefault("key"));
+        }
+
+        [Fact]
+        public void GetValueOrDefault_Compiles_ForEachType() {
+            var dictionary = new Dictionary<string, object>();
+            
+            // ReSharper disable ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable RedundantCast
+            dictionary.GetValueOrDefault("x");
+            ((IDictionary<string, object>)dictionary).GetValueOrDefault("x");
+            ((IReadOnlyDictionary<string, object>)dictionary).GetValueOrDefault("x");
+            // ReSharper restore RedundantCast
+            // ReSharper restore ReturnValueOfPureMethodIsNotUsed
+        }
+
+        [Fact]
         public void GetOrAdd_WithValue_WhenKeyIsPresent_ReturnsExistingValue() {
             var dictionary = new Dictionary<string, string> {{ "key", "existing" }};
             var value = dictionary.GetOrAdd("key", "new");

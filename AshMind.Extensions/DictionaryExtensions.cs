@@ -92,6 +92,17 @@ namespace AshMind.Extensions {
             dictionary.TryGetValue(key, out value);
             return value; // IReadOnlyDictionary<,> interface promises value == default(TValue) if not found
         }
+
+        /// <summary>Gets the value associated with the specified key, or a default value if the key was not found.</summary>
+        /// <param name="dictionary">The dictionary to get value from.</param>
+        /// <param name="key">The key of the value to get.</param>
+        /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
+        /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
+        /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the <typeparamref name="TValue"/> type.</returns>
+        [Pure]
+        public static TValue GetValueOrDefault<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> dictionary, [NotNull] TKey key) {
+            return ((IReadOnlyDictionary<TKey, TValue>)dictionary).GetValueOrDefault(key);
+        }
         #endif
     }
 }
