@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>AshMind.Extensions</id>
-    <version>1.3.2</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
+    <version>1.3.3</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
     <authors>Andrey Shchekin</authors>
     <owners>Andrey Shchekin</owners>
     <projectUrl>https://github.com/ashmind/ashmind-extensions</projectUrl>
@@ -11,7 +11,7 @@
       Extension methods that could have been written by BCL authors
       (with one or two Ruby-like things thrown in the mix).
     </description>
-    <releaseNotes>Workaround for bug where concrete Dictionary class could not use GetValueOrDefault().</releaseNotes>
+    <releaseNotes>Corrected ForEach implementation.</releaseNotes>
     <copyright>Copyright (c) 2013–2014 Andrey Shchekin</copyright>
     <tags>extensions</tags>
 
