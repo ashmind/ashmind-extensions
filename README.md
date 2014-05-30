@@ -560,6 +560,12 @@
 
     bool HasInterface(this Type type, Type interfaceType)
 
+    bool IsAssignableFrom<T>(this Type type)
+
+    bool IsAssignableTo<T>(this Type type)
+
+    bool IsAssignableTo(this Type type, Type other)
+
     bool IsDefined<TAttribute>(this ICustomAttributeProvider provider, bool inherit)
 
     bool IsGenericTypeDefinedAs(this Type type, Type otherType)
