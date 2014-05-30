@@ -66,5 +66,26 @@ namespace AshMind.Extensions.Tests {
         public void RemoveEnd(string value, string suffix, string expectedResult) {
             Assert.Equal(expectedResult, value.RemoveEnd(suffix));
         }
+
+        [Theory]
+        [InlineData("a",     0, "")]
+        [InlineData("a",     2, "a")]
+        [InlineData("ab",    2, "ab")]
+        [InlineData("abcde", 2, "ab")]
+        public void TruncateEnd(string value, int maxLength, string expectedResult) {
+            Assert.Equal(expectedResult, value.TruncateEnd(maxLength));
+        }
+
+        [Theory]
+        [InlineData("a",     0, "$",    "")]
+        [InlineData("a",     2, "$",    "a")]
+        [InlineData("ab",    2, "$",    "ab")]
+        [InlineData("abcde", 2, "$",    "a$")]
+        [InlineData("abcd",  3, "1234", "123")]
+        [InlineData("abcde", 3, "123",  "123")]
+        [InlineData("abcde", 4, "123",  "a123")]
+        public void TruncateEnd_WithSuffix(string value, int maxLength, string suffix, string expectedResult) {
+            Assert.Equal(expectedResult, value.TruncateEnd(maxLength, suffix));
+        }
     }
 }

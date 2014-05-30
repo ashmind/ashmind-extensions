@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using JetBrains.Annotations;
+using PureAttribute = JetBrains.Annotations.PureAttribute;
 using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
@@ -272,6 +274,53 @@ namespace AshMind.Extensions {
                 return original;
 
             return original.Substring(0, original.Length - suffix.Length);
+        }
+
+        /// <summary>
+        /// Limits string length to a specified value by discarding any trailing characters after the specified length.
+        /// </summary>
+        /// <param name="original">The <see cref="String" /> value to limit to a specified length.</param>
+        /// <param name="maxLength">The maximum length allowed for <paramref name="original"/>.</param>
+        /// <returns>The <paramref name="original" /> string if its length is lesser or equal than 
+        /// <paramref name="maxLength"/>; otherwise first <c>n</c> characters of the <paramref name="original" />
+        /// , where <c>n</c> is equal to <paramref name="maxLength"/>.</returns>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static string TruncateEnd([NotNull] this string original, int maxLength) {
+            if (original == null) throw new ArgumentNullException("original");
+            if (maxLength < 0)    throw new ArgumentOutOfRangeException("maxLength");
+            Contract.EndContractBlock();
+
+            return original.Length <= maxLength ? original : original.Substring(0, maxLength);
+        }
+
+        /// <summary>
+        /// Limits string length to a specified value by discarding a number of trailing characters and adds a specified
+        /// suffix if any characters were discarded.
+        /// </summary>
+        /// <param name="original">The <see cref="String" /> value to limit to a specified length.</param>
+        /// <param name="maxLength">The maximum length allowed for <paramref name="original"/>.</param>
+        /// <param name="suffix">The suffix added to the result if any characters are discarded.</param>
+        /// <returns>The <paramref name="original" /> string if its length is lesser or equal than 
+        /// <paramref name="maxLength"/>; otherwise first <c>n</c> characters of the <paramref name="original" />
+        /// followed by <paramref name="suffix" />, where <c>n</c> is equal to <paramref name="maxLength"/> - length of 
+        /// <see cref="suffix"/>.</returns>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static string TruncateEnd([NotNull] this string original, int maxLength, [CanBeNull] string suffix) {
+            if (original == null) throw new ArgumentNullException("original");
+            if (maxLength < 0)    throw new ArgumentOutOfRangeException("maxLength");
+            Contract.EndContractBlock();
+            
+            if (original.Length <= maxLength)
+                return original;
+
+            if (suffix == null)
+                suffix = "";
+
+            var length = maxLength - suffix.Length;
+            if (length < 0)
+                return suffix.Substring(0, maxLength);
+
+            return original.Substring(0, length) + suffix;
         }
     }
 }

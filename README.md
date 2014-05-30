@@ -110,6 +110,7 @@
    9. SubstringAfterLast
   10. SubstringBefore
   11. SubstringBeforeLast
+  12. TruncateEnd
 
 ## TimeExtensions
    1. Ago

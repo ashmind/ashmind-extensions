@@ -11,7 +11,7 @@
       Extension methods that could have been written by BCL authors
       (with one or two Ruby-like things thrown in the mix).
     </description>
-    <releaseNotes>Added Type.IsAssignableFrom&lt;T&gt;, Type.IsAssignableTo.</releaseNotes>
+    <releaseNotes>Added Type.IsAssignableFrom&lt;T&gt;, Type.IsAssignableTo, String.TruncateEnd.</releaseNotes>
     <copyright>Copyright (c) 2013–2014 Andrey Shchekin</copyright>
     <tags>extensions</tags>
 
