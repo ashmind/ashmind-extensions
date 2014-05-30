@@ -1,19 +1,19 @@
 ## ArrayExtensions
-   1. IndexOf
-   2. LastIndexOf
-   3. Reverse
-   4. Sort
+  1. IndexOf
+  2. LastIndexOf
+  3. Reverse
+  4. Sort
 
 ## CharExtensions
-   1. IsControl
-   2. IsDigit
-   3. IsHighSurrogate
-   4. IsLetter
-   5. IsLetterOrDigit
-   6. IsLower
-   7. IsLowSurrogate
-   8. IsNumber
-   9. IsPunctuation
+  1. IsControl
+  2. IsDigit
+  3. IsHighSurrogate
+  4. IsLetter
+  5. IsLetterOrDigit
+  6. IsLower
+  7. IsLowSurrogate
+  8. IsNumber
+  9. IsPunctuation
   10. IsSeparator
   11. IsSurrogate
   12. IsSymbol
@@ -25,44 +25,44 @@
   18. ToUpperInvariant
 
 ## CollectionExtensions
-   1. AddRange
-   2. RemoveAll
-   3. RemoveWhere
+  1. AddRange
+  2. RemoveAll
+  3. RemoveWhere
 
 ## ComparableExtensions
-   1. IsBetween
-   2. IsGreaterThan
-   3. IsGreaterThanOrEqual
-   4. IsLesserThan
-   5. IsLesserThanOrEqual
+  1. IsBetween
+  2. IsGreaterThan
+  3. IsGreaterThanOrEqual
+  4. IsLesserThan
+  5. IsLesserThanOrEqual
 
 ## DelegateExtensions
-   1. AsComparison
-   2. AsFunction
-   3. AsPredicate
-   4. ToComparer
+  1. AsComparison
+  2. AsFunction
+  3. AsPredicate
+  4. ToComparer
 
 ## DictionaryExtensions
-   1. AsReadOnly
-   2. GetOrAdd
-   3. GetValueOrDefault
+  1. AsReadOnly
+  2. GetOrAdd
+  3. GetValueOrDefault
 
 ## DoubleExtensions
-   1. IsInfinity
-   2. IsNaN
-   3. IsNegativeInfinity
-   4. IsPositiveInfinity
+  1. IsInfinity
+  2. IsNaN
+  3. IsNegativeInfinity
+  4. IsPositiveInfinity
 
 ## EnumerableExtensions
-   1. Any
-   2. AsCollection
-   3. AsList
-   4. AsReadOnlyCollection
-   5. AsReadOnlyList
-   6. Concat
-   7. EmptyIfNull
-   8. Except
-   9. ForEach
+  1. Any
+  2. AsCollection
+  3. AsList
+  4. AsReadOnlyCollection
+  5. AsReadOnlyList
+  6. Concat
+  7. EmptyIfNull
+  8. Except
+  9. ForEach
   10. GroupAdjacentBy
   11. HavingMax
   12. HavingMin
@@ -72,52 +72,52 @@
   16. OnBeforeFirst
   17. ToSet
 
-## ## FormattableExtensions
-   1. ToInvariantString
-   2. ToString
+## FormattableExtensions
+  1. ToInvariantString
+  2. ToString
 
 ## Int32Extensions
-   1. IsBetween
-   2. Times
+  1. IsBetween
+  2. Times
 
 ## ListExtensions
-   1. AsReadOnly
-   2. EnumerateRange
-   3. InsertRange
-   4. RemoveRange
+  1. AsReadOnly
+  2. EnumerateRange
+  3. InsertRange
+  4. RemoveRange
 
 ## ReflectionExtensions
-   1. CreateDelegate
-   2. GetCustomAttribute
-   3. GetCustomAttributes
-   4. HasInterface
-   5. IsAssignableFrom
-   6. IsAssignableTo
-   7. IsDefined
-   8. IsGenericTypeDefinedAs
-   9. IsSameAsOrSubclassOf
+  1. CreateDelegate
+  2. GetCustomAttribute
+  3. GetCustomAttributes
+  4. HasInterface
+  5. IsAssignableFrom
+  6. IsAssignableTo
+  7. IsDefined
+  8. IsGenericTypeDefinedAs
+  9. IsSameAsOrSubclassOf
   10. IsSubclassOf
 
 ## StringExtensions
-   1. Contains
-   2. IsNullOrEmpty
-   3. IsNullOrWhiteSpace
-   4. NullIfEmpty
-   5. RemoveEnd
-   6. RemoveStart
-   7. Split
-   8. SubstringAfter
-   9. SubstringAfterLast
+  1. Contains
+  2. IsNullOrEmpty
+  3. IsNullOrWhiteSpace
+  4. NullIfEmpty
+  5. RemoveEnd
+  6. RemoveStart
+  7. Split
+  8. SubstringAfter
+  9. SubstringAfterLast
   10. SubstringBefore
   11. SubstringBeforeLast
   12. TruncateEnd
 
 ## TimeExtensions
-   1. Ago
-   2. Days
-   3. Hours
-   4. Milliseconds
-   5. Minute
-   6. Minutes
-   7. Seconds
+  1. Ago
+  2. Days
+  3. Hours
+  4. Milliseconds
+  5. Minute
+  6. Minutes
+  7. Seconds
 

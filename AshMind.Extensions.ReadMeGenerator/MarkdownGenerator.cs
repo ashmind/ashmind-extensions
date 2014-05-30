@@ -12,12 +12,10 @@ namespace AshMind.Extensions.ReadMeGenerator {
             var extensionTypes = extensionsAssembly.GetExportedTypes();
 
             foreach (var type in extensionTypes.OrderBy(t => t.Name)) {
-                writer.Write("## ");
                 if (type.IsDefined<ObsoleteAttribute>(false))
                     continue;
 
-                writer.Write(type.Name);
-                writer.WriteLine();
+                writer.WriteLine("## {0}", type.Name);
 
                 var methodNames = type.GetMethods(BindingFlags.Static | BindingFlags.Public)
                                       .Where(m => !m.IsDefined<ObsoleteAttribute>(false))
@@ -27,7 +25,7 @@ namespace AshMind.Extensions.ReadMeGenerator {
 
                 var index = 1;
                 foreach (var methodName in methodNames) {
-                    writer.Write("  {0,2}. {1}", index, methodName);
+                    writer.Write("  {0}. {1}", index, methodName);
                     writer.WriteLine();
                     index += 1;
                 }
