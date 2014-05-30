@@ -15,7 +15,7 @@ namespace AshMind.Extensions.ReadMeGenerator {
                 if (type.IsDefined<ObsoleteAttribute>(false))
                     continue;
 
-                writer.WriteLine("## {0}", type.Name);
+                writer.WriteLine("### {0}", type.Name);
 
                 var methodNames = type.GetMethods(BindingFlags.Static | BindingFlags.Public)
                                       .Where(m => !m.IsDefined<ObsoleteAttribute>(false))
