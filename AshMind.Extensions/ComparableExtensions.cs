@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -18,7 +19,7 @@ namespace AshMind.Extensions {
         /// <returns>
         /// True if <paramref name="left" /> is greater than <paramref name="right" />; otherwise, false.
         /// </returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsGreaterThan<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T>
         {
@@ -35,7 +36,7 @@ namespace AshMind.Extensions {
         /// <returns>
         /// True if <paramref name="left" /> is lesser than <paramref name="right" />; otherwise, false.
         /// </returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsLesserThan<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T>
         {
@@ -52,7 +53,7 @@ namespace AshMind.Extensions {
         /// <returns>
         /// True if <paramref name="left" /> is greater than or equal to <paramref name="right" />; otherwise, false.
         /// </returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsGreaterThanOrEqual<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T> 
         {
@@ -69,7 +70,7 @@ namespace AshMind.Extensions {
         /// <returns>
         /// True if <paramref name="left" /> is lesser than or equal to <paramref name="right" />; otherwise, false.
         /// </returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsLesserThanOrEqual<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T> 
         {
@@ -87,7 +88,7 @@ namespace AshMind.Extensions {
         /// <returns>
         /// True if the specified value is between the minimm and maximum; otherwise, false.
         /// </returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsBetween<TComparable, T>([NotNull] this TComparable value, T left, T right)
             where TComparable : IComparable<T> 
         {

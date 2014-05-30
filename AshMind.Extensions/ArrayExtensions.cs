@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -23,7 +24,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// 
         /// <exception cref="ArgumentNullException"><paramref name="array" /> is null.</exception>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static int IndexOf<T>([NotNull] this T[] array, [CanBeNull] T value) {
             return Array.IndexOf(array, value);
         }
@@ -47,7 +48,7 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="startIndex" /> is outside the range of valid indexes for <paramref name="array" />.
         /// </exception>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static int IndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex) {
             return Array.IndexOf(array, value, startIndex);
         }
@@ -77,7 +78,7 @@ namespace AshMind.Extensions {
         /// -or-
         /// <paramref name="startIndex" /> and <paramref name="count" /> do not specify a valid section in <paramref name="array" />.
         /// </exception>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static int IndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count) {
             return Array.IndexOf(array, value, startIndex, count);
         }
@@ -97,7 +98,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// 
         /// <exception cref="ArgumentNullException"><paramref name="array" /> is null.</exception>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static int LastIndexOf<T>([NotNull] this T[] array, [CanBeNull] T value) {
             return Array.LastIndexOf(array, value);
         }
@@ -122,7 +123,7 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="startIndex" /> is outside the range of valid indexes for <paramref name="array" />.
         /// </exception>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static int LastIndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex) {
             return Array.LastIndexOf(array, value, startIndex);
         }
@@ -152,7 +153,7 @@ namespace AshMind.Extensions {
         /// -or-
         /// <paramref name="startIndex" /> and <paramref name="count" /> do not specify a valid section in <paramref name="array" />.
         /// </exception>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static int LastIndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count) {
             return Array.LastIndexOf(array, value, startIndex, count);
         }

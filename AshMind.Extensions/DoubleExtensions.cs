@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -12,7 +13,7 @@ namespace AshMind.Extensions {
         /// <param name="value">A <see cref="Double" /> value.</param>
         /// <returns>true if <paramref name="value" /> evaluates to <see cref="Double.NaN" />; otherwise, false.</returns>
         /// <seealso cref="Double.IsNaN"/>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsNaN(this double value) {
             return Double.IsNaN(value);
         }
@@ -25,7 +26,7 @@ namespace AshMind.Extensions {
         ///     true if <paramref name="value" /> evaluates to <see cref="Double.PositiveInfinity" /> or <see cref="Double.NegativeInfinity" />; otherwise, false.
         /// </returns>
         /// <seealso cref="Double.IsInfinity"/>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsInfinity(this double value) {
             return Double.IsInfinity(value);
         }
@@ -38,7 +39,7 @@ namespace AshMind.Extensions {
         ///     true if <paramref name="value" /> evaluates to <see cref="Double.PositiveInfinity" />; otherwise, false.
         /// </returns>
         /// <seealso cref="Double.IsPositiveInfinity"/>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsPositiveInfinity(this double value) {
             return Double.IsPositiveInfinity(value);
         }
@@ -51,7 +52,7 @@ namespace AshMind.Extensions {
         ///     true if <paramref name="value" /> evaluates to <see cref="Double.NegativeInfinity" />; otherwise, false.
         /// </returns>
         /// <seealso cref="Double.IsPositiveInfinity"/>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsNegativeInfinity(this double value) {
             return Double.IsNegativeInfinity(value);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -17,7 +18,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a letter; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsLetter(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsLetter(this char c) {
             return Char.IsLetter(c);
         }
@@ -30,7 +31,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a decimal digit; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsDigit(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsDigit(this char c) {
             return Char.IsDigit(c);
         }
@@ -43,7 +44,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a letter or a decimal digit; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsLetterOrDigit(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsLetterOrDigit(this char c) {
             return Char.IsLetterOrDigit(c);
         }
@@ -56,7 +57,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a number; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsNumber(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsNumber(this char c) {
             return Char.IsNumber(c);
         }
@@ -69,7 +70,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a symbol character; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsSymbol(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsSymbol(this char c) {
             return Char.IsSymbol(c);
         }
@@ -82,7 +83,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a control character; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsControl(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsControl(this char c) {
             return Char.IsControl(c);
         }
@@ -95,7 +96,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a punctuation mark; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsPunctuation(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsPunctuation(this char c) {
             return Char.IsPunctuation(c);
         }
@@ -108,7 +109,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is a separator character; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsSeparator(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsSeparator(this char c) {
             return Char.IsSeparator(c);
         }
@@ -123,7 +124,7 @@ namespace AshMind.Extensions {
         /// <seealso cref="Char.IsSurrogate(char)" />
         /// <seealso cref="CharExtensions.IsHighSurrogate(char)" />
         /// <seealso cref="CharExtensions.IsLowSurrogate(char)" /> 
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsSurrogate(this char c) {
             return Char.IsSurrogate(c);
         }
@@ -136,7 +137,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if the numeric value of the <paramref name="c" /> parameter ranges from U+D800 through U+DBFF; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsHighSurrogate(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsHighSurrogate(this char c) {
             return Char.IsHighSurrogate(c);
         }
@@ -149,7 +150,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if the numeric value of the <paramref name="c" /> parameter ranges from U+DC00 through U+DFFF; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsLowSurrogate(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsLowSurrogate(this char c) {
             return Char.IsLowSurrogate(c);
         }
@@ -162,7 +163,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is white space; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsWhiteSpace(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsWhiteSpace(this char c) {
             return Char.IsWhiteSpace(c);
         }
@@ -175,7 +176,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is lowercase letter; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsLower(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsLower(this char c) {
             return Char.IsLower(c);
         }
@@ -188,7 +189,7 @@ namespace AshMind.Extensions {
         /// <c>true</c> if <paramref name="c" /> is uppercase letter; otherwise, <c>false</c>.
         /// </returns>
         /// <seealso cref="Char.IsUpper(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsUpper(this char c) {
             return Char.IsUpper(c);
         }
@@ -201,7 +202,7 @@ namespace AshMind.Extensions {
         ///   The lowercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" />, if <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
         /// <seealso cref="Char.ToLower(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static char ToLower(this char c) {
             return Char.ToLower(c);
         }
@@ -218,7 +219,7 @@ namespace AshMind.Extensions {
         ///   The lowercase equivalent of <paramref name="c" />, modified according to <paramref name="culture" />, or the unchanged value of <paramref name="c" />, if <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
         /// <seealso cref="Char.ToLower(char, CultureInfo)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static char ToLower(this char c, [NotNull] CultureInfo culture) {
             return Char.ToLower(c, culture);
         }
@@ -232,7 +233,7 @@ namespace AshMind.Extensions {
         ///   The lowercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" />, if <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
         /// <seealso cref="Char.ToLowerInvariant(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static char ToLowerInvariant(this char c) {
             return Char.ToLowerInvariant(c);
         }
@@ -245,7 +246,7 @@ namespace AshMind.Extensions {
         ///   The uppercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" />, if <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
         /// <seealso cref="Char.ToUpper(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static char ToUpper(this char c) {
             return Char.ToUpper(c);
         }
@@ -262,7 +263,7 @@ namespace AshMind.Extensions {
         ///   The uppercase equivalent of <paramref name="c" />, modified according to <paramref name="culture" />, or the unchanged value of <paramref name="c" />, if <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
         /// <seealso cref="Char.ToUpper(char, CultureInfo)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static char ToUpper(this char c, [NotNull] CultureInfo culture) {
             return Char.ToUpper(c, culture);
         }
@@ -276,7 +277,7 @@ namespace AshMind.Extensions {
         ///   The uppercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" />, if <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
         /// <seealso cref="Char.ToUpperInvariant(char)" />
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static char ToUpperInvariant(this char c) {
             return Char.ToUpperInvariant(c);
         }

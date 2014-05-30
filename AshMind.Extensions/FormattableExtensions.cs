@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -15,7 +16,7 @@ namespace AshMind.Extensions {
         /// <param name="value">The value to be formatted.</param>
         /// <param name="provider">The provider to use to format the value.</param>
         /// <returns>The <paramref name="value"/> in the specified format.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static string ToString([NotNull] this IFormattable value, IFormatProvider provider) {
             return value.ToString(null, provider);
         }
@@ -25,7 +26,7 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="value">The value to be formatted.</param>
         /// <returns>The <paramref name="value"/>, formatted using invariant culture format provider.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static string ToInvariantString([NotNull] this IFormattable value) {
             return value.ToString(CultureInfo.InvariantCulture);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -15,12 +16,12 @@ namespace AshMind.Extensions {
         /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the <typeparamref name="TValue"/> type.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static TValue GetValueOrDefault<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key) {
             return GetValueOrDefault(dictionary, key, default(TValue));
         }
 
-        [Pure] [Obsolete("Please use overload without TDefault instead.")]
+        [Contracts.Pure] [Pure] [Obsolete("Please use overload without TDefault instead.")]
         public static TDefault GetValueOrDefault<TKey, TValue, TDefault>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, [CanBeNull] TDefault @default)
             where TValue : TDefault 
         {
@@ -75,7 +76,7 @@ namespace AshMind.Extensions {
         /// If the <paramref name="dictionary" /> is already of type <see cref="ReadOnlyDictionary{T, TValue}" /> this method returns it directly. Otherwise, it
         /// returns an new instance of <see cref="ReadOnlyDictionary{T, TValue}" /> acting as a read-only wrapper around the <paramref name="dictionary" />.
         /// </remarks>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static ReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary) {
             return (dictionary as ReadOnlyDictionary<TKey, TValue>) ?? new ReadOnlyDictionary<TKey, TValue>(dictionary);
         }
@@ -86,7 +87,7 @@ namespace AshMind.Extensions {
         /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the <typeparamref name="TValue"/> type.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static TValue GetValueOrDefault<TKey, TValue>([NotNull] this IReadOnlyDictionary<TKey, TValue> dictionary, [NotNull] TKey key) {
             TValue value;
             dictionary.TryGetValue(key, out value);
@@ -99,7 +100,7 @@ namespace AshMind.Extensions {
         /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the <typeparamref name="TValue"/> type.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static TValue GetValueOrDefault<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> dictionary, [NotNull] TKey key) {
             return ((IReadOnlyDictionary<TKey, TValue>)dictionary).GetValueOrDefault(key);
         }

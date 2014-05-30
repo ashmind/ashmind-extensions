@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
-
-#if Contracts
-using System.Diagnostics.Contracts;
-using PureAttribute = System.Diagnostics.Contracts.PureAttribute;
-#endif
+using Contracts = System.Diagnostics.Contracts;
+using PureAttribute = JetBrains.Annotations.PureAttribute;
 
 #if !TypeInfo
 using TypeInfo = System.Type;
@@ -28,15 +26,12 @@ namespace AshMind.Extensions {
         /// <returns>An array of custom attributes applied to this member, or an array with zero (0) elements if no attributes have been applied.</returns>
         /// <exception cref="TypeLoadException">A custom attribute type cannot be loaded.</exception>
         /// <exception cref="InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider member, bool inherit) 
             where TAttribute : Attribute
         {
-            if (member == null)
-                throw new ArgumentNullException("member");
-            #if Contracts
+            if (member == null) throw new ArgumentNullException("member");
             Contract.EndContractBlock();
-            #endif
 
             return (TAttribute[])member.GetCustomAttributes(typeof(TAttribute), inherit);
         }
@@ -49,15 +44,12 @@ namespace AshMind.Extensions {
         /// <returns>An array of custom attributes applied to this member, or an array with zero (0) elements if no attributes have been applied.</returns>
         /// <exception cref="TypeLoadException">A custom attribute type cannot be loaded.</exception>
         /// <exception cref="InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider provider) 
             where TAttribute : Attribute
         {
-            if (provider == null)
-                throw new ArgumentNullException("provider");
-            #if Contracts
+            if (provider == null) throw new ArgumentNullException("provider");
             Contract.EndContractBlock();
-            #endif
 
             return (TAttribute[])provider.GetCustomAttributes(typeof(TAttribute), true);
         }
@@ -71,13 +63,10 @@ namespace AshMind.Extensions {
         /// <exception cref="TypeLoadException">A custom attribute type cannot be loaded.</exception>
         /// <exception cref="NullReferenceException">If <paramref name="attributeType" /> is a null reference (Nothing in Visual Basic).</exception>
         /// <exception cref="InvalidOperationException">This provider is a type loaded into the reflection-only context or a member of such type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static object[] GetCustomAttributes([NotNull] this ICustomAttributeProvider provider, [NotNull] Type attributeType) {
-            if (provider == null)
-                throw new ArgumentNullException("provider");
-            #if Contracts
+            if (provider == null) throw new ArgumentNullException("provider");
             Contract.EndContractBlock();
-            #endif
 
             return provider.GetCustomAttributes(attributeType, true);
         }
@@ -89,67 +78,51 @@ namespace AshMind.Extensions {
         /// <returns>An array that contains all the custom attributes, or an array with zero elements if no attributes are defined.</returns>
         /// <exception cref="TypeLoadException">A custom attribute type cannot be loaded.</exception>
         /// <exception cref="InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static object[] GetCustomAttributes([NotNull] this ICustomAttributeProvider provider) {
-            if (provider == null)
-                throw new ArgumentNullException("provider");
-            #if Contracts
+            if (provider == null) throw new ArgumentNullException("provider");
             Contract.EndContractBlock();
-            #endif
 
             return provider.GetCustomAttributes(true);
         }
 
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TAttribute GetCustomAttribute<TAttribute>([NotNull] this ICustomAttributeProvider provider, bool inherit)
             where TAttribute : Attribute
         {
-            if (provider == null)
-                throw new ArgumentNullException("provider");
-            #if Contracts
+            if (provider == null) throw new ArgumentNullException("provider");
             Contract.EndContractBlock();
-            #endif
 
             return provider.GetCustomAttributes<TAttribute>(inherit).Single();
         }
 
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TAttribute GetCustomAttribute<TAttribute>([NotNull] this ICustomAttributeProvider provider)
             where TAttribute : Attribute
         {
-            if (provider == null)
-                throw new ArgumentNullException("provider");
-            #if Contracts
+            if (provider == null) throw new ArgumentNullException("provider");
             Contract.EndContractBlock();
-            #endif
 
             return provider.GetCustomAttributes<TAttribute>(false).Single();
         }
 
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsDefined<TAttribute>([NotNull] this ICustomAttributeProvider provider, bool inherit)
             where TAttribute : Attribute
         {
-            if (provider == null)
-                throw new ArgumentNullException("provider");
-            #if Contracts
+            if (provider == null) throw new ArgumentNullException("provider");
             Contract.EndContractBlock();
-            #endif
 
             return provider.IsDefined(typeof(TAttribute), inherit);
         }
         #endif
 
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsSameAsOrSubclassOf([NotNull] this TypeInfo type, [NotNull] Type otherType)
         {
-            if (type == null)
-                throw new ArgumentNullException("type");
-            if (otherType == null)
-                throw new ArgumentNullException("otherType");
-            #if Contracts
+            if (type == null)      throw new ArgumentNullException("type");
+            if (otherType == null) throw new ArgumentNullException("otherType");
             Contract.EndContractBlock();
-            #endif
 
             #if TypeInfo
             return type == otherType.GetTypeInfo() || type.IsSubclassOf(otherType);
@@ -158,38 +131,29 @@ namespace AshMind.Extensions {
             #endif
         }
 
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsSameAsOrSubclassOf<TClass>([NotNull] this TypeInfo type)
         {
-            if (type == null)
-                throw new ArgumentNullException("type");
-            #if Contracts
+            if (type == null) throw new ArgumentNullException("type");
             Contract.EndContractBlock();
-            #endif
 
             return type.IsSameAsOrSubclassOf(typeof(TClass));
         }
 
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsSubclassOf<T>([NotNull] this TypeInfo type) 
             where T : class
         {
-            if (type == null)
-                throw new ArgumentNullException("type");
-            #if Contracts
+            if (type == null) throw new ArgumentNullException("type");
             Contract.EndContractBlock();
-            #endif
 
             return type.IsSubclassOf(typeof(T));
         }
 
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsGenericTypeDefinedAs([NotNull] this TypeInfo type, [NotNull] Type otherType) {
-            if (type == null)
-                throw new ArgumentNullException("type");
-            #if Contracts
+            if (type == null) throw new ArgumentNullException("type");
             Contract.EndContractBlock();
-            #endif
 
             if (!type.IsGenericType)
                 return false;
@@ -205,12 +169,10 @@ namespace AshMind.Extensions {
         /// <param name="method">The method to create the delegate for.</param>
         /// <returns>The delegate for this method.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method) {
             if (method == null) throw new ArgumentNullException("method");
-            #if Contracts
             Contract.EndContractBlock();
-            #endif
 
             return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate));
         }
@@ -223,12 +185,10 @@ namespace AshMind.Extensions {
         /// <param name="target">The object targeted by the delegate.</param>
         /// <returns>The delegate for this method.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method, object target) {
             if (method == null) throw new ArgumentNullException("method");
-            #if Contracts
             Contract.EndContractBlock();
-            #endif
 
             return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate), target);
         }
@@ -241,15 +201,12 @@ namespace AshMind.Extensions {
         /// <typeparam name="TInterface">The interface that might be implemented by the <paramref name="type"/>.</typeparam>
         /// <param name="type">The type for which the fact of implementation will be dermined.</param>
         /// <returns><c>true</c> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <c>false</c>.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool HasInterface<TInterface>([NotNull] this TypeInfo type)
             where TInterface : class
         {
-            if (type == null)
-                throw new ArgumentNullException("type");
-            #if Contracts
+            if (type == null) throw new ArgumentNullException("type");
             Contract.EndContractBlock();
-            #endif
 
             return type.HasInterface(typeof(TInterface));
         }
@@ -260,15 +217,11 @@ namespace AshMind.Extensions {
         /// <param name="type">The type for which the fact of implementation will be dermined.</param>
         /// <param name="interfaceType">The interface that might be implemented by the <paramref name="type"/>.</param>
         /// <returns><c>true</c> if <paramref name="type"/> implements <paramref name="interfaceType"/>; otherwise, <c>false</c>.</returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool HasInterface([NotNull] this TypeInfo type, [NotNull] Type interfaceType) {
-            if (type == null)
-                throw new ArgumentNullException("type");
-            if (interfaceType == null)
-                throw new ArgumentNullException("interfaceType");
-            #if Contracts
+            if (type == null)          throw new ArgumentNullException("type");
+            if (interfaceType == null) throw new ArgumentNullException("interfaceType");
             Contract.EndContractBlock();
-            #endif
 
             return type.GetInterfaces().Contains(interfaceType);
         }
@@ -276,22 +229,16 @@ namespace AshMind.Extensions {
 
         #if !Net45_Property_SetValue
         public static void SetValue([NotNull] this PropertyInfo property, [CanBeNull] object obj, [CanBeNull] object value) {
-            if (property == null)
-                throw new ArgumentNullException("property");
-            #if Contracts
+            if (property == null) throw new ArgumentNullException("property");
             Contract.EndContractBlock();
-            #endif
 
             property.SetValue(obj, value, null);
         }
 
-        [Pure] [CanBeNull]
+        [Contracts.Pure] [Pure] [CanBeNull]
         public static object GetValue([NotNull] this PropertyInfo property, [CanBeNull] object obj) {
-            if (property == null)
-                throw new ArgumentNullException("property");
-            #if Contracts
+            if (property == null) throw new ArgumentNullException("property");
             Contract.EndContractBlock();
-            #endif
 
             return property.GetValue(obj, null);
         }

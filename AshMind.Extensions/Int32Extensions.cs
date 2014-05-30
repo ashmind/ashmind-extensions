@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -17,7 +18,7 @@ namespace AshMind.Extensions {
         /// <returns>
         /// True if the specified value is between the minimum and maximum; otherwise, false.
         /// </returns>
-        [Pure]
+        [Contracts.Pure] [Pure]
         public static bool IsBetween(this int value, int left, int right) {
             return value >= left && value <= right;
         }

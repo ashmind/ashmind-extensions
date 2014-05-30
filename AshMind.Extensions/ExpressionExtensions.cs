@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq.Expressions;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 // ReSharper disable AnnotationRedundanceAtValueType
 namespace AshMind.Extensions {
@@ -17,7 +18,7 @@ namespace AshMind.Extensions {
         /// <param name="right">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The addition operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Add([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Add(left, right);
         }
@@ -30,7 +31,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the addition operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Add([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Add(left, right, method);
         }
@@ -40,7 +41,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.AddAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.AddAssign(left, right);
         }
@@ -52,7 +53,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.AddAssign(left, right, method);
         }
@@ -65,7 +66,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.AddAssign(left, right, method, conversion);
         }
@@ -76,7 +77,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.AddAssignChecked" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddAssignChecked([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.AddAssignChecked(left, right);
         }
@@ -88,7 +89,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddAssignChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.AddAssignChecked(left, right, method);
         }
@@ -101,7 +102,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddAssignChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.AddAssignChecked(left, right, method, conversion);
         }
@@ -113,7 +114,7 @@ namespace AshMind.Extensions {
         /// <param name="right">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The addition operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddChecked([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.AddChecked(left, right);
         }
@@ -126,7 +127,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the addition operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AddChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.AddChecked(left, right, method);
         }
@@ -137,7 +138,7 @@ namespace AshMind.Extensions {
         /// <param name="right">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The bitwise AND operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression And([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.And(left, right);
         }
@@ -150,7 +151,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the bitwise AND operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression And([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.And(left, right, method);
         }
@@ -161,7 +162,7 @@ namespace AshMind.Extensions {
         /// <param name="right">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The bitwise AND operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.-or-<paramref name="left" />.Type and <paramref name="right" />.Type are not the same Boolean type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AndAlso([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.AndAlso(left, right);
         }
@@ -174,7 +175,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the bitwise AND operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.-or-<paramref name="method" /> is null and <paramref name="left" />.Type and <paramref name="right" />.Type are not the same Boolean type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AndAlso([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.AndAlso(left, right, method);
         }
@@ -184,7 +185,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.AndAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AndAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.AndAssign(left, right);
         }
@@ -196,7 +197,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AndAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.AndAssign(left, right, method);
         }
@@ -209,7 +210,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression AndAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.AndAssign(left, right, method, conversion);
         }
@@ -220,7 +221,7 @@ namespace AshMind.Extensions {
         /// <returns>The created <see cref="T:System.Linq.Expressions.IndexExpression" />.</returns>
         /// <param name="array">An expression representing the array to index.</param>
         /// <param name="indexes">An array that contains expressions used to index the array.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IndexExpression ArrayAccess([NotNull] this Expression array, [NotNull] Expression[] indexes) {
             return Expression.ArrayAccess(array, indexes);
         }
@@ -231,7 +232,7 @@ namespace AshMind.Extensions {
         /// <returns>The created <see cref="T:System.Linq.Expressions.IndexExpression" />.</returns>
         /// <param name="array">An expression that represents the multidimensional array.</param>
         /// <param name="indexes">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> containing expressions used to index the array.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IndexExpression ArrayAccess([NotNull] this Expression array, [NotNull] IEnumerable<Expression> indexes) {
             return Expression.ArrayAccess(array, indexes);
         }
@@ -243,7 +244,7 @@ namespace AshMind.Extensions {
         /// <param name="indexes">An array of <see cref="T:System.Linq.Expressions.Expression" /> objects to use to populate the <see cref="P:System.Linq.Expressions.MethodCallExpression.Arguments" /> collection.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="array" /> or <paramref name="indexes" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="array" />.Type does not represent an array type.-or-The rank of <paramref name="array" />.Type does not match the number of elements in <paramref name="indexes" />.-or-The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of one or more elements of <paramref name="indexes" /> does not represent the <see cref="T:System.Int32" /> type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression ArrayIndex([NotNull] this Expression array, [NotNull] Expression[] indexes) {
             return Expression.ArrayIndex(array, indexes);
         }
@@ -254,7 +255,7 @@ namespace AshMind.Extensions {
         /// <param name="indexes">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains <see cref="T:System.Linq.Expressions.Expression" /> objects to use to populate the <see cref="P:System.Linq.Expressions.MethodCallExpression.Arguments" /> collection.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="array" /> or <paramref name="indexes" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="array" />.Type does not represent an array type.-or-The rank of <paramref name="array" />.Type does not match the number of elements in <paramref name="indexes" />.-or-The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of one or more elements of <paramref name="indexes" /> does not represent the <see cref="T:System.Int32" /> type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression ArrayIndex([NotNull] this Expression array, [NotNull] IEnumerable<Expression> indexes) {
             return Expression.ArrayIndex(array, indexes);
         }
@@ -265,7 +266,7 @@ namespace AshMind.Extensions {
         /// <param name="index">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="array" /> or <paramref name="index" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="array" />.Type does not represent an array type.-or-<paramref name="array" />.Type represents an array type whose rank is not 1.-or-<paramref name="index" />.Type does not represent the <see cref="T:System.Int32" /> type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ArrayIndex([NotNull] this Expression array, [NotNull] Expression index) {
             return Expression.ArrayIndex(array, index);
         }
@@ -275,7 +276,7 @@ namespace AshMind.Extensions {
         /// <param name="array">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.UnaryExpression.Operand" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="array" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="array" />.Type does not represent an array type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression ArrayLength([NotNull] this Expression array) {
             return Expression.ArrayLength(array);
         }
@@ -285,7 +286,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.Assign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Assign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Assign(left, right);
         }
@@ -297,7 +298,7 @@ namespace AshMind.Extensions {
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.MethodCallExpression.Method" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="method" /> is null.-or-<paramref name="instance" /> is null and <paramref name="method" /> represents an instance method.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="instance" />.Type is not assignable to the declaring type of the method represented by <paramref name="method" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression Call([NotNull] this Expression instance, [NotNull] MethodInfo method) {
             return Expression.Call(instance, method);
         }
@@ -309,7 +310,7 @@ namespace AshMind.Extensions {
         /// <param name="arguments">An array of <see cref="T:System.Linq.Expressions.Expression" /> objects to use to populate the <see cref="P:System.Linq.Expressions.MethodCallExpression.Arguments" /> collection.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="method" /> is null.-or-<paramref name="instance" /> is null and <paramref name="method" /> represents an instance method.-or-<paramref name="arguments" /> is not null and one or more of its elements is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="instance" />.Type is not assignable to the declaring type of the method represented by <paramref name="method" />.-or-The number of elements in <paramref name="arguments" /> does not equal the number of parameters for the method represented by <paramref name="method" />.-or-One or more of the elements of <paramref name="arguments" /> is not assignable to the corresponding parameter for the method represented by <paramref name="method" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression Call([NotNull] this Expression instance, [NotNull] MethodInfo method, [NotNull] Expression[] arguments) {
             return Expression.Call(instance, method, arguments);
         }
@@ -320,7 +321,7 @@ namespace AshMind.Extensions {
         /// <param name="method">The <see cref="T:System.Reflection.MethodInfo" /> that represents the target method.</param>
         /// <param name="arg0">The <see cref="T:System.Linq.Expressions.Expression" /> that represents the first argument.</param>
         /// <param name="arg1">The <see cref="T:System.Linq.Expressions.Expression" /> that represents the second argument.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression Call([NotNull] this Expression instance, [NotNull] MethodInfo method, [NotNull] Expression arg0, [NotNull] Expression arg1) {
             return Expression.Call(instance, method, arg0, arg1);
         }
@@ -332,7 +333,7 @@ namespace AshMind.Extensions {
         /// <param name="arg0">The <see cref="T:System.Linq.Expressions.Expression" /> that represents the first argument.</param>
         /// <param name="arg1">The <see cref="T:System.Linq.Expressions.Expression" /> that represents the second argument.</param>
         /// <param name="arg2">The <see cref="T:System.Linq.Expressions.Expression" /> that represents the third argument.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression Call([NotNull] this Expression instance, [NotNull] MethodInfo method, [NotNull] Expression arg0, [NotNull] Expression arg1, [NotNull] Expression arg2) {
             return Expression.Call(instance, method, arg0, arg1, arg2);
         }
@@ -345,7 +346,7 @@ namespace AshMind.Extensions {
         /// <param name="arguments">An array of <see cref="T:System.Linq.Expressions.Expression" /> objects that represents the arguments to the method.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="instance" /> or <paramref name="methodName" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">No method whose name is <paramref name="methodName" />, whose type parameters match <paramref name="typeArguments" />, and whose parameter types match <paramref name="arguments" /> is found in <paramref name="instance" />.Type or its base types.-or-More than one method whose name is <paramref name="methodName" />, whose type parameters match <paramref name="typeArguments" />, and whose parameter types match <paramref name="arguments" /> is found in <paramref name="instance" />.Type or its base types.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression Call([NotNull] this Expression instance, [NotNull] String methodName, [NotNull] Type[] typeArguments, [NotNull] Expression[] arguments) {
             return Expression.Call(instance, methodName, typeArguments, arguments);
         }
@@ -357,7 +358,7 @@ namespace AshMind.Extensions {
         /// <param name="arguments">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains <see cref="T:System.Linq.Expressions.Expression" /> objects to use to populate the <see cref="P:System.Linq.Expressions.MethodCallExpression.Arguments" /> collection.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="method" /> is null.-or-<paramref name="instance" /> is null and <paramref name="method" /> represents an instance method.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="instance" />.Type is not assignable to the declaring type of the method represented by <paramref name="method" />.-or-The number of elements in <paramref name="arguments" /> does not equal the number of parameters for the method represented by <paramref name="method" />.-or-One or more of the elements of <paramref name="arguments" /> is not assignable to the corresponding parameter for the method represented by <paramref name="method" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MethodCallExpression Call([NotNull] this Expression instance, [NotNull] MethodInfo method, [NotNull] IEnumerable<Expression> arguments) {
             return Expression.Call(instance, method, arguments);
         }
@@ -369,7 +370,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of <paramref name="left" /> does not represent a reference type or a nullable value type.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="left" />.Type and <paramref name="right" />.Type are not convertible to each other.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Coalesce([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Coalesce(left, right);
         }
@@ -382,7 +383,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="left" />.Type and <paramref name="right" />.Type are not convertible to each other.-or-<paramref name="conversion" /> is not null and <paramref name="conversion" />.Type is a delegate type that does not take exactly one argument.</exception>
         /// <exception cref="T:System.InvalidOperationException">The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of <paramref name="left" /> does not represent a reference type or a nullable value type.-or-The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of <paramref name="left" /> represents a type that is not assignable to the parameter type of the delegate type <paramref name="conversion" />.Type.-or-The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of <paramref name="right" /> is not equal to the return type of the delegate type <paramref name="conversion" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Coalesce([NotNull] this Expression left, [NotNull] Expression right, [NotNull] LambdaExpression conversion) {
             return Expression.Coalesce(left, right, conversion);
         }
@@ -393,7 +394,7 @@ namespace AshMind.Extensions {
         /// <param name="type">A <see cref="T:System.Type" /> to set the <see cref="P:System.Linq.Expressions.Expression.Type" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="type" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">No conversion operator is defined between <paramref name="expression" />.Type and <paramref name="type" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Convert([NotNull] this Expression expression, [NotNull] Type type) {
             return Expression.Convert(expression, type);
         }
@@ -407,7 +408,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly one argument.</exception>
         /// <exception cref="T:System.InvalidOperationException">No conversion operator is defined between <paramref name="expression" />.Type and <paramref name="type" />.-or-<paramref name="expression" />.Type is not assignable to the argument type of the method represented by <paramref name="method" />.-or-The return type of the method represented by <paramref name="method" /> is not assignable to <paramref name="type" />.-or-<paramref name="expression" />.Type or <paramref name="type" /> is a nullable value type and the corresponding non-nullable value type does not equal the argument type or the return type, respectively, of the method represented by <paramref name="method" />.</exception>
         /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method that matches the <paramref name="method" /> description was found.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Convert([NotNull] this Expression expression, [NotNull] Type type, [NotNull] MethodInfo method) {
             return Expression.Convert(expression, type, method);
         }
@@ -418,7 +419,7 @@ namespace AshMind.Extensions {
         /// <param name="type">A <see cref="T:System.Type" /> to set the <see cref="P:System.Linq.Expressions.Expression.Type" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="type" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">No conversion operator is defined between <paramref name="expression" />.Type and <paramref name="type" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression ConvertChecked([NotNull] this Expression expression, [NotNull] Type type) {
             return Expression.ConvertChecked(expression, type);
         }
@@ -432,7 +433,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly one argument.</exception>
         /// <exception cref="T:System.InvalidOperationException">No conversion operator is defined between <paramref name="expression" />.Type and <paramref name="type" />.-or-<paramref name="expression" />.Type is not assignable to the argument type of the method represented by <paramref name="method" />.-or-The return type of the method represented by <paramref name="method" /> is not assignable to <paramref name="type" />.-or-<paramref name="expression" />.Type or <paramref name="type" /> is a nullable value type and the corresponding non-nullable value type does not equal the argument type or the return type, respectively, of the method represented by <paramref name="method" />.</exception>
         /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method that matches the <paramref name="method" /> description was found.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression ConvertChecked([NotNull] this Expression expression, [NotNull] Type type, [NotNull] MethodInfo method) {
             return Expression.ConvertChecked(expression, type, method);
         }
@@ -441,7 +442,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the decrementing of the expression by 1.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the decremented expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to decrement.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Decrement([NotNull] this Expression expression) {
             return Expression.Decrement(expression);
         }
@@ -452,7 +453,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the decremented expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to decrement.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Decrement([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.Decrement(expression, method);
         }
@@ -464,7 +465,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The division operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Divide([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Divide(left, right);
         }
@@ -477,7 +478,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the division operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Divide([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Divide(left, right, method);
         }
@@ -487,7 +488,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.DivideAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression DivideAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.DivideAssign(left, right);
         }
@@ -499,7 +500,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression DivideAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.DivideAssign(left, right, method);
         }
@@ -512,7 +513,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression DivideAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.DivideAssign(left, right, method, conversion);
         }
@@ -524,7 +525,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The equality operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Equal([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Equal(left, right);
         }
@@ -538,7 +539,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the equality operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Equal([NotNull] this Expression left, [NotNull] Expression right, [NotNull] Boolean liftToNull, [NotNull] MethodInfo method) {
             return Expression.Equal(left, right, liftToNull, method);
         }
@@ -551,7 +552,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the XOR operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ExclusiveOr([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.ExclusiveOr(left, right, method);
         }
@@ -562,7 +563,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The XOR operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ExclusiveOr([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.ExclusiveOr(left, right);
         }
@@ -572,7 +573,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.ExclusiveOrAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ExclusiveOrAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.ExclusiveOrAssign(left, right);
         }
@@ -584,7 +585,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ExclusiveOrAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.ExclusiveOrAssign(left, right, method);
         }
@@ -597,7 +598,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ExclusiveOrAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.ExclusiveOrAssign(left, right, method, conversion);
         }
@@ -609,7 +610,7 @@ namespace AshMind.Extensions {
         /// <param name="field">The <see cref="T:System.Reflection.FieldInfo" /> to set the <see cref="P:System.Linq.Expressions.MemberExpression.Member" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="field" /> is null.-or-The field represented by <paramref name="field" /> is not static (Shared in Visual Basic) and <paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="expression" />.Type is not assignable to the declaring type of the field represented by <paramref name="field" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Field([NotNull] this Expression expression, [NotNull] FieldInfo field) {
             return Expression.Field(expression, field);
         }
@@ -620,7 +621,7 @@ namespace AshMind.Extensions {
         /// <param name="fieldName">The name of a field to be accessed.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="fieldName" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException">No field named <paramref name="fieldName" /> is defined in <paramref name="expression" />.Type or its base types.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Field([NotNull] this Expression expression, [NotNull] String fieldName) {
             return Expression.Field(expression, fieldName);
         }
@@ -631,7 +632,7 @@ namespace AshMind.Extensions {
         /// <param name="expression">The containing object of the field. This can be null for static fields.</param>
         /// <param name="type">The <see cref="P:System.Linq.Expressions.Expression.Type" /> that contains the field.</param>
         /// <param name="fieldName">The field to be accessed.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Field([NotNull] this Expression expression, [NotNull] Type type, [NotNull] String fieldName) {
             return Expression.Field(expression, type, fieldName);
         }
@@ -643,7 +644,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The "greater than" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression GreaterThan([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.GreaterThan(left, right);
         }
@@ -657,7 +658,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the "greater than" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression GreaterThan([NotNull] this Expression left, [NotNull] Expression right, [NotNull] Boolean liftToNull, [NotNull] MethodInfo method) {
             return Expression.GreaterThan(left, right, liftToNull, method);
         }
@@ -668,7 +669,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The "greater than or equal" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression GreaterThanOrEqual([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.GreaterThanOrEqual(left, right);
         }
@@ -682,7 +683,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the "greater than or equal" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression GreaterThanOrEqual([NotNull] this Expression left, [NotNull] Expression right, [NotNull] Boolean liftToNull, [NotNull] MethodInfo method) {
             return Expression.GreaterThanOrEqual(left, right, liftToNull, method);
         }
@@ -692,7 +693,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.ConditionalExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.Conditional" /> and the <see cref="P:System.Linq.Expressions.ConditionalExpression.Test" />, <see cref="P:System.Linq.Expressions.ConditionalExpression.IfTrue" />, properties set to the specified values. The <see cref="P:System.Linq.Expressions.ConditionalExpression.IfFalse" /> property is set to default expression and the type of the resulting <see cref="T:System.Linq.Expressions.ConditionalExpression" /> returned by this method is <see cref="T:System.Void" />.</returns>
         /// <param name="test">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.ConditionalExpression.Test" /> property equal to.</param>
         /// <param name="ifTrue">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.ConditionalExpression.IfTrue" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static ConditionalExpression IfThen([NotNull] this Expression test, [NotNull] Expression ifTrue) {
             return Expression.IfThen(test, ifTrue);
         }
@@ -704,7 +705,7 @@ namespace AshMind.Extensions {
         /// <param name="test">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.ConditionalExpression.Test" /> property equal to.</param>
         /// <param name="ifTrue">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.ConditionalExpression.IfTrue" /> property equal to.</param>
         /// <param name="ifFalse">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.ConditionalExpression.IfFalse" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static ConditionalExpression IfThenElse([NotNull] this Expression test, [NotNull] Expression ifTrue, [NotNull] Expression ifFalse) {
             return Expression.IfThenElse(test, ifTrue, ifFalse);
         }
@@ -714,7 +715,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the incrementing of the expression value by 1.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the incremented expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to increment.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Increment([NotNull] this Expression expression) {
             return Expression.Increment(expression);
         }
@@ -725,7 +726,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the incremented expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to increment.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Increment([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.Increment(expression, method);
         }
@@ -738,7 +739,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="expression" />.Type does not represent a delegate type or an <see cref="T:System.Linq.Expressions.Expression`1" />.-or-The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of an element of <paramref name="arguments" /> is not assignable to the type of the corresponding parameter of the delegate represented by <paramref name="expression" />.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="arguments" /> does not contain the same number of elements as the list of parameters for the delegate represented by <paramref name="expression" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static InvocationExpression Invoke([NotNull] this Expression expression, [NotNull] IEnumerable<Expression> arguments) {
             return Expression.Invoke(expression, arguments);
         }
@@ -750,7 +751,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="expression" />.Type does not represent a delegate type or an <see cref="T:System.Linq.Expressions.Expression`1" />.-or-The <see cref="P:System.Linq.Expressions.Expression.Type" /> property of an element of <paramref name="arguments" /> is not assignable to the type of the corresponding parameter of the delegate represented by <paramref name="expression" />.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="arguments" /> does not contain the same number of elements as the list of parameters for the delegate represented by <paramref name="expression" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static InvocationExpression Invoke([NotNull] this Expression expression, [NotNull] Expression[] arguments) {
             return Expression.Invoke(expression, arguments);
         }
@@ -759,7 +760,7 @@ namespace AshMind.Extensions {
         /// <summary>Returns whether the expression evaluates to false.</summary>
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to evaluate.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression IsFalse([NotNull] this Expression expression) {
             return Expression.IsFalse(expression);
         }
@@ -770,7 +771,7 @@ namespace AshMind.Extensions {
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to evaluate.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression IsFalse([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.IsFalse(expression, method);
         }
@@ -780,7 +781,7 @@ namespace AshMind.Extensions {
         /// <summary>Returns whether the expression evaluates to true.</summary>
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to evaluate.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression IsTrue([NotNull] this Expression expression) {
             return Expression.IsTrue(expression);
         }
@@ -791,7 +792,7 @@ namespace AshMind.Extensions {
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to evaluate.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression IsTrue([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.IsTrue(expression, method);
         }
@@ -803,7 +804,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The left-shift operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LeftShift([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.LeftShift(left, right);
         }
@@ -816,7 +817,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the left-shift operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LeftShift([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.LeftShift(left, right, method);
         }
@@ -826,7 +827,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.LeftShiftAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LeftShiftAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.LeftShiftAssign(left, right);
         }
@@ -838,7 +839,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LeftShiftAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.LeftShiftAssign(left, right, method);
         }
@@ -851,7 +852,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LeftShiftAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.LeftShiftAssign(left, right, method, conversion);
         }
@@ -863,7 +864,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The "less than" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LessThan([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.LessThan(left, right);
         }
@@ -877,7 +878,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the "less than" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LessThan([NotNull] this Expression left, [NotNull] Expression right, [NotNull] Boolean liftToNull, [NotNull] MethodInfo method) {
             return Expression.LessThan(left, right, liftToNull, method);
         }
@@ -888,7 +889,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The "less than or equal" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LessThanOrEqual([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.LessThanOrEqual(left, right);
         }
@@ -902,7 +903,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the "less than or equal" operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression LessThanOrEqual([NotNull] this Expression left, [NotNull] Expression right, [NotNull] Boolean liftToNull, [NotNull] MethodInfo method) {
             return Expression.LessThanOrEqual(left, right, liftToNull, method);
         }
@@ -913,7 +914,7 @@ namespace AshMind.Extensions {
         /// <param name="instance">The object to which the property belongs. It should be null if the property is static (shared in Visual Basic).</param>
         /// <param name="indexer">An <see cref="T:System.Linq.Expressions.Expression" /> representing the property to index.</param>
         /// <param name="arguments">An IEnumerable&lt;Expression&gt; (IEnumerable (Of Expression) in Visual Basic) that contains the arguments that will be used to index the property.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IndexExpression MakeIndex([NotNull] this Expression instance, [NotNull] PropertyInfo indexer, [NotNull] IEnumerable<Expression> arguments) {
             return Expression.MakeIndex(instance, indexer, arguments);
         }
@@ -925,7 +926,7 @@ namespace AshMind.Extensions {
         /// <param name="member">The <see cref="T:System.Reflection.MemberInfo" /> that describes the field or property to be accessed.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="member" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="member" /> does not represent a field or property.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression MakeMemberAccess([NotNull] this Expression expression, [NotNull] MemberInfo member) {
             return Expression.MakeMemberAccess(expression, member);
         }
@@ -936,7 +937,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The modulus operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Modulo([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Modulo(left, right);
         }
@@ -949,7 +950,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the modulus operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Modulo([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Modulo(left, right, method);
         }
@@ -959,7 +960,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.ModuloAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ModuloAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.ModuloAssign(left, right);
         }
@@ -971,7 +972,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ModuloAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.ModuloAssign(left, right, method);
         }
@@ -984,7 +985,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ModuloAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.ModuloAssign(left, right, method, conversion);
         }
@@ -996,7 +997,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The multiplication operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Multiply([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Multiply(left, right);
         }
@@ -1009,7 +1010,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the multiplication operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Multiply([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Multiply(left, right, method);
         }
@@ -1019,7 +1020,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.MultiplyAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.MultiplyAssign(left, right);
         }
@@ -1031,7 +1032,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.MultiplyAssign(left, right, method);
         }
@@ -1044,7 +1045,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.MultiplyAssign(left, right, method, conversion);
         }
@@ -1055,7 +1056,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.MultiplyAssignChecked" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyAssignChecked([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.MultiplyAssignChecked(left, right);
         }
@@ -1067,7 +1068,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyAssignChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.MultiplyAssignChecked(left, right, method);
         }
@@ -1080,7 +1081,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyAssignChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.MultiplyAssignChecked(left, right, method, conversion);
         }
@@ -1092,7 +1093,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The multiplication operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyChecked([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.MultiplyChecked(left, right);
         }
@@ -1105,7 +1106,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the multiplication operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression MultiplyChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.MultiplyChecked(left, right, method);
         }
@@ -1115,7 +1116,7 @@ namespace AshMind.Extensions {
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.UnaryExpression.Operand" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The unary minus operator is not defined for <paramref name="expression" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Negate([NotNull] this Expression expression) {
             return Expression.Negate(expression);
         }
@@ -1127,7 +1128,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly one argument.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the unary minus operator is not defined for <paramref name="expression" />.Type.-or-<paramref name="expression" />.Type (or its corresponding non-nullable type if it is a nullable value type) is not assignable to the argument type of the method represented by <paramref name="method" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Negate([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.Negate(expression, method);
         }
@@ -1137,7 +1138,7 @@ namespace AshMind.Extensions {
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.UnaryExpression.Operand" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The unary minus operator is not defined for <paramref name="expression" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression NegateChecked([NotNull] this Expression expression) {
             return Expression.NegateChecked(expression);
         }
@@ -1149,7 +1150,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly one argument.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the unary minus operator is not defined for <paramref name="expression" />.Type.-or-<paramref name="expression" />.Type (or its corresponding non-nullable type if it is a nullable value type) is not assignable to the argument type of the method represented by <paramref name="method" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression NegateChecked([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.NegateChecked(expression, method);
         }
@@ -1160,7 +1161,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The inequality operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression NotEqual([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.NotEqual(left, right);
         }
@@ -1174,7 +1175,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the inequality operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression NotEqual([NotNull] this Expression left, [NotNull] Expression right, [NotNull] Boolean liftToNull, [NotNull] MethodInfo method) {
             return Expression.NotEqual(left, right, liftToNull, method);
         }
@@ -1183,7 +1184,7 @@ namespace AshMind.Extensions {
         /// <summary>Returns the expression representing the ones complement.</summary>
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" />.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression OnesComplement([NotNull] this Expression expression) {
             return Expression.OnesComplement(expression);
         }
@@ -1194,7 +1195,7 @@ namespace AshMind.Extensions {
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" />.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression OnesComplement([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.OnesComplement(expression, method);
         }
@@ -1206,7 +1207,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The bitwise OR operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Or([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Or(left, right);
         }
@@ -1219,7 +1220,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the bitwise OR operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Or([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Or(left, right, method);
         }
@@ -1229,7 +1230,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.OrAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression OrAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.OrAssign(left, right);
         }
@@ -1241,7 +1242,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression OrAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.OrAssign(left, right, method);
         }
@@ -1254,7 +1255,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression OrAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.OrAssign(left, right, method, conversion);
         }
@@ -1266,7 +1267,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The bitwise OR operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.-or-<paramref name="left" />.Type and <paramref name="right" />.Type are not the same Boolean type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression OrElse([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.OrElse(left, right);
         }
@@ -1279,7 +1280,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the bitwise OR operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.-or-<paramref name="method" /> is null and <paramref name="left" />.Type and <paramref name="right" />.Type are not the same Boolean type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression OrElse([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.OrElse(left, right, method);
         }
@@ -1288,7 +1289,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the assignment of the expression followed by a subsequent decrement by 1 of the original expression.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PostDecrementAssign([NotNull] this Expression expression) {
             return Expression.PostDecrementAssign(expression);
         }
@@ -1299,7 +1300,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PostDecrementAssign([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.PostDecrementAssign(expression, method);
         }
@@ -1309,7 +1310,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the assignment of the expression followed by a subsequent increment by 1 of the original expression.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PostIncrementAssign([NotNull] this Expression expression) {
             return Expression.PostIncrementAssign(expression);
         }
@@ -1320,7 +1321,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PostIncrementAssign([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.PostIncrementAssign(expression, method);
         }
@@ -1332,7 +1333,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The exponentiation operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.-or-<paramref name="left" />.Type and/or <paramref name="right" />.Type are not <see cref="T:System.Double" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Power([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Power(left, right);
         }
@@ -1345,7 +1346,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the exponentiation operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.-or-<paramref name="method" /> is null and <paramref name="left" />.Type and/or <paramref name="right" />.Type are not <see cref="T:System.Double" />.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Power([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Power(left, right, method);
         }
@@ -1355,7 +1356,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.PowerAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression PowerAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.PowerAssign(left, right);
         }
@@ -1367,7 +1368,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression PowerAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.PowerAssign(left, right, method);
         }
@@ -1380,7 +1381,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression PowerAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.PowerAssign(left, right, method, conversion);
         }
@@ -1390,7 +1391,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that decrements the expression by 1 and assigns the result back to the expression.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PreDecrementAssign([NotNull] this Expression expression) {
             return Expression.PreDecrementAssign(expression);
         }
@@ -1401,7 +1402,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PreDecrementAssign([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.PreDecrementAssign(expression, method);
         }
@@ -1411,7 +1412,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that increments the expression by 1 and assigns the result back to the expression.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PreIncrementAssign([NotNull] this Expression expression) {
             return Expression.PreIncrementAssign(expression);
         }
@@ -1422,7 +1423,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the resultant expression.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to apply the operations on.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> that represents the implementing method.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression PreIncrementAssign([NotNull] this Expression expression, [NotNull] MethodInfo method) {
             return Expression.PreIncrementAssign(expression, method);
         }
@@ -1434,7 +1435,7 @@ namespace AshMind.Extensions {
         /// <param name="propertyName">The name of a property to be accessed.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="propertyName" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException">No property named <paramref name="propertyName" /> is defined in <paramref name="expression" />.Type or its base types.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Property([NotNull] this Expression expression, [NotNull] String propertyName) {
             return Expression.Property(expression, propertyName);
         }
@@ -1445,7 +1446,7 @@ namespace AshMind.Extensions {
         /// <param name="expression">The containing object of the property. This can be null for static properties.</param>
         /// <param name="type">The <see cref="P:System.Linq.Expressions.Expression.Type" /> that contains the property.</param>
         /// <param name="propertyName">The property to be accessed.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Property([NotNull] this Expression expression, [NotNull] Type type, [NotNull] String propertyName) {
             return Expression.Property(expression, type, propertyName);
         }
@@ -1457,7 +1458,7 @@ namespace AshMind.Extensions {
         /// <param name="property">The <see cref="T:System.Reflection.PropertyInfo" /> to set the <see cref="P:System.Linq.Expressions.MemberExpression.Member" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="property" /> is null.-or-The property that <paramref name="property" /> represents is not static (Shared in Visual Basic) and <paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="expression" />.Type is not assignable to the declaring type of the property that <paramref name="property" /> represents.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Property([NotNull] this Expression expression, [NotNull] PropertyInfo property) {
             return Expression.Property(expression, property);
         }
@@ -1468,7 +1469,7 @@ namespace AshMind.Extensions {
         /// <param name="propertyAccessor">The <see cref="T:System.Reflection.MethodInfo" /> that represents a property accessor method.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="propertyAccessor" /> is null.-or-The method that <paramref name="propertyAccessor" /> represents is not static (Shared in Visual Basic) and <paramref name="expression" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="expression" />.Type is not assignable to the declaring type of the method represented by <paramref name="propertyAccessor" />.-or-The method that <paramref name="propertyAccessor" /> represents is not a property accessor method.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression Property([NotNull] this Expression expression, [NotNull] MethodInfo propertyAccessor) {
             return Expression.Property(expression, propertyAccessor);
         }
@@ -1479,7 +1480,7 @@ namespace AshMind.Extensions {
         /// <param name="instance">The object to which the property belongs. If the property is static/shared, it must be null.</param>
         /// <param name="propertyName">The name of the indexer.</param>
         /// <param name="arguments">An array of <see cref="T:System.Linq.Expressions.Expression" /> objects that are used to index the property.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IndexExpression Property([NotNull] this Expression instance, [NotNull] String propertyName, [NotNull] Expression[] arguments) {
             return Expression.Property(instance, propertyName, arguments);
         }
@@ -1491,7 +1492,7 @@ namespace AshMind.Extensions {
         /// <param name="instance">The object to which the property belongs. If the property is static/shared, it must be null.</param>
         /// <param name="indexer">The <see cref="T:System.Reflection.PropertyInfo" /> that represents the property to index.</param>
         /// <param name="arguments">An array of <see cref="T:System.Linq.Expressions.Expression" /> objects that are used to index the property.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IndexExpression Property([NotNull] this Expression instance, [NotNull] PropertyInfo indexer, [NotNull] Expression[] arguments) {
             return Expression.Property(instance, indexer, arguments);
         }
@@ -1503,7 +1504,7 @@ namespace AshMind.Extensions {
         /// <param name="instance">The object to which the property belongs. If the property is static/shared, it must be null.</param>
         /// <param name="indexer">The <see cref="T:System.Reflection.PropertyInfo" /> that represents the property to index.</param>
         /// <param name="arguments">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Linq.Expressions.Expression" /> objects that are used to index the property.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IndexExpression Property([NotNull] this Expression instance, [NotNull] PropertyInfo indexer, [NotNull] IEnumerable<Expression> arguments) {
             return Expression.Property(instance, indexer, arguments);
         }
@@ -1515,7 +1516,7 @@ namespace AshMind.Extensions {
         /// <param name="propertyOrFieldName">The name of a property or field to be accessed.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="propertyOrFieldName" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException">No property or field named <paramref name="propertyOrFieldName" /> is defined in <paramref name="expression" />.Type or its base types.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static MemberExpression PropertyOrField([NotNull] this Expression expression, [NotNull] String propertyOrFieldName) {
             return Expression.PropertyOrField(expression, propertyOrFieldName);
         }
@@ -1524,7 +1525,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.Quote" /> and the <see cref="P:System.Linq.Expressions.UnaryExpression.Operand" /> property set to the specified value.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.UnaryExpression.Operand" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> is null.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Quote([NotNull] this Expression expression) {
             return Expression.Quote(expression);
         }
@@ -1534,7 +1535,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.Equal" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ReferenceEqual([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.ReferenceEqual(left, right);
         }
@@ -1545,7 +1546,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.NotEqual" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression ReferenceNotEqual([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.ReferenceNotEqual(left, right);
         }
@@ -1557,7 +1558,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The right-shift operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression RightShift([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.RightShift(left, right);
         }
@@ -1570,7 +1571,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the right-shift operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression RightShift([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.RightShift(left, right, method);
         }
@@ -1580,7 +1581,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.RightShiftAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression RightShiftAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.RightShiftAssign(left, right);
         }
@@ -1592,7 +1593,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression RightShiftAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.RightShiftAssign(left, right, method);
         }
@@ -1605,7 +1606,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression RightShiftAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.RightShiftAssign(left, right, method, conversion);
         }
@@ -1617,7 +1618,7 @@ namespace AshMind.Extensions {
         /// <param name="right">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The subtraction operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Subtract([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.Subtract(left, right);
         }
@@ -1630,7 +1631,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the subtraction operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression Subtract([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.Subtract(left, right, method);
         }
@@ -1640,7 +1641,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.SubtractAssign" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractAssign([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.SubtractAssign(left, right);
         }
@@ -1652,7 +1653,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.SubtractAssign(left, right, method);
         }
@@ -1665,7 +1666,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractAssign([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.SubtractAssign(left, right, method, conversion);
         }
@@ -1676,7 +1677,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.BinaryExpression" /> that has the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property equal to <see cref="F:System.Linq.Expressions.ExpressionType.SubtractAssignChecked" /> and the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> and <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> properties set to the specified values.</returns>
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractAssignChecked([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.SubtractAssignChecked(left, right);
         }
@@ -1688,7 +1689,7 @@ namespace AshMind.Extensions {
         /// <param name="left">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Left" /> property equal to.</param>
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractAssignChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.SubtractAssignChecked(left, right, method);
         }
@@ -1701,7 +1702,7 @@ namespace AshMind.Extensions {
         /// <param name="right">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <param name="method">A <see cref="T:System.Reflection.MethodInfo" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Method" /> property equal to.</param>
         /// <param name="conversion">A <see cref="T:System.Linq.Expressions.LambdaExpression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Conversion" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractAssignChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method, [NotNull] LambdaExpression conversion) {
             return Expression.SubtractAssignChecked(left, right, method, conversion);
         }
@@ -1713,7 +1714,7 @@ namespace AshMind.Extensions {
         /// <param name="right">A <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.BinaryExpression.Right" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.InvalidOperationException">The subtraction operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractChecked([NotNull] this Expression left, [NotNull] Expression right) {
             return Expression.SubtractChecked(left, right);
         }
@@ -1726,7 +1727,7 @@ namespace AshMind.Extensions {
         /// <exception cref="T:System.ArgumentNullException"><paramref name="left" /> or <paramref name="right" /> is null.</exception>
         /// <exception cref="T:System.ArgumentException"><paramref name="method" /> is not null and the method it represents returns void, is not static (Shared in Visual Basic), or does not take exactly two arguments.</exception>
         /// <exception cref="T:System.InvalidOperationException"><paramref name="method" /> is null and the subtraction operator is not defined for <paramref name="left" />.Type and <paramref name="right" />.Type.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static BinaryExpression SubtractChecked([NotNull] this Expression left, [NotNull] Expression right, [NotNull] MethodInfo method) {
             return Expression.SubtractChecked(left, right, method);
         }
@@ -1735,7 +1736,7 @@ namespace AshMind.Extensions {
         /// <summary>Creates a <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents a throwing of an exception.</summary>
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the exception.</returns>
         /// <param name="value">An <see cref="T:System.Linq.Expressions.Expression" />.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Throw([NotNull] this Expression value) {
             return Expression.Throw(value);
         }
@@ -1746,7 +1747,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.UnaryExpression" /> that represents the exception.</returns>
         /// <param name="value">An <see cref="T:System.Linq.Expressions.Expression" />.</param>
         /// <param name="type">The new <see cref="T:System.Type" /> of the expression.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Throw([NotNull] this Expression value, [NotNull] Type type) {
             return Expression.Throw(value, type);
         }
@@ -1757,7 +1758,7 @@ namespace AshMind.Extensions {
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.UnaryExpression.Operand" /> property equal to.</param>
         /// <param name="type">A <see cref="T:System.Type" /> to set the <see cref="P:System.Linq.Expressions.Expression.Type" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="type" /> is null.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression TypeAs([NotNull] this Expression expression, [NotNull] Type type) {
             return Expression.TypeAs(expression, type);
         }
@@ -1767,7 +1768,7 @@ namespace AshMind.Extensions {
         /// <returns>A <see cref="T:System.Linq.Expressions.TypeBinaryExpression" /> for which the <see cref="P:System.Linq.Expressions.Expression.NodeType" /> property is equal to <see cref="M:System.Linq.Expressions.Expression.TypeEqual(System.Linq.Expressions.Expression,System.Type)" /> and for which the <see cref="T:System.Linq.Expressions.Expression" /> and <see cref="P:System.Linq.Expressions.TypeBinaryExpression.TypeOperand" /> properties are set to the specified values.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="T:System.Linq.Expressions.Expression" /> property equal to.</param>
         /// <param name="type">A <see cref="P:System.Linq.Expressions.Expression.Type" /> to set the <see cref="P:System.Linq.Expressions.TypeBinaryExpression.TypeOperand" /> property equal to.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TypeBinaryExpression TypeEqual([NotNull] this Expression expression, [NotNull] Type type) {
             return Expression.TypeEqual(expression, type);
         }
@@ -1778,7 +1779,7 @@ namespace AshMind.Extensions {
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to set the <see cref="P:System.Linq.Expressions.TypeBinaryExpression.Expression" /> property equal to.</param>
         /// <param name="type">A <see cref="P:System.Linq.Expressions.Expression.Type" /> to set the <see cref="P:System.Linq.Expressions.TypeBinaryExpression.TypeOperand" /> property equal to.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="expression" /> or <paramref name="type" /> is null.</exception>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static TypeBinaryExpression TypeIs([NotNull] this Expression expression, [NotNull] Type type) {
             return Expression.TypeIs(expression, type);
         }
@@ -1788,7 +1789,7 @@ namespace AshMind.Extensions {
         /// <returns>An instance of <see cref="T:System.Linq.Expressions.UnaryExpression" />.</returns>
         /// <param name="expression">An <see cref="T:System.Linq.Expressions.Expression" /> to unbox.</param>
         /// <param name="type">The new <see cref="T:System.Type" /> of the expression.</param>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static UnaryExpression Unbox([NotNull] this Expression expression, [NotNull] Type type) {
             return Expression.Unbox(expression, type);
         }

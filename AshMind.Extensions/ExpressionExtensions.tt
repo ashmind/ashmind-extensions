@@ -122,6 +122,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq.Expressions;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 // ReSharper disable AnnotationRedundanceAtValueType
 namespace AshMind.Extensions {
@@ -153,7 +154,7 @@ namespace AshMind.Extensions {
                 WriteLine("        #if Net4_Expressions");
 
             WriteLine(comment);
-            WriteLine("        [Pure] [NotNull]");
+            WriteLine("        [Contracts.Pure] [Pure] [NotNull]");
             WriteLine("        public static {0} {1}([NotNull] this {2}) {{", method.ReturnType.Name, method.Name, parameterString);
             WriteLine("            return Expression.{0}({1});", method.Name, argumentString);
             WriteLine("        }");

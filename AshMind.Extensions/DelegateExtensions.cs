@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -30,7 +31,7 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="function">A function to convert.</param>
         /// <returns>Predicate&lt;T&gt; identical to the original function.</returns>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static Predicate<T> AsPredicate<T>([NotNull] this Func<T, bool> function) {
             return As<Predicate<T>>(function);
         }
@@ -40,7 +41,7 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="predicate">A predicate to convert.</param>
         /// <returns>Func&lt;T, bool&gt; identical to the original predicate.</returns>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static Func<T, bool> AsFunction<T>([NotNull] this Predicate<T> predicate) {
             return As<Func<T, bool>>(predicate);
         }
@@ -50,7 +51,7 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="function">A function to convert.</param>
         /// <returns><see cref="Comparison&lt;T&gt;" /> identical to the original function.</returns>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static Comparison<T> AsComparison<T>([NotNull] this Func<T, T, int> function) {
             return As<Comparison<T>>(function);
         }
@@ -60,18 +61,18 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="comparison">A comparison to convert.</param>
         /// <returns>Func&lt;T, T, int&gt; identical to the original comparison.</returns>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static Func<T, T, int> AsFunction<T>([NotNull] this Comparison<T> comparison) {
             return As<Func<T, T, int>>(comparison);
         }
 
         #if MethodInfo_CreateDelegate
-        [NotNull]
+        [Contracts.Pure] [NotNull]
         private static TDelegate As<TDelegate>([NotNull] Delegate @delegate) {
             return (TDelegate)(object)@delegate.GetMethodInfo().CreateDelegate(typeof(TDelegate), @delegate.Target);
         }
         #else
-        [NotNull]
+        [Contracts.Pure] [NotNull]
         private static TDelegate As<TDelegate>([NotNull] Delegate @delegate) {
             return (TDelegate)(object)Delegate.CreateDelegate(typeof(TDelegate), @delegate.Target, @delegate.Method);
         }
@@ -82,7 +83,7 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="comparison">A comparison to convert.</param>
         /// <returns><see cref="IComparer&lt;T&gt;" /> that acts identical to the original comparison.</returns>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IComparer<T> ToComparer<T>([NotNull] this Comparison<T> comparison) {
             return new DelegateBasedComparer<T>(comparison);
         }
@@ -92,7 +93,7 @@ namespace AshMind.Extensions {
         /// </summary>
         /// <param name="function">A function to convert.</param>
         /// <returns><see cref="IComparer&lt;T&gt;" /> that acts identical to the original function.</returns>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IComparer<T> ToComparer<T>([NotNull] this Func<T, T, int> function) {
             return new DelegateBasedComparer<T>(function.AsComparison());
         }

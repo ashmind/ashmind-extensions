@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
+using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -18,7 +19,7 @@ namespace AshMind.Extensions {
         /// <remarks>
         ///  For instances of <see cref="ReadOnlyCollection&lt;T&gt;" /> the same instance is returned.
         /// </remarks>
-        [Pure] [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static ReadOnlyCollection<T> AsReadOnly<T>([NotNull] this IList<T> list) {
             return (list as ReadOnlyCollection<T>) ?? new ReadOnlyCollection<T>(list);
         }
