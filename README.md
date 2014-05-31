@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/jg5841626qcwpc6b)](https://ci.appveyor.com/project/ashmind/ashmind-extensions)
+
 ### Array
   1. IndexOf
   2. LastIndexOf

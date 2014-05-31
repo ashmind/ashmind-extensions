@@ -8,6 +8,9 @@ using JetBrains.Annotations;
 namespace AshMind.Extensions.ReadMeGenerator {
     public class MarkdownGenerator {
         public void WriteTo([NotNull] TextWriter writer) {
+            writer.WriteLine("[![Build status](https://ci.appveyor.com/api/projects/status/jg5841626qcwpc6b)](https://ci.appveyor.com/project/ashmind/ashmind-extensions)");
+            writer.WriteLine();
+
             var extensionsAssembly = typeof(EnumerableExtensions).Assembly;
             var extensionTypes = extensionsAssembly.GetExportedTypes();
 
