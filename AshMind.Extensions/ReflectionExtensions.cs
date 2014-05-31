@@ -106,6 +106,50 @@ namespace AshMind.Extensions {
             return provider.GetCustomAttributes<TAttribute>(false).Single();
         }
 
+        /// <summary>
+        /// Indicates whether one or more instance of <paramref name="attributeType"/> is defined on the specified member.
+        /// </summary>
+        /// <param name="provider">The member to look up the attribute on.</param>
+        /// <param name="attributeType">The type of the custom attributes.</param>
+        /// <returns>
+        /// <c>true</c> if the <paramref name="attributeType"/> is defined on this member; <c>false</c> otherwise.
+        /// </returns>
+        [Contracts.Pure] [Pure]
+        public static bool IsDefined([NotNull] this ICustomAttributeProvider provider, [NotNull] Type attributeType) {
+            if (provider == null) throw new ArgumentNullException("provider");
+            if (attributeType == null) throw new ArgumentNullException("attributeType");
+            Contract.EndContractBlock();
+
+            return provider.IsDefined(attributeType, false);
+        }
+
+        /// <summary>
+        /// Indicates whether one or more instance of <typeparamref name="TAttribute"/> is defined on the specified member.
+        /// </summary>
+        /// <typeparam name="TAttribute">The type of the custom attributes.</typeparam>
+        /// <param name="provider">The member to look up the attribute on.</param>
+        /// <returns>
+        /// <c>true</c> if the <typeparamref name="TAttribute"/> is defined on this member; <c>false</c> otherwise.
+        /// </returns>
+        [Contracts.Pure] [Pure]
+        public static bool IsDefined<TAttribute>([NotNull] this ICustomAttributeProvider provider)
+            where TAttribute : Attribute
+        {
+            if (provider == null) throw new ArgumentNullException("provider");
+            Contract.EndContractBlock();
+
+            return provider.IsDefined(typeof(TAttribute));
+        }
+
+        /// <summary>
+        /// Indicates whether one or more instance of <typeparamref name="TAttribute"/> is defined on the specified member.
+        /// </summary>
+        /// <typeparam name="TAttribute">The type of the custom attributes.</typeparam>
+        /// <param name="provider">The member to look up the attribute on.</param>
+        /// <param name="inherit">When true, look up the hierarchy chain for the inherited custom attribute.</param>
+        /// <returns>
+        /// <c>true</c> if the <typeparamref name="TAttribute"/> is defined on this member; <c>false</c> otherwise.
+        /// </returns>
         [Contracts.Pure] [Pure]
         public static bool IsDefined<TAttribute>([NotNull] this ICustomAttributeProvider provider, bool inherit)
             where TAttribute : Attribute

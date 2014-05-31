@@ -12,13 +12,13 @@ namespace AshMind.Extensions.ReadMeGenerator {
             var extensionTypes = extensionsAssembly.GetExportedTypes();
 
             foreach (var type in extensionTypes.OrderBy(t => t.Name)) {
-                if (type.IsDefined<ObsoleteAttribute>(false))
+                if (type.IsDefined<ObsoleteAttribute>())
                     continue;
 
-                writer.WriteLine("### {0}", type.Name);
+                writer.WriteLine("### {0}", type.Name.RemoveEnd("Extensions"));
 
                 var methodNames = type.GetMethods(BindingFlags.Static | BindingFlags.Public)
-                                      .Where(m => !m.IsDefined<ObsoleteAttribute>(false))
+                                      .Where(m => !m.IsDefined<ObsoleteAttribute>())
                                       .Select(m => m.Name)
                                       .Distinct()
                                       .OrderBy(n => n);
