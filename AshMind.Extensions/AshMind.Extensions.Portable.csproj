@@ -41,6 +41,7 @@
     <Compile Include="CharExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="ComparableExtensions.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="DelegateExtensions.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="DoubleExtensions.cs" />

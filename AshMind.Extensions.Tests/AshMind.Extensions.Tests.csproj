@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="CollectionExtensionsTests.cs" />
     <Compile Include="ArrayExtensionsTests.cs" />
+    <Compile Include="DateTimeExtensionsTests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="DelegateExtensionTests.cs" />
     <Compile Include="DoubleExtensionsTests.cs" />
