@@ -38,6 +38,12 @@
   4. IsLesserThan
   5. IsLesserThanOrEqual
 
+### DateTime
+  1. TruncateToHours
+  2. TruncateToMilliseconds
+  3. TruncateToMinutes
+  4. TruncateToSeconds
+
 ### Delegate
   1. AsComparison
   2. AsFunction
