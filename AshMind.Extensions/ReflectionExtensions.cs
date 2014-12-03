@@ -284,13 +284,45 @@ namespace AshMind.Extensions {
             return type.GetGenericTypeDefinition() == otherType;
         }
 
-        #if MethodInfo_CreateDelegate
+        #if !MethodInfo_CreateDelegate
+        /// <summary>
+        /// Creates a delegate of the specified type from a specified method.
+        /// </summary>
+        /// <param name="method">The method to create the delegate for.</param>
+        /// <param name="delegateType">The type of the delegate to create.</param>
+        /// <returns>The delegate for <paramref name="method" />.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static Delegate CreateDelegate([NotNull] this MethodInfo method, [NotNull] Type delegateType) {
+            if (method == null) throw new ArgumentNullException("method");
+            Contract.EndContractBlock();
+
+            return Delegate.CreateDelegate(delegateType, method);
+        }
+
+        /// <summary>
+        /// Creates a delegate of the specified type with the specified target from a specified method.
+        /// </summary>
+        /// <param name="method">The method to create the delegate for.</param>
+        /// <param name="delegateType">The type of the delegate to create.</param>
+        /// <param name="target">The object targeted by the delegate.</param>
+        /// <returns>The delegate for <paramref name="method" />.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static Delegate CreateDelegate([NotNull] this MethodInfo method, [NotNull] Type delegateType, object target) {
+            if (method == null) throw new ArgumentNullException("method");
+            Contract.EndContractBlock();
+
+            return Delegate.CreateDelegate(delegateType, target, method);
+        }
+        #endif
+
         /// <summary>
         /// Creates a delegate of the specified type from a specified method.
         /// </summary>
         /// <typeparam name="TDelegate">The type of the delegate to create.</typeparam>
         /// <param name="method">The method to create the delegate for.</param>
-        /// <returns>The delegate for this method.</returns>
+        /// <returns>The delegate for <paramref name="method" />.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method) {
@@ -306,7 +338,7 @@ namespace AshMind.Extensions {
         /// <typeparam name="TDelegate">The type of the delegate to create.</typeparam>
         /// <param name="method">The method to create the delegate for.</param>
         /// <param name="target">The object targeted by the delegate.</param>
-        /// <returns>The delegate for this method.</returns>
+        /// <returns>The delegate for <paramref name="method" />.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method, object target) {
@@ -315,7 +347,6 @@ namespace AshMind.Extensions {
 
             return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate), target);
         }
-        #endif
 
         #if !TypeInfo
         /// <summary>
