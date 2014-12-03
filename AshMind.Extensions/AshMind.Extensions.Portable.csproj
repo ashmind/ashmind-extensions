@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ArrayExtensions.cs" />
+    <Compile Include="AssemblyExtensions.cs" />
     <Compile Include="CharExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="ComparableExtensions.cs" />

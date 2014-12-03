@@ -6,6 +6,10 @@
   3. Reverse
   4. Sort
 
+### Assembly
+  1. GetAssemblyFile
+  2. GetAssemblyFileFromCodeBase
+
 ### Char
   1. IsControl
   2. IsDigit

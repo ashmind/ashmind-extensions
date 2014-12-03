@@ -19,7 +19,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\lib\net35\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net35\</IntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;ICustomAttributeProvider; Char_ToUpperOrLower_Culture</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ICustomAttributeProvider; Char_ToUpperOrLower_Culture; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\lib\net35\AshMind.Extensions.xml</DocumentationFile>
@@ -29,7 +29,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\lib\net35\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net35\</IntermediateOutputPath>
-    <DefineConstants>TRACE;ICustomAttributeProvider; Char_ToUpperOrLower_Culture</DefineConstants>
+    <DefineConstants>TRACE;ICustomAttributeProvider; Char_ToUpperOrLower_Culture; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\lib\net35\AshMind.Extensions.xml</DocumentationFile>
@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayExtensions.cs" />
+    <Compile Include="AssemblyExtensions.cs" />
     <Compile Include="CharExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="ComparableExtensions.cs" />

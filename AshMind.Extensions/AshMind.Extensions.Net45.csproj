@@ -19,7 +19,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\lib\net45\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; ICustomAttributeProvider; Net45_Property_SetValue; Char_ToUpperOrLower_Culture; MethodInfo_CreateDelegate</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; ICustomAttributeProvider; Net45_Property_SetValue; Char_ToUpperOrLower_Culture; MethodInfo_CreateDelegate; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
@@ -63,7 +63,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\lib\net45\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net45\</IntermediateOutputPath>
-    <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; ICustomAttributeProvider; Net45_Property_SetValue; Char_ToUpperOrLower_Culture; MethodInfo_CreateDelegate</DefineConstants>
+    <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; ICustomAttributeProvider; Net45_Property_SetValue; Char_ToUpperOrLower_Culture; MethodInfo_CreateDelegate; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayExtensions.cs" />
+    <Compile Include="AssemblyExtensions.cs" />
     <Compile Include="CharExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="ComparableExtensions.cs" />
