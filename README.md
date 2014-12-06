@@ -1,7 +1,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/jg5841626qcwpc6b)](https://ci.appveyor.com/project/ashmind/ashmind-extensions)
 
-A set of very conservative extension methods -- most of those closely follow common naming and implementation patterns in the .NET framework. You can get it from NuGet as [AshMind.Extensions](https://www.nuget.org/packages/AshMind.Extensions/).
+A set of very conservative extension methods — most of those closely follow common naming and implementation patterns in the .NET framework. You can get it from NuGet as [AshMind.Extensions](https://www.nuget.org/packages/AshMind.Extensions/).
 
+Below is an auto-generated list of the methods provided:
 ### Array
   1. IndexOf
   2. LastIndexOf
