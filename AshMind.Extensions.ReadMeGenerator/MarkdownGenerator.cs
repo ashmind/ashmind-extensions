@@ -10,6 +10,9 @@ namespace AshMind.Extensions.ReadMeGenerator {
         public void WriteTo([NotNull] TextWriter writer) {
             writer.WriteLine("[![Build status](https://ci.appveyor.com/api/projects/status/jg5841626qcwpc6b)](https://ci.appveyor.com/project/ashmind/ashmind-extensions)");
             writer.WriteLine();
+            writer.WriteLine("A set of very conservative extension methods — most of those closely follow common naming and implementation patterns in the .NET framework. You can get it from NuGet as [AshMind.Extensions](https://www.nuget.org/packages/AshMind.Extensions/).");
+            writer.WriteLine("");
+            writer.WriteLine("Below is an auto-generated list of the methods provided:");
 
             var extensionsAssembly = typeof(EnumerableExtensions).Assembly;
             var extensionTypes = extensionsAssembly.GetExportedTypes();

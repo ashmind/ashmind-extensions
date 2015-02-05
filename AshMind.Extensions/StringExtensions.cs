@@ -16,7 +16,6 @@ namespace AshMind.Extensions {
         /// <returns>
         ///    <c>true</c> if the <paramref name="value"/> is <c>null</c> or an empty string (""); otherwise, <c>false</c>.
         /// </returns>
-        /// <seealso cref="IsNotNullOrEmpty" />
         [Contracts.Pure] [Pure]
         public static bool IsNullOrEmpty([CanBeNull] this string value) {
             return string.IsNullOrEmpty(value);
@@ -121,26 +120,27 @@ namespace AshMind.Extensions {
         }
         
         /// <summary>
-        /// Returns a substring preceding the first occurence of a specified value.
+        /// Returns a substring preceding the first occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <returns>
-        ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring preceding the first occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringBefore([NotNull] this string original, [NotNull] string value) {
+            // ReSharper disable once StringIndexOfIsCultureSpecific.1
             return original.SubstringBefore(original.IndexOf(value));
         }
 
         /// <summary>
-        /// Returns a substring preceding the first occurence of a specified value.
+        /// Returns a substring preceding the first occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring preceding the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring preceding the first occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringBefore([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
@@ -148,26 +148,27 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Returns a substring before the last occurence of a specified value.
+        /// Returns a substring before the last occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <returns>
-        ///     Substring before the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring before the last occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringBeforeLast([NotNull] this string original, [NotNull] string value) {
+            // ReSharper disable once StringLastIndexOfIsCultureSpecific.1
             return original.SubstringBefore(original.LastIndexOf(value));
         }
 
         /// <summary>
-        /// Returns a substring preceding the last occurence of a specified value.
+        /// Returns a substring preceding the last occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value following the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring preceding the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring preceding the last occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringBeforeLast([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
@@ -183,26 +184,27 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Returns a substring following the first occurence of a specified value.
+        /// Returns a substring following the first occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <returns>
-        ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring following the first occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfter([NotNull] this string original, [NotNull] string value) {
+            // ReSharper disable once StringIndexOfIsCultureSpecific.1
             return original.SubstringAfter(original.IndexOf(value) + value.Length);
         }
 
         /// <summary>
-        /// Returns a substring following the first occurence of a specified value.
+        /// Returns a substring following the first occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring following the first occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring following the first occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfter([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
@@ -210,26 +212,27 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Returns a substring following the last occurence of a specified value.
+        /// Returns a substring following the last occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <returns>
-        ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring following the last occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfterLast([NotNull] this string original, [NotNull] string value) {
+            // ReSharper disable once StringLastIndexOfIsCultureSpecific.1
             return original.SubstringAfter(original.LastIndexOf(value) + value.Length);
         }
 
         /// <summary>
-        /// Returns a substring following the last occurence of a specified value.
+        /// Returns a substring following the last occurrence of a specified value.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to get substring from.</param>
         /// <param name="value">The <see cref="String" /> value preceding the substring.</param>
         /// <param name="comparisonType">One of the <see cref="StringComparison" /> values that determines how <paramref name="original" /> and <paramref name="value" /> are compared.</param>
         /// <returns>
-        ///     Substring following the last occurence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
+        ///     Substring following the last occurrence of <paramref name="value" />, if found; otherwise, the <paramref name="original" /> string.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfterLast([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
@@ -245,7 +248,7 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Removes a leading occurence of the specified value, if present.
+        /// Removes a leading occurrence of the specified value, if present.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to remove from.</param>
         /// <param name="prefix">The <see cref="String" /> value to be removed if present.</param>
@@ -261,7 +264,24 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Removes a trailing occurence of the specified value, if present.
+        /// Removes a leading occurrence of the specified value, if present.
+        /// </summary>
+        /// <param name="original">The <see cref="String" /> value to remove from.</param>
+        /// <param name="prefix">The <see cref="String" /> value to be removed if present.</param>
+        /// <param name="comparison">The <see cref="StringComparison" /> value that defines how <paramref name="original"/> and <paramref name="prefix"/> are compared.</param>
+        /// <returns>
+        ///     The string that remains after an occurrence of <paramref name="prefix" /> is removed from the start of <paramref name="original" /> string.
+        /// </returns>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static string RemoveStart([NotNull] this string original, [NotNull] string prefix, StringComparison comparison) {
+            if (!original.StartsWith(prefix, comparison))
+                return original;
+
+            return original.Substring(prefix.Length);
+        }
+        
+        /// <summary>
+        /// Removes a trailing occurrence of the specified value, if present.
         /// </summary>
         /// <param name="original">The <see cref="String" /> value to remove from.</param>
         /// <param name="suffix">The <see cref="String" /> value to be removed if present.</param>
@@ -271,6 +291,23 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure] [NotNull]
         public static string RemoveEnd([NotNull] this string original, [NotNull] string suffix) {
             if (!original.EndsWith(suffix))
+                return original;
+
+            return original.Substring(0, original.Length - suffix.Length);
+        }
+
+        /// <summary>
+        /// Removes a trailing occurrence of the specified value, if present. The strings are compared using the specified comparison option.
+        /// </summary>
+        /// <param name="original">The <see cref="String" /> value to remove from.</param>
+        /// <param name="suffix">The <see cref="String" /> value to be removed if present.</param>
+        /// <param name="comparison">The <see cref="StringComparison" /> value that defines how <paramref name="original"/> and <paramref name="suffix"/> are compared.</param>
+        /// <returns>
+        ///     The string that remains after an occurrence of <paramref name="suffix" /> is removed from the end of <paramref name="original" /> string.
+        /// </returns>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static string RemoveEnd([NotNull] this string original, [NotNull] string suffix, StringComparison comparison) {
+            if (!original.EndsWith(suffix, comparison))
                 return original;
 
             return original.Substring(0, original.Length - suffix.Length);
