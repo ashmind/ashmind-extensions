@@ -5,7 +5,16 @@ using System.Linq;
 using JetBrains.Annotations;
 
 namespace AshMind.Extensions {
+    /// <summary>
+    /// Provides a set of extension methods for operations on <see cref="ICollection{T}"/>.
+    /// </summary>
     public static class CollectionExtensions {
+        /// <summary>
+        /// Adds the specified elements to the end of the collection.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements in the <paramref name="collection"/>.</typeparam>
+        /// <param name="collection">The collection to which the elements should be added.</param>
+        /// <param name="values">The elements to add to <paramref name="collection" />.</param>
         public static void AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> values) {
             if (collection == null) throw new ArgumentNullException("collection");
             if (values == null)     throw new ArgumentNullException("values");
@@ -27,23 +36,32 @@ namespace AshMind.Extensions {
                 return;
             }
 
-
-            values.ForEach(collection.Add);
+            foreach (var item in values) {
+                collection.Add(item);
+            }
         }
 
+        /// <summary>
+        /// Removes all occurrences of the specified elements from <see cref="ICollection{T}" />.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements in the <paramref name="collection"/>.</typeparam>
+        /// <param name="collection">The collection from which to remove elements.</param>
+        /// <param name="values">The elements to remove from <paramref name="collection" />.</param>
         public static void RemoveAll<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> values) {
             if (collection == null) throw new ArgumentNullException("collection");
             if (values == null)     throw new ArgumentNullException("values");
             Contract.EndContractBlock();
 
-            values.ForEach(item => collection.Remove(item));
+            foreach (var value in values) {
+                collection.Remove(value);
+            }
         }
 
         /// <summary>
         /// Removes all elements that match the conditions defined by the specified predicate from the collection.
         /// </summary>
         /// <param name="collection">
-        /// The collection from which to remove items.
+        /// The collection from which to remove elements.
         /// </param>
         /// <param name="predicate">
         /// The Func&lt;T, bool&gt; delegate that defines the conditions of the elements to remove.

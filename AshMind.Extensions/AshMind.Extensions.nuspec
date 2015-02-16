@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>AshMind.Extensions</id>
-    <version>1.7.0</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
+    <version>1.7.1</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
     <authors>Andrey Shchekin</authors>
     <owners>Andrey Shchekin</owners>
     <projectUrl>https://github.com/ashmind/ashmind-extensions</projectUrl>
@@ -11,7 +11,10 @@
       Extension methods that could have been written by BCL authors
       (with one or two Ruby-like things thrown in the mix).
     </description>
-    <releaseNotes>Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().</releaseNotes>
+    <releaseNotes>
+      1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() — should improve performance.
+      1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().
+    </releaseNotes>
     <copyright>Copyright (c) 2013–2014 Andrey Shchekin</copyright>
     <tags>extensions</tags>
 
