@@ -87,5 +87,6 @@ namespace AshMind.Extensions.Tests {
         public void TruncateEnd_WithSuffix(string value, int maxLength, string suffix, string expectedResult) {
             Assert.Equal(expectedResult, value.TruncateEnd(maxLength, suffix));
         }
+
     }
 }

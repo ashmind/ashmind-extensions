@@ -17,6 +17,7 @@ namespace AshMind.Extensions {
         ///    <c>true</c> if the <paramref name="value"/> is <c>null</c> or an empty string (""); otherwise, <c>false</c>.
         /// </returns>
         [Contracts.Pure] [Pure]
+        [ContractAnnotation("value:null=>true")]
         public static bool IsNullOrEmpty([CanBeNull] this string value) {
             return string.IsNullOrEmpty(value);
         }
@@ -28,7 +29,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="IsNullOrEmpty" />
         [Contracts.Pure] [Pure]
-        [Obsolete("It is often hard to notice `Not` if you are not aware if it. Please use !x.IsNullOrEmpty() instead.")]
+        [Obsolete("(This will be removed in 2.0) It is often hard to notice `Not` if you are not aware if it. Please use !x.IsNullOrEmpty() instead.")]
         public static bool IsNotNullOrEmpty([CanBeNull] this string value) {
             return !string.IsNullOrEmpty(value);
         }
@@ -42,6 +43,7 @@ namespace AshMind.Extensions {
         ///    <paramref name="value"/> if it is an empty string (""); otherwise, <c>null</c>.
         /// </returns>
         [Contracts.Pure] [Pure] [CanBeNull]
+        [ContractAnnotation("value:null=>null")]
         public static string NullIfEmpty([CanBeNull] this string value) {
             return !string.IsNullOrEmpty(value) ? value : null;
         }
@@ -56,6 +58,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="string.IsNullOrWhiteSpace" />
         [Contracts.Pure] [Pure]
+        [ContractAnnotation("value:null=>true")]
         public static bool IsNullOrWhiteSpace([CanBeNull] this string value) {
             return string.IsNullOrWhiteSpace(value);
         }
