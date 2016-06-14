@@ -20,6 +20,7 @@ namespace AshMind.Extensions {
         /// True if <paramref name="left" /> is greater than <paramref name="right" />; otherwise, false.
         /// </returns>
         [Contracts.Pure] [Pure]
+        [Obsolete("This method will be removed in next major version.")]
         public static bool IsGreaterThan<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T>
         {
@@ -37,6 +38,7 @@ namespace AshMind.Extensions {
         /// True if <paramref name="left" /> is lesser than <paramref name="right" />; otherwise, false.
         /// </returns>
         [Contracts.Pure] [Pure]
+        [Obsolete("This method will be removed in next major version.")]
         public static bool IsLesserThan<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T>
         {
@@ -54,6 +56,7 @@ namespace AshMind.Extensions {
         /// True if <paramref name="left" /> is greater than or equal to <paramref name="right" />; otherwise, false.
         /// </returns>
         [Contracts.Pure] [Pure]
+        [Obsolete("This method will be removed in next major version.")]
         public static bool IsGreaterThanOrEqual<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T> 
         {
@@ -71,6 +74,7 @@ namespace AshMind.Extensions {
         /// True if <paramref name="left" /> is lesser than or equal to <paramref name="right" />; otherwise, false.
         /// </returns>
         [Contracts.Pure] [Pure]
+        [Obsolete("This method will be removed in next major version.")]
         public static bool IsLesserThanOrEqual<TComparable, T>([NotNull] this TComparable left, T right)
             where TComparable : IComparable<T> 
         {
@@ -89,6 +93,7 @@ namespace AshMind.Extensions {
         /// True if the specified value is between the minimm and maximum; otherwise, false.
         /// </returns>
         [Contracts.Pure] [Pure]
+        [Obsolete("This method will be removed in next major version.")]
         public static bool IsBetween<TComparable, T>([NotNull] this TComparable value, T left, T right)
             where TComparable : IComparable<T> 
         {

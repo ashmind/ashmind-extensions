@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
+using PureAttribute = JetBrains.Annotations.PureAttribute;
 
 namespace AshMind.Extensions {
     /// <summary>
@@ -78,8 +80,11 @@ namespace AshMind.Extensions {
         /// <returns>
         /// An <see cref="IEnumerable{T}"/> containing all elements from the specified range.
         /// </returns>
-        [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<T> EnumerateRange<T>([NotNull] this IList<T> list, int index, int count) {
+            if (list == null) throw new ArgumentNullException("list");
+            Contract.EndContractBlock();
+
             for (var i = index; i < index + count; i++) {
                 yield return list[i];
             }
@@ -96,11 +101,30 @@ namespace AshMind.Extensions {
         /// <returns>
         /// An <see cref="IEnumerable{T}"/> containing all elements from the specified range.
         /// </returns>
-        [NotNull]
+        [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<T> EnumerateRange<T>([NotNull] this IReadOnlyList<T> list, int index, int count) {
+            if (list == null) throw new ArgumentNullException("list");
+            Contract.EndContractBlock();
             for (var i = index; i < index + count; i++) {
                 yield return list[i];
             }
+        }
+
+        /// <summary>
+        /// Produces a limited range of elements from the <see cref="List{T}"/>. . 
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
+        /// <param name="list">The list to produce range from.</param>
+        /// <param name="index">The zero-based element index at which the range starts.</param>
+        /// <param name="count">The number of elements in the range.</param>
+        /// <returns>
+        /// An <see cref="IEnumerable{T}"/> containing all elements from the specified range.
+        /// </returns>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static IEnumerable<T> EnumerateRange<T>([NotNull] this List<T> list, int index, int count) {
+            if (list == null) throw new ArgumentNullException("list");
+            Contract.EndContractBlock();
+            return ((IReadOnlyList<T>)list).EnumerateRange(index, count);
         }
         #endif
     }

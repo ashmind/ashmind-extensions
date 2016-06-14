@@ -13,7 +13,7 @@
 <#@ import namespace="System.Xml.Linq" #>
 <#@ import namespace="System.Xml.XPath" #>
 <#@ output extension=".cs" #>
-<# var net4ExpressionTypes = new HashSet<Type> { 
+<# var net4ExpressionTypes = new HashSet<Type> {
        typeof(TryExpression),
        typeof(SwitchCase),
        typeof(SwitchExpression),
