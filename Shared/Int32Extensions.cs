@@ -10,20 +10,6 @@ namespace AshMind.Extensions {
     /// </summary>
     public static class Int32Extensions {
         /// <summary>
-        /// Determines the specified value in between two other values, inclusive.
-        /// </summary>
-        /// <param name="value">The value to compare</param>
-        /// <param name="left">Minimum value that can cause true to be returned</param>
-        /// <param name="right">Maximum value that can cause true to be returned</param>
-        /// <returns>
-        /// True if the specified value is between the minimum and maximum; otherwise, false.
-        /// </returns>
-        [Contracts.Pure] [Pure]
-        public static bool IsBetween(this int value, int left, int right) {
-            return value >= left && value <= right;
-        }
-
-        /// <summary>
         /// Repeats the specified action given number of times.
         /// </summary>
         /// <param name="count">Count of times action should be repeated.</param>

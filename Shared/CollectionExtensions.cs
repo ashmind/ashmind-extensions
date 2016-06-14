@@ -16,8 +16,8 @@ namespace AshMind.Extensions {
         /// <param name="collection">The collection to which the elements should be added.</param>
         /// <param name="values">The elements to add to <paramref name="collection" />.</param>
         public static void AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> values) {
-            if (collection == null) throw new ArgumentNullException("collection");
-            if (values == null)     throw new ArgumentNullException("values");
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
+            if (values == null)     throw new ArgumentNullException(nameof(values));
             Contract.EndContractBlock();
             
             var list = collection as List<T>;
@@ -48,8 +48,8 @@ namespace AshMind.Extensions {
         /// <param name="collection">The collection from which to remove elements.</param>
         /// <param name="values">The elements to remove from <paramref name="collection" />.</param>
         public static void RemoveAll<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> values) {
-            if (collection == null) throw new ArgumentNullException("collection");
-            if (values == null)     throw new ArgumentNullException("values");
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
+            if (values == null)     throw new ArgumentNullException(nameof(values));
             Contract.EndContractBlock();
 
             foreach (var value in values) {
@@ -108,8 +108,8 @@ namespace AshMind.Extensions {
         /// </param>
         /// <returns>The number of elements that were removed from the collection.</returns>
         public static int RemoveWhere<T>([NotNull] this ICollection<T> collection, [NotNull] [InstantHandle] Func<T, int, bool> predicate) {
-            if (collection == null) throw new ArgumentNullException("collection");
-            if (predicate == null)  throw new ArgumentNullException("predicate");
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
+            if (predicate == null)  throw new ArgumentNullException(nameof(predicate));
             Contract.EndContractBlock();
 
             var list = collection as IList<T>;

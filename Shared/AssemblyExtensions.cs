@@ -18,7 +18,7 @@ namespace AshMind.Extensions {
         /// <exception cref="NotSupportedException">The assembly is a dynamic assembly.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static FileInfo GetAssemblyFile([NotNull] this Assembly assembly) {
-            if (assembly == null) throw new ArgumentNullException("assembly");
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
             Contract.EndContractBlock();
 
             return new FileInfo(assembly.Location);
@@ -33,7 +33,7 @@ namespace AshMind.Extensions {
         /// <exception cref="NotSupportedException">The <see cref="Assembly.CodeBase" /> does not contain a file:// URL.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static FileInfo GetAssemblyFileFromCodeBase([NotNull] this Assembly assembly) {
-            if (assembly == null) throw new ArgumentNullException("assembly");
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
             Contract.EndContractBlock();
 
             var uri = new Uri(assembly.EscapedCodeBase);

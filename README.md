@@ -38,13 +38,6 @@ Below is an auto-generated list of the methods provided:
   2. RemoveAll
   3. RemoveWhere
 
-### Comparable
-  1. IsBetween
-  2. IsGreaterThan
-  3. IsGreaterThanOrEqual
-  4. IsLesserThan
-  5. IsLesserThanOrEqual
-
 ### DateTime
   1. TruncateToHours
   2. TruncateToMilliseconds
@@ -58,7 +51,7 @@ Below is an auto-generated list of the methods provided:
   4. ToComparer
 
 ### Dictionary
-  1. AsReadOnly
+  1. AsReadOnlyDictionary
   2. GetOrAdd
   3. GetValueOrDefault
 
@@ -74,32 +67,27 @@ Below is an auto-generated list of the methods provided:
   3. AsList
   4. AsReadOnlyCollection
   5. AsReadOnlyList
-  6. Concat
-  7. EmptyIfNull
-  8. Except
-  9. ForEach
-  10. GroupAdjacentBy
-  11. HavingMax
-  12. HavingMin
-  13. OnAfterEach
-  14. OnAfterLast
-  15. OnBeforeEach
-  16. OnBeforeFirst
-  17. ToSet
+  6. AsSet
+  7. Concat
+  8. EmptyIfNull
+  9. Except
+  10. ForEach
+  11. GroupAdjacentBy
+  12. HavingMax
+  13. HavingMin
+  14. ToSet
 
 ### Formattable
   1. ToInvariantString
   2. ToString
 
 ### Int32
-  1. IsBetween
-  2. Times
+  1. Times
 
 ### List
-  1. AsReadOnly
-  2. EnumerateRange
-  3. InsertRange
-  4. RemoveRange
+  1. EnumerateRange
+  2. InsertRange
+  3. RemoveRange
 
 ### Reflection
   1. CreateDelegate
@@ -112,6 +100,9 @@ Below is an auto-generated list of the methods provided:
   8. IsGenericTypeDefinedAs
   9. IsSameAsOrSubclassOf
   10. IsSubclassOf
+
+### StringBuilder
+  1. AppendJoin
 
 ### String
   1. Contains
@@ -128,11 +119,14 @@ Below is an auto-generated list of the methods provided:
   12. TruncateEnd
 
 ### Time
-  1. Ago
+  1. Day
   2. Days
-  3. Hours
-  4. Milliseconds
-  5. Minute
-  6. Minutes
-  7. Seconds
+  3. Hour
+  4. Hours
+  5. Millisecond
+  6. Milliseconds
+  7. Minute
+  8. Minutes
+  9. Second
+  10. Seconds
 

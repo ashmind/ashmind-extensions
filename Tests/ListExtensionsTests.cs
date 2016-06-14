@@ -10,20 +10,8 @@ namespace AshMind.Extensions.Tests {
     public class ListExtensionsTests {
         public delegate IList<int> ListFactory(params int[] values);
 
-        [Fact]
-        public void AsReadOnly_ReturnsAllItemsFromTheOriginalList() {
-            var list = (new List<int> { 1, 2, 4 }) as IList<int>;
-            Assert.Equal(list.ToArray(), list.AsReadOnly().ToArray());
-        }
-
-        [Fact]
-        public void AsReadOnly_ReturnsSameInstanceForTheReadOnlyCollection() {
-            var collection = new ReadOnlyCollection<int>(new[] { 1, 2, 4 });
-            Assert.Same(collection, collection.AsReadOnly());
-        }
-
         [Theory]
-        [PropertyData("Lists")]
+        [PropertyData(nameof(Lists))]
         public void InsertRange_WorksCorrectly(Expression<ListFactory> factory) {
             var list = factory.Compile()(0, 1, 2, 3, 4);
             list.InsertRange(3, new[] { 21, 22, 23 });
@@ -35,7 +23,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData("Lists")]
+        [PropertyData(nameof(Lists))]
         public void RemoveRange_WorksCorrectly(Expression<ListFactory> factory) {
             var list = factory.Compile()(0, 1, 2, 3, 4);
             list.RemoveRange(1, 3);

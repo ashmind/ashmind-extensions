@@ -31,7 +31,7 @@ namespace AshMind.Extensions {
         public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider member, bool inherit) 
             where TAttribute : Attribute
         {
-            if (member == null) throw new ArgumentNullException("member");
+            if (member == null) throw new ArgumentNullException(nameof(member));
             Contract.EndContractBlock();
 
             return (TAttribute[])member.GetCustomAttributes(typeof(TAttribute), inherit);
@@ -49,7 +49,7 @@ namespace AshMind.Extensions {
         public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider provider) 
             where TAttribute : Attribute
         {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return (TAttribute[])provider.GetCustomAttributes(typeof(TAttribute), true);
@@ -66,7 +66,7 @@ namespace AshMind.Extensions {
         /// <exception cref="InvalidOperationException">This provider is a type loaded into the reflection-only context or a member of such type.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static object[] GetCustomAttributes([NotNull] this ICustomAttributeProvider provider, [NotNull] Type attributeType) {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return provider.GetCustomAttributes(attributeType, true);
@@ -81,7 +81,7 @@ namespace AshMind.Extensions {
         /// <exception cref="InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static object[] GetCustomAttributes([NotNull] this ICustomAttributeProvider provider) {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return provider.GetCustomAttributes(true);
@@ -91,7 +91,7 @@ namespace AshMind.Extensions {
         public static TAttribute GetCustomAttribute<TAttribute>([NotNull] this ICustomAttributeProvider provider, bool inherit)
             where TAttribute : Attribute
         {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return provider.GetCustomAttributes<TAttribute>(inherit).Single();
@@ -101,7 +101,7 @@ namespace AshMind.Extensions {
         public static TAttribute GetCustomAttribute<TAttribute>([NotNull] this ICustomAttributeProvider provider)
             where TAttribute : Attribute
         {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return provider.GetCustomAttributes<TAttribute>(false).Single();
@@ -117,8 +117,8 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure]
         public static bool IsDefined([NotNull] this ICustomAttributeProvider provider, [NotNull] Type attributeType) {
-            if (provider == null) throw new ArgumentNullException("provider");
-            if (attributeType == null) throw new ArgumentNullException("attributeType");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
+            if (attributeType == null) throw new ArgumentNullException(nameof(attributeType));
             Contract.EndContractBlock();
 
             return provider.IsDefined(attributeType, false);
@@ -136,7 +136,7 @@ namespace AshMind.Extensions {
         public static bool IsDefined<TAttribute>([NotNull] this ICustomAttributeProvider provider)
             where TAttribute : Attribute
         {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return provider.IsDefined(typeof(TAttribute));
@@ -155,7 +155,7 @@ namespace AshMind.Extensions {
         public static bool IsDefined<TAttribute>([NotNull] this ICustomAttributeProvider provider, bool inherit)
             where TAttribute : Attribute
         {
-            if (provider == null) throw new ArgumentNullException("provider");
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             Contract.EndContractBlock();
 
             return provider.IsDefined(typeof(TAttribute), inherit);
@@ -178,7 +178,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure]
         public static bool IsAssignableFrom<T>([NotNull] this TypeInfo type)
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             #if TypeInfo
@@ -204,7 +204,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure]
         public static bool IsAssignableTo<T>([NotNull] this TypeInfo type)
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             #if TypeInfo
@@ -232,7 +232,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure]
         public static bool IsAssignableTo([NotNull] this TypeInfo type, [CanBeNull] TypeInfo other)
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             if (other == null)
@@ -244,8 +244,8 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure]
         public static bool IsSameAsOrSubclassOf([NotNull] this TypeInfo type, [NotNull] Type otherType)
         {
-            if (type == null)      throw new ArgumentNullException("type");
-            if (otherType == null) throw new ArgumentNullException("otherType");
+            if (type == null)      throw new ArgumentNullException(nameof(type));
+            if (otherType == null) throw new ArgumentNullException(nameof(otherType));
             Contract.EndContractBlock();
 
             #if TypeInfo
@@ -258,7 +258,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure]
         public static bool IsSameAsOrSubclassOf<TClass>([NotNull] this TypeInfo type)
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             return type.IsSameAsOrSubclassOf(typeof(TClass));
@@ -268,7 +268,7 @@ namespace AshMind.Extensions {
         public static bool IsSubclassOf<T>([NotNull] this TypeInfo type) 
             where T : class
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             return type.IsSubclassOf(typeof(T));
@@ -276,7 +276,7 @@ namespace AshMind.Extensions {
 
         [Contracts.Pure] [Pure]
         public static bool IsGenericTypeDefinedAs([NotNull] this TypeInfo type, [NotNull] Type otherType) {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             if (!type.IsGenericType)
@@ -327,7 +327,7 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method) {
-            if (method == null) throw new ArgumentNullException("method");
+            if (method == null) throw new ArgumentNullException(nameof(method));
             Contract.EndContractBlock();
 
             return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate));
@@ -343,7 +343,7 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="method"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static TDelegate CreateDelegate<TDelegate>([NotNull] this MethodInfo method, object target) {
-            if (method == null) throw new ArgumentNullException("method");
+            if (method == null) throw new ArgumentNullException(nameof(method));
             Contract.EndContractBlock();
 
             return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate), target);
@@ -360,7 +360,7 @@ namespace AshMind.Extensions {
         public static bool HasInterface<TInterface>([NotNull] this TypeInfo type)
             where TInterface : class
         {
-            if (type == null) throw new ArgumentNullException("type");
+            if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();
 
             return type.HasInterface(typeof(TInterface));
@@ -374,8 +374,8 @@ namespace AshMind.Extensions {
         /// <returns><c>true</c> if <paramref name="type"/> implements <paramref name="interfaceType"/>; otherwise, <c>false</c>.</returns>
         [Contracts.Pure] [Pure]
         public static bool HasInterface([NotNull] this TypeInfo type, [NotNull] Type interfaceType) {
-            if (type == null)          throw new ArgumentNullException("type");
-            if (interfaceType == null) throw new ArgumentNullException("interfaceType");
+            if (type == null)          throw new ArgumentNullException(nameof(type));
+            if (interfaceType == null) throw new ArgumentNullException(nameof(interfaceType));
             Contract.EndContractBlock();
 
             return type.GetInterfaces().Contains(interfaceType);

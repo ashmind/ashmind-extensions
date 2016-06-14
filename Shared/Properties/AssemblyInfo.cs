@@ -8,10 +8,10 @@ using AshMind.Extensions.Properties;
 
 [assembly: AssemblyVersion(AssemblyInfo.VersionString)]
 [assembly: AssemblyFileVersion(AssemblyInfo.VersionString)]
-[assembly: AssemblyInformationalVersion(AssemblyInfo.VersionString)]
+[assembly: AssemblyInformationalVersion(AssemblyInfo.VersionString + "-pre-20160614")]
 
 namespace AshMind.Extensions.Properties {
     internal static class AssemblyInfo {
-        public const string VersionString = "1.8.0";
+        public const string VersionString = "2.0.0";
     }
 }

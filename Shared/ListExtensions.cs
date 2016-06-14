@@ -9,23 +9,9 @@ using PureAttribute = JetBrains.Annotations.PureAttribute;
 
 namespace AshMind.Extensions {
     /// <summary>
-    /// Provides a set of extension methods for operations on <see cref="IList&lt;T&gt;" />.
+    /// Provides a set of extension methods for operations on <see cref="IList{T}" />.
     /// </summary>
     public static class ListExtensions {
-        /// <summary>
-        /// Returns the input typed as <see cref="ReadOnlyCollection&lt;T&gt;" />. 
-        /// </summary>
-        /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
-        /// <param name="list">The list to type as <see cref="ReadOnlyCollection&lt;T&gt;" /></param>
-        /// <returns>The input list typed as <see cref="ReadOnlyCollection&lt;T&gt;" />.</returns>
-        /// <remarks>
-        ///  For instances of <see cref="ReadOnlyCollection&lt;T&gt;" /> the same instance is returned.
-        /// </remarks>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static ReadOnlyCollection<T> AsReadOnly<T>([NotNull] this IList<T> list) {
-            return (list as ReadOnlyCollection<T>) ?? new ReadOnlyCollection<T>(list);
-        }
-
         /// <summary>
         /// Inserts the elements of a collection into the <see cref="IList{T}"/> at the specified index.
         /// </summary>
@@ -82,7 +68,7 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<T> EnumerateRange<T>([NotNull] this IList<T> list, int index, int count) {
-            if (list == null) throw new ArgumentNullException("list");
+            if (list == null) throw new ArgumentNullException(nameof(list));
             Contract.EndContractBlock();
 
             for (var i = index; i < index + count; i++) {
@@ -90,7 +76,7 @@ namespace AshMind.Extensions {
             }
         }
 
-        #if IReadOnlyList
+#if IReadOnlyList
         /// <summary>
         /// Produces a limited range of elements from the <see cref="IReadOnlyList{T}"/>. 
         /// </summary>
@@ -103,7 +89,7 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<T> EnumerateRange<T>([NotNull] this IReadOnlyList<T> list, int index, int count) {
-            if (list == null) throw new ArgumentNullException("list");
+            if (list == null) throw new ArgumentNullException(nameof(list));
             Contract.EndContractBlock();
             for (var i = index; i < index + count; i++) {
                 yield return list[i];
@@ -122,10 +108,10 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<T> EnumerateRange<T>([NotNull] this List<T> list, int index, int count) {
-            if (list == null) throw new ArgumentNullException("list");
+            if (list == null) throw new ArgumentNullException(nameof(list));
             Contract.EndContractBlock();
             return ((IReadOnlyList<T>)list).EnumerateRange(index, count);
         }
-        #endif
+#endif
     }
 }

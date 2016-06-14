@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if IReadOnlyCollection
 using System.Collections.ObjectModel;
+#endif
 using System.Diagnostics.Contracts;
 using System.Linq;
 using JetBrains.Annotations;
@@ -13,14 +15,14 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on <see cref="IEnumerable{T}" />. 
     /// </summary>
     public static class EnumerableExtensions {
-        #region Identity
+#region Identity
 
         private static class Functions<TElement> {
             [NotNull]
             public static readonly Func<TElement, TElement> Identity = x => x;
         }
 
-        #endregion
+#endregion
 
         /// <summary>Returns the elements of the specified sequence or an empty sequence if the sequence is <c>null</c>.</summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
@@ -47,11 +49,11 @@ namespace AshMind.Extensions {
         /// <returns>
         ///   <c>true</c> if any elements in the source sequence pass the test in the specified predicate; otherwise, <c>false</c>.
         /// </returns>
-        /// <seealso cref="Enumerable.Any{T}" />
+        /// <seealso cref="Enumerable.Any{T}(IEnumerable{T}, Func{T, bool})" />
         [Contracts.Pure] [Pure]
         public static bool Any<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Func<TSource, int, bool> predicate) {
-            if (source == null)    throw new ArgumentNullException("source");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (source == null)    throw new ArgumentNullException(nameof(source));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
             Contract.EndContractBlock();
 
             var index = 0;
@@ -66,8 +68,8 @@ namespace AshMind.Extensions {
         }
 
         public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (action == null) throw new ArgumentNullException(nameof(action));
             Contract.EndContractBlock();
 
             foreach (var item in source) {
@@ -76,8 +78,8 @@ namespace AshMind.Extensions {
         }
 
         public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource, int> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (action == null) throw new ArgumentNullException(nameof(action));
             Contract.EndContractBlock();
 
             var index = 0;
@@ -97,7 +99,7 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<TSource> Except<TSource>([NotNull] this IEnumerable<TSource> source, [CanBeNull] TSource item) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             foreach (var eachItem in source) {
@@ -120,7 +122,7 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<TSource> Concat<TSource>([NotNull] this IEnumerable<TSource> source, [CanBeNull] TSource item) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             foreach (var each in source) {
@@ -141,8 +143,8 @@ namespace AshMind.Extensions {
 
         [Contracts.Pure] [Pure] [NotNull]
         private static IEnumerable<TSource> HavingMaxOrMin<TSource, TValue>([NotNull] this IEnumerable<TSource> source, [NotNull] Func<TSource, TValue> selector, int comparison) {
-            if (source == null)   throw new ArgumentNullException("source");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (source == null)   throw new ArgumentNullException(nameof(source));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
             var selectedItems = new List<TSource>();
             var selectedValue = default(TValue);
@@ -184,7 +186,7 @@ namespace AshMind.Extensions {
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] Func<TSource, TKey> keySelector
         ) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return source.GroupAdjacentBy(keySelector, Functions<TSource>.Identity, null);
@@ -208,8 +210,8 @@ namespace AshMind.Extensions {
             [NotNull] Func<TSource, TKey> keySelector,
             [CanBeNull] IEqualityComparer<TKey> comparer
         ) {
-            if (source == null)      throw new ArgumentNullException("source");
-            if (keySelector == null) throw new ArgumentNullException("keySelector");
+            if (source == null)      throw new ArgumentNullException(nameof(source));
+            if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
             Contract.EndContractBlock();
 
             return source.GroupAdjacentBy(keySelector, Functions<TSource>.Identity, comparer);
@@ -234,9 +236,9 @@ namespace AshMind.Extensions {
             [NotNull] [InstantHandle] Func<TSource, TKey> keySelector,
             [NotNull] [InstantHandle] Func<TSource, TElement> elementSelector
         ) {
-            if (source == null)          throw new ArgumentNullException("source");
-            if (keySelector == null)     throw new ArgumentNullException("keySelector");
-            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
+            if (source == null)          throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)     throw new ArgumentNullException(nameof(keySelector));
+            if (elementSelector == null) throw new ArgumentNullException(nameof(elementSelector));
             Contract.EndContractBlock();
 
             return source.GroupAdjacentBy(keySelector, elementSelector, null);
@@ -263,9 +265,9 @@ namespace AshMind.Extensions {
             [NotNull] [InstantHandle] Func<TSource, TElement> elementSelector,
             [CanBeNull] IEqualityComparer<TKey> comparer
         ) {
-            if (source == null)          throw new ArgumentNullException("source");
-            if (keySelector == null)     throw new ArgumentNullException("keySelector");
-            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
+            if (source == null)          throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)     throw new ArgumentNullException(nameof(keySelector));
+            if (elementSelector == null) throw new ArgumentNullException(nameof(elementSelector));
             Contract.EndContractBlock();
 
             return source.GroupAdjacentBy(keySelector, elementSelector, Grouping<TKey, TElement>.Create, comparer);
@@ -366,10 +368,10 @@ namespace AshMind.Extensions {
             [NotNull] Func<TKey, IEnumerable<TElement>, TResult> resultSelector,
             [CanBeNull] IEqualityComparer<TKey> comparer
         ) {
-            if (source == null)          throw new ArgumentNullException("source");
-            if (keySelector == null)     throw new ArgumentNullException("keySelector");
-            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
-            if (resultSelector == null)  throw new ArgumentNullException("resultSelector");
+            if (source == null)          throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)     throw new ArgumentNullException(nameof(keySelector));
+            if (elementSelector == null) throw new ArgumentNullException(nameof(elementSelector));
+            if (resultSelector == null)  throw new ArgumentNullException(nameof(resultSelector));
             Contract.EndContractBlock();
 
             comparer = comparer ?? EqualityComparer<TKey>.Default;
@@ -395,153 +397,6 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Registers an action to be executed before the first element of a sequence is returned during enumeration.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
-        /// <param name="action">An action that should be performed before first item is returned during enumeration.</param>
-        /// <returns>
-        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning the first item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> OnBeforeFirst<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-            Contract.EndContractBlock();
-
-            var first = true;
-            foreach (var value in source) {
-                if (first) {
-                    first = false;
-                    action(value);
-                }
-
-                yield return value;
-            }
-        }
-
-        /// <summary>
-        /// Registers an action to be executed before each element of a sequence is returned during enumeration.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
-        /// <param name="action">An action that should be performed before each item is returned during enumeration.</param>
-        /// <returns>
-        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning each item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> OnBeforeEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-            Contract.EndContractBlock();
-
-            foreach (var value in source) {
-                action(value);
-                yield return value;
-            }
-        }
-
-        /// <summary>
-        /// Registers an action to be executed before each element of a sequence is returned during enumeration.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
-        /// <param name="action">An action that should be performed before each item is returned during enumeration, receiving an item and its index.</param>
-        /// <returns>
-        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> before returning each item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> OnBeforeEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource, int> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-            Contract.EndContractBlock();
-
-            var index = 0;
-            foreach (var value in source) {
-                action(value, index);
-                yield return value;
-                index += 1;
-            }
-        }
-
-        /// <summary>
-        /// Registers an action to be executed after each element of a sequence is returned during enumeration.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
-        /// <param name="action">An action that should be performed after each item is returned during enumeration.</param>
-        /// <returns>
-        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning each item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> OnAfterEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-            Contract.EndContractBlock();
-
-            foreach (var value in source) {
-                yield return value;
-                action(value);
-            }
-        }
-
-        /// <summary>
-        /// Registers an action to be executed after each element of a sequence is returned during enumeration.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
-        /// <param name="action">An action that should be performed after each item is returned during enumeration, receiving an item and its index.</param>
-        /// <returns>
-        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning each item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> OnAfterEach<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource, int> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-            Contract.EndContractBlock();
-
-            var index = 0;
-            foreach (var value in source) {
-                yield return value;
-                action(value, index);
-                index += 1;
-            }
-        }
-
-        /// <summary>
-        /// Registers an action to be executed after the last element of a sequence is returned during enumeration.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> which should be used as a template for the result sequence.</param>
-        /// <param name="action">An action that should be performed after the last item is returned during enumeration.</param>
-        /// <returns>
-        /// A new sequence which is identical to <paramref name="source"/> when enumerated, but executes <paramref name="action" /> after returning the last item.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="action"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> OnAfterLast<TSource>([NotNull] this IEnumerable<TSource> source, [NotNull] Action<TSource> action) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-            Contract.EndContractBlock();
-
-            TSource last = default(TSource);
-            var empty = true;
-            foreach (var value in source) {
-                empty = false;
-                last = value;
-                yield return value;
-            }
-
-            if (!empty)
-                action(last);
-        }
-
-        /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="ICollection{T}" />.
         /// </summary>
         /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
@@ -552,13 +407,13 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static ICollection<TElement> AsCollection<TElement>([NotNull] this IEnumerable<TElement> source) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return (source as ICollection<TElement>) ?? source.ToList();
         }
 
-        #if IReadOnlyCollection
+#if IReadOnlyCollection
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IReadOnlyCollection{T}" />.
         /// </summary>
@@ -570,12 +425,12 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static IReadOnlyCollection<TElement> AsReadOnlyCollection<TElement>([NotNull] this IEnumerable<TElement> source) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return (source as IReadOnlyCollection<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
         }
-        #endif
+#endif
 
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IList{T}" />.
@@ -588,13 +443,13 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static IList<TElement> AsList<TElement>([NotNull] this IEnumerable<TElement> source) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return (source as IList<TElement>) ?? source.ToList();
         }
 
-        #if IReadOnlyList
+#if IReadOnlyList
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IReadOnlyList{T}" />.
         /// </summary>
@@ -606,13 +461,32 @@ namespace AshMind.Extensions {
         /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         [Contracts.Pure] [Pure] [NotNull]
         public static IReadOnlyList<TElement> AsReadOnlyList<TElement>([NotNull] this IEnumerable<TElement> source) {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return (source as IReadOnlyList<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
         }
-        #endif
-        
+#endif
+
+#if ISet
+        /// <summary>
+        ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="ISet{T}" />.
+        /// </summary>
+        /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence to convert.</param>
+        /// <returns>
+        /// Either <paramref name="source"/> if it can be cast to <see cref="ISet{T}"/>; or a new ISet&lt;T&gt; created from <c>source</c>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+        [Contracts.Pure] [Pure] [NotNull]
+        public static ISet<TElement> AsSet<TElement>([NotNull] this IEnumerable<TElement> source) {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            Contract.EndContractBlock();
+
+            return (source as ISet<TElement>) ?? new HashSet<TElement>(source);
+        }
+#endif
+
         /// <summary>
         ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" />.
         /// </summary>
@@ -628,7 +502,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure] [NotNull]
         public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source) {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return new HashSet<TSource>(source);
@@ -652,7 +526,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure] [NotNull]
         public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return new HashSet<TSource>(source, comparer);

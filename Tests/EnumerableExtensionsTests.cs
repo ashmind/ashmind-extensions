@@ -17,8 +17,8 @@ namespace AshMind.Extensions.Tests {
 
         [Fact]
         public void EmptyIfNull_WhenEnumerableIsNull_ReturnsEmptyEnmumerable() {
-            var enumerable = (IEnumerable<int>)null;
-            var result = enumerable.EmptyIfNull();
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var result = ((IEnumerable<int>)null).EmptyIfNull();
             Assert.NotNull(result);
             Assert.Equal(Enumerable.Empty<int>(), result);
         }
@@ -26,6 +26,7 @@ namespace AshMind.Extensions.Tests {
         [Fact]
         public void Any_ReceivesCorrectIndex() {
             var list = new List<int> { 0, 1, 2, 3 };
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.Any((item, index) => {
                 Assert.Equal(item, index);
                 return false;
@@ -110,6 +111,7 @@ namespace AshMind.Extensions.Tests {
             var items = new[] { new { key = 1 } };
             var selectorCalled = false;
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             items.GroupAdjacentBy(x => {
                 selectorCalled = true;
                 return x.key;
@@ -123,6 +125,7 @@ namespace AshMind.Extensions.Tests {
             var items = new[] { new { key = 1 } };
             var selectorCalled = false;
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             items.GroupAdjacentBy(x => x.key, x => {
                 selectorCalled = true;
                 return x;
@@ -136,6 +139,7 @@ namespace AshMind.Extensions.Tests {
             var items = new[] { new { key = 1 } };
             var selectorCalled = false;
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             items.GroupAdjacentBy(x => x.key, x => x, (_, xs) => {
                 selectorCalled = true;
                 return xs;
@@ -197,6 +201,20 @@ namespace AshMind.Extensions.Tests {
             var enumerable = Enumerable.Range(1, 5);
             // ReSharper disable PossibleMultipleEnumeration
             Assert.Equal(enumerable, enumerable.AsReadOnlyCollection());
+            // ReSharper restore PossibleMultipleEnumeration
+        }
+
+        [Fact]
+        public void AsSet_UsesSameInstance_ForSet() {
+            var set = new HashSet<int>();
+            Assert.Same(set, set.AsSet());
+        }
+
+        [Fact]
+        public void AsSet_CreatesNewSet_ForEnumerable() {
+            var enumerable = Enumerable.Range(1, 5);
+            // ReSharper disable PossibleMultipleEnumeration
+            Assert.Equal(enumerable, enumerable.AsSet());
             // ReSharper restore PossibleMultipleEnumeration
         }
 

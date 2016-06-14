@@ -22,18 +22,6 @@ namespace AshMind.Extensions {
             return string.IsNullOrEmpty(value);
         }
 
-        /// <summary>Indicates whether the specified string is not <c>null</c> or an <see cref="string.Empty">Empty</see> string.</summary>
-        /// <param name="value">The string to test.</param>
-        /// <returns>
-        ///    <c>true</c> if the <paramref name="value"/> is not <c>null</c> or an empty string (""); otherwise, <c>false</c>.
-        /// </returns>
-        /// <seealso cref="IsNullOrEmpty" />
-        [Contracts.Pure] [Pure]
-        [Obsolete("(This will be removed in 2.0) It is often hard to notice `Not` if you are not aware if it. Please use !x.IsNullOrEmpty() instead.")]
-        public static bool IsNotNullOrEmpty([CanBeNull] this string value) {
-            return !string.IsNullOrEmpty(value);
-        }
-
         /// <summary>Return the specified string if it is not <see cref="string.Empty">Empty</see>, or <c>null</c> otherwise.</summary>
         /// <param name="value">The string to test.</param>
         /// <example> 
@@ -121,7 +109,7 @@ namespace AshMind.Extensions {
         public static bool Contains([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
             return original.IndexOf(value, comparisonType) >= 0;
         }
-        
+
         /// <summary>
         /// Returns a substring preceding the first occurrence of a specified value.
         /// </summary>
@@ -326,8 +314,8 @@ namespace AshMind.Extensions {
         /// , where <c>n</c> is equal to <paramref name="maxLength"/>.</returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string TruncateEnd([NotNull] this string original, int maxLength) {
-            if (original == null) throw new ArgumentNullException("original");
-            if (maxLength < 0)    throw new ArgumentOutOfRangeException("maxLength");
+            if (original == null) throw new ArgumentNullException(nameof(original));
+            if (maxLength < 0)    throw new ArgumentOutOfRangeException(nameof(maxLength));
             Contract.EndContractBlock();
 
             return original.Length <= maxLength ? original : original.Substring(0, maxLength);
@@ -346,8 +334,8 @@ namespace AshMind.Extensions {
         /// <see cref="suffix"/>.</returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string TruncateEnd([NotNull] this string original, int maxLength, [CanBeNull] string suffix) {
-            if (original == null) throw new ArgumentNullException("original");
-            if (maxLength < 0)    throw new ArgumentOutOfRangeException("maxLength");
+            if (original == null) throw new ArgumentNullException(nameof(original));
+            if (maxLength < 0)    throw new ArgumentOutOfRangeException(nameof(maxLength));
             Contract.EndContractBlock();
             
             if (original.Length <= maxLength)

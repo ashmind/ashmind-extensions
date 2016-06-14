@@ -16,18 +16,11 @@ namespace AshMind.Extensions {
         /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the <typeparamref name="TValue"/> type.</returns>
-        [Contracts.Pure] [Pure]
+        [Contracts.Pure] [Pure] [CanBeNull]
         public static TValue GetValueOrDefault<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key) {
-            return GetValueOrDefault(dictionary, key, default(TValue));
-        }
-
-        [Contracts.Pure] [Pure] [Obsolete("Please use overload without TDefault instead.")]
-        public static TDefault GetValueOrDefault<TKey, TValue, TDefault>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, [CanBeNull] TDefault @default)
-            where TValue : TDefault 
-        {
             TValue value;
             var succeeded = dictionary.TryGetValue(key, out value);
-            return succeeded ? value : @default;
+            return succeeded ? value : default(TValue);
         }
 
         /// <summary>Gets the value associated with the specified key, or adds and returns the new value if the key was not found.</summary>
@@ -37,6 +30,7 @@ namespace AshMind.Extensions {
         /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the <paramref name="value"/>.</returns>
+        [CanBeNull]
         public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, [CanBeNull] TValue value) {
             TValue found;
             if (dictionary.TryGetValue(key, out found))
@@ -53,6 +47,7 @@ namespace AshMind.Extensions {
         /// <typeparam name="TKey">The type of keys in the <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in the <paramref name="dictionary"/>.</typeparam>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the value returned by <paramref name="valueFactory"/>.</returns>
+        [CanBeNull]
         public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, [NotNull] [InstantHandle] Func<TKey, TValue> valueFactory) {
             TValue found;
             if (dictionary.TryGetValue(key, out found))
@@ -65,20 +60,20 @@ namespace AshMind.Extensions {
 
         #if IReadOnlyDictionary
         /// <summary>
-        /// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="ReadOnlyDictionary{TKey, TValue}" />.
+        /// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="IReadOnlyDictionary{TKey, TValue}" />.
         /// </summary>
         /// <typeparam name="TKey">The type of keys in <paramref name="dictionary"/>.</typeparam>
         /// <typeparam name="TValue">The type of values in <paramref name="dictionary"/>.</typeparam>
         /// <param name="dictionary">The dictionary to convert.</param>
         /// <returns>
-        /// A <see cref="ReadOnlyDictionary{TKey, TValue}" /> that acts as a read-only wrapper around the current <see cref="IDictionary{TKey, TValue}"/>.</returns>
+        /// A <see cref="IReadOnlyDictionary{TKey, TValue}" /> that acts as a read-only wrapper around the current <see cref="IDictionary{TKey, TValue}"/>.</returns>
         /// <remarks>
-        /// If the <paramref name="dictionary" /> is already of type <see cref="ReadOnlyDictionary{T, TValue}" /> this method returns it directly. Otherwise, it
-        /// returns an new instance of <see cref="ReadOnlyDictionary{T, TValue}" /> acting as a read-only wrapper around the <paramref name="dictionary" />.
+        /// If the <paramref name="dictionary" /> is already of type <see cref="IReadOnlyDictionary{T, TValue}" /> this method returns it directly. Otherwise, it
+        /// returns an new instance of <see cref="IReadOnlyDictionary{T, TValue}" /> acting as a read-only wrapper around the <paramref name="dictionary" />.
         /// </remarks>
         [Contracts.Pure] [Pure]
-        public static ReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary) {
-            return (dictionary as ReadOnlyDictionary<TKey, TValue>) ?? new ReadOnlyDictionary<TKey, TValue>(dictionary);
+        public static IReadOnlyDictionary<TKey, TValue> AsReadOnlyDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary) {
+            return (dictionary as IReadOnlyDictionary<TKey, TValue>) ?? new ReadOnlyDictionary<TKey, TValue>(dictionary);
         }
 
         /// <summary>Gets the value associated with the specified key, or a default value if the key was not found.</summary>
