@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\lib\net45\</OutputPath>
+    <OutputPath>..\bin\Debug\lib\net45\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net45\</IntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; ICustomAttributeProvider; Net45_Property_SetValue; Char_ToUpperOrLower_Culture; MethodInfo_CreateDelegate; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -56,12 +56,12 @@
     <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
     <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
-    <DocumentationFile>bin\Debug\lib\net45\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Debug\lib\net45\AshMind.Extensions.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\lib\net45\</OutputPath>
+    <OutputPath>..\bin\Release\lib\net45\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net45\</IntermediateOutputPath>
     <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; ICustomAttributeProvider; Net45_Property_SetValue; Char_ToUpperOrLower_Culture; MethodInfo_CreateDelegate; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -100,7 +100,7 @@
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
-    <DocumentationFile>bin\Release\lib\net45\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\lib\net45\AshMind.Extensions.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -112,7 +112,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  <Import Project="Shared.projitems" Label="Shared" Condition="Exists('Shared.projitems')" />
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

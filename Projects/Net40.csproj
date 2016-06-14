@@ -18,12 +18,12 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\lib\net40\</OutputPath>
+    <OutputPath>..\bin\Debug\lib\net40\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net40\</IntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; ICustomAttributeProvider; Char_ToUpperOrLower_Culture; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\lib\net40\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Debug\lib\net40\AshMind.Extensions.xml</DocumentationFile>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
@@ -62,12 +62,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\lib\net40\</OutputPath>
+    <OutputPath>..\bin\Release\lib\net40\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net40\</IntermediateOutputPath>
     <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; ICustomAttributeProvider; Char_ToUpperOrLower_Culture; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\lib\net40\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\lib\net40\AshMind.Extensions.xml</DocumentationFile>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
@@ -114,7 +114,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  <Import Project="Shared.projitems" Label="Shared" Condition="Exists('Shared.projitems')" />
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

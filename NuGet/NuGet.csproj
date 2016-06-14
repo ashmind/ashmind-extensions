@@ -9,11 +9,11 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
@@ -26,22 +26,21 @@
     <Content Include="NuGetProjReadme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <Content Include="AshMind.Extensions.nuspec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Net35.csproj">
+    <ProjectReference Include="..\Projects\Net35.csproj">
       <Project>{b21fc6c7-3ff3-4aeb-ae94-f0501e54201e}</Project>
       <Name>Net35</Name>
     </ProjectReference>
-    <ProjectReference Include="Net40.csproj">
+    <ProjectReference Include="..\Projects\Net40.csproj">
       <Project>{ef035de3-ff06-46f9-85de-1978816c8f49}</Project>
       <Name>Net40</Name>
     </ProjectReference>
-    <ProjectReference Include="Net45.csproj">
+    <ProjectReference Include="..\Projects\Net45.csproj">
       <Project>{064b8029-b761-43fc-8844-0488e8ef9eec}</Project>
       <Name>Net45</Name>
     </ProjectReference>

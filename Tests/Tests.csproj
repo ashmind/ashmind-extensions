@@ -111,7 +111,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AshMind.Extensions\Net45.csproj">
+    <ProjectReference Include="..\Projects\Net45.csproj">
       <Project>{064b8029-b761-43fc-8844-0488e8ef9eec}</Project>
       <Name>Net45</Name>
     </ProjectReference>

@@ -17,22 +17,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\lib\net35\</OutputPath>
+    <OutputPath>..\bin\Debug\lib\net35\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\net35\</IntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;ICustomAttributeProvider; Char_ToUpperOrLower_Culture; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\lib\net35\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Debug\lib\net35\AshMind.Extensions.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\lib\net35\</OutputPath>
+    <OutputPath>..\bin\Release\lib\net35\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\net35\</IntermediateOutputPath>
     <DefineConstants>TRACE;ICustomAttributeProvider; Char_ToUpperOrLower_Culture; FileInfo</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\lib\net35\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\lib\net35\AshMind.Extensions.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,7 +45,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  <Import Project="Shared.projitems" Label="Shared" Condition="Exists('Shared.projitems')" />
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

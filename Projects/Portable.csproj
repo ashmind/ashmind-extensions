@@ -19,9 +19,9 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\lib\portable-net45+win8+wp8\</OutputPath>
+    <OutputPath>..\bin\Debug\lib\portable-net45+win8+wp8\</OutputPath>
     <IntermediateOutputPath>obj\Debug\lib\portable-net45+win8+wp8\</IntermediateOutputPath>
-    <DocumentationFile>bin\Debug\lib\portable-net45+win8+wp8\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Debug\lib\portable-net45+win8+wp8\AshMind.Extensions.xml</DocumentationFile>
     <DefineConstants>TRACE;DEBUG;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; TypeInfo; Net45_Property_SetValue; MethodInfo_CreateDelegate</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,9 +29,9 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\lib\portable-net45+win8+wp8\</OutputPath>
+    <OutputPath>..\bin\Release\lib\portable-net45+win8+wp8\</OutputPath>
     <IntermediateOutputPath>obj\Release\lib\portable-net45+win8+wp8\</IntermediateOutputPath>
-    <DocumentationFile>bin\Release\lib\portable-net45+win8+wp8\AshMind.Extensions.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\lib\portable-net45+win8+wp8\AshMind.Extensions.xml</DocumentationFile>
     <DefineConstants>TRACE;Contracts; ISet; SortedSet; String_IsNullOrWhiteSpace; Net4_Expressions; IReadOnlyList; IReadOnlyCollection; IReadOnlyDictionary; TypeInfo; Net45_Property_SetValue; MethodInfo_CreateDelegate</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,7 +42,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  <Import Project="Shared.projitems" Label="Shared" Condition="Exists('Shared.projitems')" />
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" Condition="Exists('..\Shared\Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
