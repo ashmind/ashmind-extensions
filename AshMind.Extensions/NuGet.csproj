@@ -33,17 +33,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AshMind.Extensions.Net35.csproj">
+    <ProjectReference Include="Net35.csproj">
       <Project>{b21fc6c7-3ff3-4aeb-ae94-f0501e54201e}</Project>
-      <Name>AshMind.Extensions.Net35</Name>
+      <Name>Net35</Name>
     </ProjectReference>
-    <ProjectReference Include="AshMind.Extensions.Net40.csproj">
+    <ProjectReference Include="Net40.csproj">
       <Project>{ef035de3-ff06-46f9-85de-1978816c8f49}</Project>
-      <Name>AshMind.Extensions.Net40</Name>
+      <Name>Net40</Name>
     </ProjectReference>
-    <ProjectReference Include="AshMind.Extensions.Net45.csproj">
+    <ProjectReference Include="Net45.csproj">
       <Project>{064b8029-b761-43fc-8844-0488e8ef9eec}</Project>
-      <Name>AshMind.Extensions.Net45</Name>
+      <Name>Net45</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -56,6 +56,6 @@
     <Delete Files="@(_XmlOld)" />
   </Target>
   <Target Name="CreateNuGetPackage">
-    <Exec WorkingDirectory="$(OutDir)" Command="$(SolutionDir).nuget\nuget pack AshMind.Extensions.nuspec -symbols" />
+    <Exec WorkingDirectory="$(OutDir)" Command="&quot;$(SolutionDir).nuget\nuget&quot; pack AshMind.Extensions.nuspec -symbols" />
   </Target>
 </Project>

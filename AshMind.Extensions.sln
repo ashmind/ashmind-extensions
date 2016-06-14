@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Net45", "AshMind.Extensions\AshMind.Extensions.Net45.csproj", "{064B8029-B761-43FC-8844-0488E8EF9EEC}"
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net45", "AshMind.Extensions\Net45.csproj", "{064B8029-B761-43FC-8844-0488E8EF9EEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.NuGet", "AshMind.Extensions\AshMind.Extensions.NuGet.csproj", "{B4234A52-83A2-4FCE-91BD-25F7D9485AC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGet", "AshMind.Extensions\NuGet.csproj", "{B4234A52-83A2-4FCE-91BD-25F7D9485AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Tests", "AshMind.Extensions.Tests\AshMind.Extensions.Tests.csproj", "{75155A5B-0333-4078-942A-ABEBE1F8EA25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "AshMind.Extensions.Tests\Tests.csproj", "{75155A5B-0333-4078-942A-ABEBE1F8EA25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Net35", "AshMind.Extensions\AshMind.Extensions.Net35.csproj", "{B21FC6C7-3FF3-4AEB-AE94-F0501E54201E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net35", "AshMind.Extensions\Net35.csproj", "{B21FC6C7-3FF3-4AEB-AE94-F0501E54201E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Net40", "AshMind.Extensions\AshMind.Extensions.Net40.csproj", "{EF035DE3-FF06-46F9-85DE-1978816C8F49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net40", "AshMind.Extensions\Net40.csproj", "{EF035DE3-FF06-46F9-85DE-1978816C8F49}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3E4EDC57-5F02-4F78-9147-1E69F8EA837A}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,11 +20,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3E4EDC
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.ReadMeGenerator", "AshMind.Extensions.ReadMeGenerator\AshMind.Extensions.ReadMeGenerator.csproj", "{2E4D0E9E-C2E2-4478-AA38-5EDE003F2BD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMeGenerator", "AshMind.Extensions.ReadMeGenerator\ReadMeGenerator.csproj", "{2E4D0E9E-C2E2-4478-AA38-5EDE003F2BD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AshMind.Extensions.Portable", "AshMind.Extensions\AshMind.Extensions.Portable.csproj", "{A52F532D-6289-4BE6-B1FB-34D605D88B76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portable", "AshMind.Extensions\Portable.csproj", "{A52F532D-6289-4BE6-B1FB-34D605D88B76}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "AshMind.Extensions\Shared.shproj", "{2BD7A88E-8FB1-45D8-BD17-D24F0004E008}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AshMind.Extensions\Shared.projitems*{064b8029-b761-43fc-8844-0488e8ef9eec}*SharedItemsImports = 4
+		AshMind.Extensions\Shared.projitems*{a52f532d-6289-4be6-b1fb-34d605d88b76}*SharedItemsImports = 4
+		AshMind.Extensions\Shared.projitems*{ef035de3-ff06-46f9-85de-1978816c8f49}*SharedItemsImports = 4
+		AshMind.Extensions\Shared.projitems*{2bd7a88e-8fb1-45d8-bd17-d24f0004e008}*SharedItemsImports = 13
+		AshMind.Extensions\Shared.projitems*{b21fc6c7-3ff3-4aeb-ae94-f0501e54201e}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
