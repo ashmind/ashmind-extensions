@@ -9,7 +9,7 @@ using Xunit.Extensions;
 namespace AshMind.Extensions.Tests {
     public class CollectionExtensionsTests {
         public delegate ICollection<int> CollectionFactory(params int[] values);
-            
+
         [Fact]
         public void RemoveWhere_ForList_ProvidesCorrectIndex() {
             var list = new List<int> {0, 1, 2, 3};
@@ -20,7 +20,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData("Collections")]
+        [MemberData(nameof(Collections))]
         public void RemoveWhere_WithIndex_RemovesFrom(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             collection.RemoveWhere((item, index) => item == 2);
@@ -28,7 +28,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData("Collections")]
+        [MemberData(nameof(Collections))]
         public void RemoveWhere_RemovesFrom(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             collection.RemoveWhere(item => item == 2);
@@ -36,7 +36,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData("Collections")]
+        [MemberData(nameof(Collections))]
         public void RemoveWhere_ReturnsCorrectCount(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             var count = collection.RemoveWhere(item => item > 2);
@@ -45,7 +45,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData("Collections")]
+        [MemberData(nameof(Collections))]
         public void RemoveWhere_WithIndex_ReturnsCorrectCount(Expression<CollectionFactory> factory) {
             var collection = factory.Compile()(1, 2, 3, 4, 5);
             var count = collection.RemoveWhere(item => item > 2);

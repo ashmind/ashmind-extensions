@@ -10,8 +10,6 @@ Below is an auto-generated list of the methods provided:
   4. Sort
 
 ### Assembly
-  1. GetAssemblyFile
-  2. GetAssemblyFileFromCodeBase
 
 ### Char
   1. IsControl
@@ -91,15 +89,11 @@ Below is an auto-generated list of the methods provided:
 
 ### Reflection
   1. CreateDelegate
-  2. GetCustomAttribute
-  3. GetCustomAttributes
-  4. HasInterface
-  5. IsAssignableFrom
-  6. IsAssignableTo
-  7. IsDefined
-  8. IsGenericTypeDefinedAs
-  9. IsSameAsOrSubclassOf
-  10. IsSubclassOf
+  2. IsAssignableFrom
+  3. IsAssignableTo
+  4. IsGenericTypeDefinedAs
+  5. IsSameAsOrSubclassOf
+  6. IsSubclassOf
 
 ### StringBuilder
   1. AppendJoin
@@ -119,6 +113,18 @@ Below is an auto-generated list of the methods provided:
   12. TruncateEnd
 
 ### Time
+  1. Day
+  2. Days
+  3. Hour
+  4. Hours
+  5. Millisecond
+  6. Milliseconds
+  7. Minute
+  8. Minutes
+  9. Second
+  10. Seconds
+
+ime
   1. Day
   2. Days
   3. Hour

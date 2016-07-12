@@ -11,7 +11,7 @@ namespace AshMind.Extensions.Tests {
         public delegate IList<int> ListFactory(params int[] values);
 
         [Theory]
-        [PropertyData(nameof(Lists))]
+        [MemberData(nameof(Lists))]
         public void InsertRange_WorksCorrectly(Expression<ListFactory> factory) {
             var list = factory.Compile()(0, 1, 2, 3, 4);
             list.InsertRange(3, new[] { 21, 22, 23 });
@@ -23,7 +23,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData(nameof(Lists))]
+        [MemberData(nameof(Lists))]
         public void RemoveRange_WorksCorrectly(Expression<ListFactory> factory) {
             var list = factory.Compile()(0, 1, 2, 3, 4);
             list.RemoveRange(1, 3);

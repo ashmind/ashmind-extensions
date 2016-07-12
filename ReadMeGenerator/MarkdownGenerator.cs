@@ -14,17 +14,17 @@ namespace AshMind.Extensions.ReadMeGenerator {
             writer.WriteLine("");
             writer.WriteLine("Below is an auto-generated list of the methods provided:");
 
-            var extensionsAssembly = typeof(EnumerableExtensions).Assembly;
+            var extensionsAssembly = typeof(EnumerableExtensions).GetTypeInfo().Assembly;
             var extensionTypes = extensionsAssembly.GetExportedTypes();
 
             foreach (var type in extensionTypes.OrderBy(t => t.Name)) {
-                if (type.IsDefined<ObsoleteAttribute>())
+                if (type.GetTypeInfo().IsDefined(typeof(ObsoleteAttribute)))
                     continue;
 
                 writer.WriteLine("### {0}", type.Name.RemoveEnd("Extensions"));
 
                 var methodNames = type.GetMethods(BindingFlags.Static | BindingFlags.Public)
-                                      .Where(m => !m.IsDefined<ObsoleteAttribute>())
+                                      .Where(m => !m.IsDefined(typeof(ObsoleteAttribute)))
                                       .Select(m => m.Name)
                                       .Distinct()
                                       .OrderBy(n => n);

@@ -1,7 +1,8 @@
 
 bin/
 obj/
+.vs/
 \#packages/
 *.suo
 *.user
-_ReSharper.*
+*.lock.json

@@ -1,0 +1,113 @@
+﻿{
+  "version": "2.0.0-pre-20160708",
+  "name": "AshMind.Extensions",
+  "authors": [ "Andrey Shchekin" ],
+  "description": "Extension methods that could have been written by BCL authors\r\n(with one or two Ruby-like things thrown in the mix).",
+
+  "packOptions": {
+    "owners": [ "Andrey Shchekin" ],
+    "projectUrl": "https://github.com/ashmind/ashmind-extensions",
+    "repository": {
+      "url": "https://github.com/ashmind/ashmind-extensions.git"
+    },
+    "releaseNotes": "2.0.0 (pre-release) Removed multiple obsolete APIs. Improved consistency of various AsReadOnly*() overloads.\r\n1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List<T>. Added StringBuilder.AppendJoin().\r\n1.7.2 Added [ContractAnnotation(\"null=>null\")] to String.IsNullOrEmpty().\r\n1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() — should improve performance.\r\n1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().",
+    "tags": [ "extensions" ]
+  },
+
+  "frameworks": {
+    "net35": {
+      "dependencies": {
+        "JetBrains.Annotations": "10.1.5"
+      },
+      "buildOptions": {
+        "define": [
+          "JETBRAINS_ANNOTATIONS",
+          "Assembly_Location",
+          "ICustomAttributeProvider",
+          "Char_ToUpperOrLower_Culture",
+          "FileInfo"
+        ]
+      }
+    },
+    "net40": {
+      "dependencies": {
+        "JetBrains.Annotations": "10.1.5"
+      },
+      "buildOptions": {
+        "define": [
+          "JETBRAINS_ANNOTATIONS",
+          "Contracts",
+          "ISet",
+          "SortedSet",
+          "String_IsNullOrWhiteSpace",
+          "Assembly_Location",
+          "ICustomAttributeProvider",
+          "Char_ToUpperOrLower_Culture",
+          "FileInfo"
+        ]
+      }
+    },
+    "net45": {
+      "dependencies": {
+        "JetBrains.Annotations": "10.1.5"
+      },
+      "buildOptions": {
+        "define": [
+          "JETBRAINS_ANNOTATIONS",
+          "Contracts",
+          "ISet",
+          "SortedSet",
+          "String_IsNullOrWhiteSpace",
+          "IReadOnlyList",
+          "IReadOnlyCollection",
+          "IReadOnlyDictionary",
+          "Assembly_Location",
+          "ICustomAttributeProvider",
+          "Net45_Property_SetValue",
+          "Char_ToUpperOrLower_Culture",
+          "MethodInfo_CreateDelegate",
+          "FileInfo"
+        ]
+      }
+    },
+
+    "netstandard1.1": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      },
+      "buildOptions": {
+        "define": [
+          "ISet",
+          "SortedSet",
+          "String_IsNullOrWhiteSpace",
+          "IReadOnlyList",
+          "IReadOnlyCollection",
+          "IReadOnlyDictionary",
+          "TypeInfo",
+          "Net45_Property_SetValue",
+          "MethodInfo_CreateDelegate"
+        ]
+      }
+    },
+
+    "netstandard1.3": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      },
+      "buildOptions": {
+        "define": [
+          "ISet",
+          "SortedSet",
+          "String_IsNullOrWhiteSpace",
+          "IReadOnlyList",
+          "IReadOnlyCollection",
+          "IReadOnlyDictionary",
+          "Net45_Property_SetValue",
+          "TypeInfo",
+          "MethodInfo_CreateDelegate",
+          "FileInfo"
+        ]
+      }
+    }
+  }
+}

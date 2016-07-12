@@ -9,7 +9,7 @@ using Xunit.Extensions;
 namespace AshMind.Extensions.Tests {
     public class ArrayExtensionsTests {
         [Theory]
-        [PropertyData("ActionMethods")]
+        [MemberData(nameof(ActionMethods))]
         public void TestAction(Expression<Action<int[]>> extensionMethod, Expression<Action<int[]>> builtInMethod) {
             var arrayForExtensionMethod = new[] { 5, 4, 3, 2, 1, 2, 3, 4, 5 };
             var arrayForBuiltInMethod = arrayForExtensionMethod.ToArray();
@@ -21,7 +21,7 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Theory]
-        [PropertyData("FunctionMethods")]
+        [MemberData(nameof(FunctionMethods))]
         public void TestFunction(Expression<Func<int[], object>> extensionMethod, Expression<Func<int[], object>> builtInMethod) {
             var array = new[] { 5, 4, 3, 2, 1, 2, 3, 4, 5 };
 

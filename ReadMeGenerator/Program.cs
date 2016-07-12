@@ -9,7 +9,8 @@ namespace AshMind.Extensions.ReadMeGenerator {
         public static void Main(string[] args) {
             try {
                 var readmePath = FindPathToReadMe();
-                using (var writer = new StreamWriter(readmePath)) {
+                using (var stream = File.OpenWrite(readmePath))
+                using (var writer = new StreamWriter(stream)) {
                     new MarkdownGenerator().WriteTo(writer);
                 }
             }
@@ -19,7 +20,7 @@ namespace AshMind.Extensions.ReadMeGenerator {
         }
 
         private static string FindPathToReadMe() {
-            var initialDirectory = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
+            var initialDirectory = new FileInfo(typeof(Program).GetTypeInfo().Assembly.Location).Directory;
 
             var directory = initialDirectory;
             while (!directory.EnumerateFiles("*.sln").Any()) {
