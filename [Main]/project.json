@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0.0-pre-20160708",
+  "version": "2.0.0-pre-20160719",
   "name": "AshMind.Extensions",
   "authors": [ "Andrey Shchekin" ],
   "description": "Extension methods that could have been written by BCL authors\r\n(with one or two Ruby-like things thrown in the mix).",
@@ -16,12 +16,8 @@
 
   "frameworks": {
     "net35": {
-      "dependencies": {
-        "JetBrains.Annotations": "10.1.5"
-      },
       "buildOptions": {
         "define": [
-          "JETBRAINS_ANNOTATIONS",
           "Assembly_Location",
           "ICustomAttributeProvider",
           "Char_ToUpperOrLower_Culture",
@@ -30,12 +26,8 @@
       }
     },
     "net40": {
-      "dependencies": {
-        "JetBrains.Annotations": "10.1.5"
-      },
       "buildOptions": {
         "define": [
-          "JETBRAINS_ANNOTATIONS",
           "Contracts",
           "ISet",
           "SortedSet",
@@ -48,12 +40,8 @@
       }
     },
     "net45": {
-      "dependencies": {
-        "JetBrains.Annotations": "10.1.5"
-      },
       "buildOptions": {
         "define": [
-          "JETBRAINS_ANNOTATIONS",
           "Contracts",
           "ISet",
           "SortedSet",
@@ -73,7 +61,13 @@
 
     "netstandard1.1": {
       "dependencies": {
-        "NETStandard.Library": "1.6.0"
+        "System.Runtime": "4.1.0",
+        "System.Reflection": "4.1.0",
+        "System.Reflection.Extensions": "4.0.1",
+        "System.Collections": "4.0.11",
+        "System.Globalization": "4.0.11",
+        "System.Linq": "4.1.0",
+        "System.ObjectModel": "4.0.12"
       },
       "buildOptions": {
         "define": [
@@ -92,7 +86,13 @@
 
     "netstandard1.3": {
       "dependencies": {
-        "NETStandard.Library": "1.6.0"
+        "System.Runtime": "4.1.0",
+        "System.Reflection": "4.1.0",
+        "System.Reflection.Extensions": "4.0.1",
+        "System.Collections": "4.0.11",
+        "System.Globalization": "4.0.11",
+        "System.Linq": "4.1.0",
+        "System.ObjectModel": "4.0.12"
       },
       "buildOptions": {
         "define": [

@@ -20,7 +20,7 @@ namespace AshMind.Extensions {
         /// <param name="index">The zero-based index at which the new elements should be inserted.</param>
         /// <param name="collection">
         /// The collection whose elements should be inserted into the <see cref="IList{T}"/>. The collection itself cannot
-        /// be a null reference (<c>Nothing</c> in Visual Basic), but it can contain elements that are a null 
+        /// be a null reference (<c>Nothing</c> in Visual Basic), but it can contain elements that are a null
         /// reference (<c>Nothing</c> in Visual Basic), if type <typeparamref name="T"/> is a reference type.
         /// </param>
         public static void InsertRange<T>([NotNull] this IList<T> list, int index, [NotNull] IEnumerable<T> collection) {
@@ -57,7 +57,7 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Produces a limited range of elements from the <see cref="IList{T}"/>. 
+        /// Produces a limited range of elements from the <see cref="IList{T}"/>.
         /// </summary>
         /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
         /// <param name="list">The list to produce range from.</param>
@@ -76,9 +76,9 @@ namespace AshMind.Extensions {
             }
         }
 
-#if IReadOnlyList
+        #if IReadOnlyList
         /// <summary>
-        /// Produces a limited range of elements from the <see cref="IReadOnlyList{T}"/>. 
+        /// Produces a limited range of elements from the <see cref="IReadOnlyList{T}"/>.
         /// </summary>
         /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
         /// <param name="list">The list to produce range from.</param>
@@ -97,7 +97,7 @@ namespace AshMind.Extensions {
         }
 
         /// <summary>
-        /// Produces a limited range of elements from the <see cref="List{T}"/>. . 
+        /// Produces a limited range of elements from the <see cref="List{T}"/>. .
         /// </summary>
         /// <typeparam name="T">The type of the elements of <paramref name="list" />.</typeparam>
         /// <param name="list">The list to produce range from.</param>
@@ -112,6 +112,6 @@ namespace AshMind.Extensions {
             Contract.EndContractBlock();
             return ((IReadOnlyList<T>)list).EnumerateRange(index, count);
         }
-#endif
+        #endif
     }
 }

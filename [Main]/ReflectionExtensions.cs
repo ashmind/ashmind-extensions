@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
@@ -28,7 +27,7 @@ namespace AshMind.Extensions {
         /// <exception cref="TypeLoadException">A custom attribute type cannot be loaded.</exception>
         /// <exception cref="InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context.</exception>
         [Contracts.Pure] [Pure] [NotNull]
-        public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider member, bool inherit) 
+        public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider member, bool inherit)
             where TAttribute : Attribute
         {
             if (member == null) throw new ArgumentNullException(nameof(member));
@@ -46,7 +45,7 @@ namespace AshMind.Extensions {
         /// <exception cref="TypeLoadException">A custom attribute type cannot be loaded.</exception>
         /// <exception cref="InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context.</exception>
         [Contracts.Pure] [Pure] [NotNull]
-        public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider provider) 
+        public static TAttribute[] GetCustomAttributes<TAttribute>([NotNull] this ICustomAttributeProvider provider)
             where TAttribute : Attribute
         {
             if (provider == null) throw new ArgumentNullException(nameof(provider));
@@ -54,7 +53,7 @@ namespace AshMind.Extensions {
 
             return (TAttribute[])provider.GetCustomAttributes(typeof(TAttribute), true);
         }
-        
+
         /// <summary>
         /// Gets the custom attributes of the specified type defined on this member.
         /// </summary>
@@ -169,10 +168,10 @@ namespace AshMind.Extensions {
         /// <param name="type">The current type.</param>
         /// <returns>
         /// <c>true</c> if <typeparamref name="T" /> and the <paramref name="type"/> represent the same type, or if
-        /// <paramref name="type" /> is in the inheritance hierarchy of <typeparamref name="T" />, or if the 
-        /// <paramref name="type" /> is an interface that <typeparamref name="T" /> implements, or if 
+        /// <paramref name="type" /> is in the inheritance hierarchy of <typeparamref name="T" />, or if the
+        /// <paramref name="type" /> is an interface that <typeparamref name="T" /> implements, or if
         /// <typeparamref name="T" /> is a generic type parameter and <paramref name="type"/> represents one of the
-        /// constraints of <typeparamref name="T" />, or if <typeparamref name="T" /> represents a value type and 
+        /// constraints of <typeparamref name="T" />, or if <typeparamref name="T" /> represents a value type and
         /// <paramref name="type"/> represents <c>Nullable&lt;T&gt;</c>. <c>false</c> if none of these conditions are true.
         /// </returns>
         [Contracts.Pure] [Pure]
@@ -198,7 +197,7 @@ namespace AshMind.Extensions {
         /// <typeparamref name="T" /> is in the inheritance hierarchy of <paramref name="type"/>, or if the <typeparamref name="T" />
         /// is an interface that <paramref name="type" /> implements, or if <paramref name="type" /> is a generic type
         /// parameter and <typeparamref name="T" /> represents one of the constraints of <paramref name="type"/>, or
-        /// if <paramref name="type"/> represents a value type and <typeparamref name="T" /> represents 
+        /// if <paramref name="type"/> represents a value type and <typeparamref name="T" /> represents
         /// <c>Nullable&lt;type&gt;</c>. <c>false</c> if none of these conditions are true.
         /// </returns>
         [Contracts.Pure] [Pure]
@@ -221,10 +220,10 @@ namespace AshMind.Extensions {
         /// <param name="other">The type to compare with the current type.</param>
         /// <returns>
         /// <c>true</c> if <paramref name="other" /> and the <paramref name="type"/> represent the same type, or if
-        /// <paramref name="other" /> is in the inheritance hierarchy of <paramref name="type"/>, or if the 
-        /// <paramref name="other" /> is an interface that <paramref name="type"/> implements, or if 
+        /// <paramref name="other" /> is in the inheritance hierarchy of <paramref name="type"/>, or if the
+        /// <paramref name="other" /> is an interface that <paramref name="type"/> implements, or if
         /// <paramref name="type"/> is a generic type parameter and <paramref name="other" /> represents one of
-        /// the constraints of <paramref name="type"/>, or if <paramref name="type"/> represents a value type and 
+        /// the constraints of <paramref name="type"/>, or if <paramref name="type"/> represents a value type and
         /// <paramref name="other" /> represents <c>Nullable&lt;type&gt;</c>. <c>false</c> if none of these conditions
         /// are true, or if <paramref name="other" /> is <c>null</c>.
         /// </returns>
@@ -265,7 +264,7 @@ namespace AshMind.Extensions {
         }
 
         [Contracts.Pure] [Pure]
-        public static bool IsSubclassOf<T>([NotNull] this TypeInfo type) 
+        public static bool IsSubclassOf<T>([NotNull] this TypeInfo type)
             where T : class
         {
             if (type == null) throw new ArgumentNullException(nameof(type));

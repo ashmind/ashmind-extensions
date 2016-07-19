@@ -7,7 +7,7 @@ using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
-    /// Provides a set of extension methods for operations on delegates. 
+    /// Provides a set of extension methods for operations on delegates.
     /// </summary>
     public static class DelegateExtensions {
         #region DelegateBasedComparer Class

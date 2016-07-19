@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+#if FileInfo && Assembly_Location
 using System.IO;
-using System.Linq;
+#endif
 using System.Reflection;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
