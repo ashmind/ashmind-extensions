@@ -4,7 +4,7 @@ using AshMind.Extensions.Properties;
 [assembly: AssemblyTitle("AshMind.Extensions")]
 [assembly: AssemblyCompany("Andrey Shchekin")]
 [assembly: AssemblyProduct("AshMind.Extensions")]
-[assembly: AssemblyCopyright("Copyright © Andrey Shchekin 2007–2016")]
+[assembly: AssemblyCopyright("Copyright © Andrey Shchekin 2007–2017")]
 
 [assembly: AssemblyVersion(AssemblyInfo.VersionString)]
 [assembly: AssemblyFileVersion(AssemblyInfo.VersionString)]
@@ -12,6 +12,6 @@ using AshMind.Extensions.Properties;
 
 namespace AshMind.Extensions.Properties {
     internal static class AssemblyInfo {
-        public const string VersionString = "1.8.0";
+        public const string VersionString = "1.8.1";
     }
 }

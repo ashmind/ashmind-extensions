@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>AshMind.Extensions</id>
-    <version>1.8.0</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
+    <version>1.8.1</version> <!-- Note: Please keep in sync with AssemblyInfo.cs version -->
     <authors>Andrey Shchekin</authors>
     <owners>Andrey Shchekin</owners>
     <projectUrl>https://github.com/ashmind/ashmind-extensions</projectUrl>
@@ -12,12 +12,13 @@
       (with one or two Ruby-like things thrown in the mix).
     </description>
     <releaseNotes>
+      1.8.1 (!Please upgrade to this if you use SubstringAfter!) Fixed bug in SubstringAfter.
       1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List&lt;T&gt;. Added StringBuilder.AppendJoin().
       1.7.2 Added [ContractAnnotation("null=>null")] to String.IsNullOrEmpty().
       1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() — should improve performance.
       1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().
     </releaseNotes>
-    <copyright>Copyright (c) 2013–2014 Andrey Shchekin</copyright>
+    <copyright>Copyright (c) 2013–2017 Andrey Shchekin</copyright>
     <tags>extensions</tags>
 
     <references>

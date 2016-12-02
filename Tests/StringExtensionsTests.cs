@@ -37,6 +37,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "h", "")]
         [InlineData("abcdefgh", "cd", "efgh")]
+        [InlineData("a.b.c.d", "a.b.d", "a.b.c.d")]
         public void SubstringAfter(string value, string delimiter, string expectedResult) {
             Assert.Equal(expectedResult, value.SubstringAfter(delimiter));
         }
@@ -46,6 +47,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData("abcdefgh", "x", "abcdefgh")]
         [InlineData("abcdefgh", "h", "")]
         [InlineData("abcdefgh", "cd", "efgh")]
+        [InlineData("a.b.c.d", "a.b.d", "a.b.c.d")]
         public void SubstringAfterLast(string value, string delimiter, string expectedResult) {
             Assert.Equal(expectedResult, value.SubstringAfterLast(delimiter));
         }
