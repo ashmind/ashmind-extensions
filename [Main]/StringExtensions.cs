@@ -183,7 +183,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfter([NotNull] this string original, [NotNull] string value) {
             // ReSharper disable once StringIndexOfIsCultureSpecific.1
-            return original.SubstringAfter(original.IndexOf(value) + value.Length);
+            return original.SubstringAfter(original.IndexOf(value), value.Length);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfter([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
-            return original.SubstringAfter(original.IndexOf(value, comparisonType) + value.Length);
+            return original.SubstringAfter(original.IndexOf(value, comparisonType), value.Length);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace AshMind.Extensions {
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfterLast([NotNull] this string original, [NotNull] string value) {
             // ReSharper disable once StringLastIndexOfIsCultureSpecific.1
-            return original.SubstringAfter(original.LastIndexOf(value) + value.Length);
+            return original.SubstringAfter(original.LastIndexOf(value), value.Length);
         }
 
         /// <summary>
@@ -225,15 +225,15 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static string SubstringAfterLast([NotNull] this string original, [NotNull] string value, StringComparison comparisonType) {
-            return original.SubstringAfter(original.LastIndexOf(value, comparisonType) + value.Length);
+            return original.SubstringAfter(original.LastIndexOf(value, comparisonType), value.Length);
         }
 
         [NotNull]
-        private static string SubstringAfter([NotNull] this string original, int index) {
+        private static string SubstringAfter([NotNull] this string original, int index, int offset) {
             if (index < 0)
                 return original;
 
-            return original.Substring(index, original.Length - index);
+            return original.Substring(index + offset);
         }
 
         /// <summary>

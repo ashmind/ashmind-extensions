@@ -1,5 +1,5 @@
 ﻿{
-  "version": "2.0.0-pre-20160719",
+  "version": "2.0.0-pre-20161202",
   "name": "AshMind.Extensions",
   "authors": [ "Andrey Shchekin" ],
   "description": "Extension methods that could have been written by BCL authors\r\n(with one or two Ruby-like things thrown in the mix).",
@@ -10,7 +10,7 @@
     "repository": {
       "url": "https://github.com/ashmind/ashmind-extensions.git"
     },
-    "releaseNotes": "2.0.0 (pre-release) Removed multiple obsolete APIs. Improved consistency of various AsReadOnly*() overloads.\r\n1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List<T>. Added StringBuilder.AppendJoin().\r\n1.7.2 Added [ContractAnnotation(\"null=>null\")] to String.IsNullOrEmpty().\r\n1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() — should improve performance.\r\n1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().",
+    "releaseNotes": "2.0.0 (pre-release) Removed multiple obsolete APIs. Improved consistency of various AsReadOnly*() overloads.\r\n1.8.1 (!Please upgrade to this if you use SubstringAfter!) Fixed bug in SubstringAfter.\r\n1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List<T>. Added StringBuilder.AppendJoin().\r\n1.7.2 Added [ContractAnnotation(\"null=>null\")] to String.IsNullOrEmpty().\r\n1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() — should improve performance.\r\n1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().",
     "tags": [ "extensions" ]
   },
 
