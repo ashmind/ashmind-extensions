@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageId>AshMind.Extensions</PackageId>
     <Description>Extension methods that could have been written by BCL authors
 (with one or two Ruby-like things thrown in the mix).</Description>
     <VersionPrefix>2.0.0-pre-20180304</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
     <TargetFrameworks>net40;net45;netstandard1.1;netstandard1.3;netstandard2.0</TargetFrameworks>
     <AssemblyName>AshMind.Extensions</AssemblyName>
-    <PackageId>[Main]</PackageId>
     <PackageTags>extensions</PackageTags>
     <PackageReleaseNotes>2.0.0 (pre-release) Removed multiple obsolete APIs. Improved consistency of various AsReadOnly*() overloads.
 1.8.1 (!Please upgrade to this if you use SubstringAfter!) Fixed bug in SubstringAfter.
@@ -17,6 +17,7 @@
     <PackageProjectUrl>https://github.com/ashmind/ashmind-extensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ashmind/ashmind-extensions.git</RepositoryUrl>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">

@@ -1,0 +1,22 @@
+version: '{build}'
+configuration: Release
+
+before_build:
+- dotnet restore
+
+build_script:
+- dotnet build --configuration Release
+  
+after_test:
+- dotnet pack [Main] --configuration Release --output .
+
+artifacts:
+- path: '*.nupkg'
+
+deploy:
+  - provider: NuGet
+    on:
+      branch: /^(master|\d\.\d)$/
+    api_key:
+      secure: rV20COJkB2Lt/O6E7NvcdMJlHtBS8C7uuUWhFXu6XTPmEVqAeMKCDyz/yuOZwVRo
+    artifact: /.*\.nupkg/
