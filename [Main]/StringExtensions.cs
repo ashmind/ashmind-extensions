@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.Contracts;
 using JetBrains.Annotations;
 using PureAttribute = JetBrains.Annotations.PureAttribute;
@@ -34,7 +34,6 @@ namespace AshMind.Extensions {
             return !string.IsNullOrEmpty(value) ? value : null;
         }
 
-        #if String_IsNullOrWhiteSpace
         /// <summary>
         /// Indicates whether a specified string is <c>null</c>, empty, or consists only of white-space characters.
         /// </summary>
@@ -48,7 +47,6 @@ namespace AshMind.Extensions {
         public static bool IsNullOrWhiteSpace([CanBeNull] this string value) {
             return string.IsNullOrWhiteSpace(value);
         }
-        #endif
 
         /// <summary>
         /// Returns a string array that contains the substrings in this string that are delimited by a specified string.

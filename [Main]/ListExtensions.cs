@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
@@ -76,7 +76,7 @@ namespace AshMind.Extensions {
             }
         }
 
-        #if IReadOnlyList
+        #if !No_ReadOnlyCollections
         /// <summary>
         /// Produces a limited range of elements from the <see cref="IReadOnlyList{T}"/>.
         /// </summary>

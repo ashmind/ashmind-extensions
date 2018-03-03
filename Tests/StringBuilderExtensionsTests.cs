@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +7,7 @@ using Xunit.Extensions;
 
 namespace AshMind.Extensions.Tests {
     public class StringBuilderExtensionsTests {
+#if No_StringBuilder_AppendJoin
         [Theory]
         [InlineData(",", new[] { 1, 2 }, "[1,2]")]
         [InlineData(null, new[] { 1, 2 }, "[12]")]
@@ -82,5 +83,6 @@ namespace AshMind.Extensions.Tests {
                 yield return item;
             }
         }
+        #endif
     }
 }

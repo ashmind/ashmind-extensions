@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Globalization;
-using System.Linq;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
 
 namespace AshMind.Extensions {
     /// <summary>
-    /// Provides a set of extension methods for operations on IFormattable&lt;&gt;.
+    /// Provides a set of extension methods for operations on IFormattable{T}.
     /// </summary>
     public static class FormattableExtensions {
         /// <summary>

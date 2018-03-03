@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Diagnostics.Contracts;
-#if FileInfo && Assembly_Location
+#if !No_FileInfo
 using System.IO;
 #endif
 using System.Reflection;
@@ -12,7 +11,7 @@ using PureAttribute = JetBrains.Annotations.PureAttribute;
 namespace AshMind.Extensions {
     /// <summary>Provides a set of extension methods for operations on <see cref="Assembly" />.</summary>
     public static class AssemblyExtensions {
-        #if FileInfo && Assembly_Location
+        #if !No_FileInfo
         /// <summary>Gets a <see cref="FileInfo" /> object based on <see cref="Assembly.Location" />.</summary>
         /// <param name="assembly">An <see cref="Assembly" /> object providing the location.</param>
         /// <returns>A <see cref="FileInfo" /> object located at <see cref="Assembly.Location" />.</returns>

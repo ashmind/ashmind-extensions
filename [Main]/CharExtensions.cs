@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Globalization;
-using System.Linq;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
 
@@ -207,7 +205,7 @@ namespace AshMind.Extensions {
             return Char.ToLower(c);
         }
 
-        #if Char_ToUpperOrLower_Culture
+        #if !No_Char_ToUpperOrLower_Culture
         /// <summary>
         ///   Converts the value of a specified Unicode character to its lowercase equivalent using specified culture-specific formatting information.
         /// </summary>
@@ -251,7 +249,7 @@ namespace AshMind.Extensions {
             return Char.ToUpper(c);
         }
 
-        #if Char_ToUpperOrLower_Culture
+        #if !No_Char_ToUpperOrLower_Culture
         /// <summary>
         ///   Converts the value of a specified Unicode character to its uppercase equivalent using specified culture-specific formatting information.
         /// </summary>

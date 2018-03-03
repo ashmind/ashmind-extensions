@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.Linq;
 using JetBrains.Annotations;
 
 namespace AshMind.Extensions {
@@ -25,12 +24,8 @@ namespace AshMind.Extensions {
                 list.AddRange(values);
                 return;
             }
-
-            #if ISet
+            
             var set = collection as ISet<T>;
-            #else
-            var set = collection as HashSet<T>;
-            #endif
             if (set != null) {
                 set.UnionWith(values);
                 return;
@@ -80,11 +75,9 @@ namespace AshMind.Extensions {
             if (set != null)
                 return set.RemoveWhere(predicate.AsPredicate());
 
-            #if SortedSet
             var sortedSet = collection as SortedSet<T>;
             if (sortedSet != null)
                 return sortedSet.RemoveWhere(predicate.AsPredicate());
-            #endif
 
             var itemsToRemove = new List<T>();
             foreach (var item in collection) {

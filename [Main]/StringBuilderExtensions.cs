@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Text;
@@ -41,6 +41,7 @@ namespace AshMind.Extensions {
             return builder;
         }
 
+        #if No_StringBuilder_AppendJoin
         /// <summary>
         /// Appends the members of a collection, using the specified separator between each member.
         /// </summary>
@@ -106,5 +107,6 @@ namespace AshMind.Extensions {
             }
             return builder;
         }
+        #endif
     }
 }

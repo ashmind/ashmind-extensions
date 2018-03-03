@@ -1,8 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-#if IReadOnlyCollection
 using System.Collections.ObjectModel;
-#endif
 using System.Diagnostics.Contracts;
 using System.Linq;
 using JetBrains.Annotations;
@@ -15,19 +13,19 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on <see cref="IEnumerable{T}" />. 
     /// </summary>
     public static class EnumerableExtensions {
-#region Identity
+        #region Identity
 
         private static class Functions<TElement> {
             [NotNull]
             public static readonly Func<TElement, TElement> Identity = x => x;
         }
 
-#endregion
+        #endregion
 
         /// <summary>Returns the elements of the specified sequence or an empty sequence if the sequence is <c>null</c>.</summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The sequence to process.</param>
-        /// <returns><paramref name="source"/> if it is not <c>null</c>; otherwise, <see cref="Enumerable.Empty{TSource}"/>.</returns>       
+        /// <returns><paramref name="source"/> if it is not <c>null</c>; otherwise, <see cref="Enumerable.Empty{TSource}"/>.</returns>
         [Contracts.Pure] [Pure] [NotNull]
         public static IEnumerable<TSource> EmptyIfNull<TSource>([CanBeNull] this IEnumerable<TSource> source) {
             return source ?? Enumerable.Empty<TSource>();
@@ -413,7 +411,7 @@ namespace AshMind.Extensions {
             return (source as ICollection<TElement>) ?? source.ToList();
         }
 
-#if IReadOnlyCollection
+        #if !No_ReadOnlyCollections
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IReadOnlyCollection{T}" />.
         /// </summary>
@@ -430,7 +428,7 @@ namespace AshMind.Extensions {
 
             return (source as IReadOnlyCollection<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
         }
-#endif
+        #endif
 
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IList{T}" />.
@@ -449,7 +447,7 @@ namespace AshMind.Extensions {
             return (source as IList<TElement>) ?? source.ToList();
         }
 
-#if IReadOnlyList
+        #if !No_ReadOnlyCollections
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="IReadOnlyList{T}" />.
         /// </summary>
@@ -466,9 +464,8 @@ namespace AshMind.Extensions {
 
             return (source as IReadOnlyList<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
         }
-#endif
-
-#if ISet
+        #endif
+        
         /// <summary>
         ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="ISet{T}" />.
         /// </summary>
@@ -485,7 +482,6 @@ namespace AshMind.Extensions {
 
             return (source as ISet<TElement>) ?? new HashSet<TElement>(source);
         }
-#endif
 
         /// <summary>
         ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" />.

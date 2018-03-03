@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -60,7 +60,7 @@ namespace AshMind.Extensions.Tests {
             dictionary.GetOrAdd("key", "new");
 
             Assert.True(dictionary.ContainsKey("key"));
-            Assert.Equal(dictionary["key"], "new");
+            Assert.Equal("new", dictionary["key"]);
         }
 
         [Fact]
@@ -85,7 +85,7 @@ namespace AshMind.Extensions.Tests {
             dictionary.GetOrAdd("key", _ => "new");
 
             Assert.True(dictionary.ContainsKey("key"));
-            Assert.Equal(dictionary["key"], "new");
+            Assert.Equal("new", dictionary["key"]);
         }
 
         [Fact]

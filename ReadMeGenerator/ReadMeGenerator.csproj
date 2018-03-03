@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>ReadMeGenerator</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>ReadMeGenerator</PackageId>
+    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\[Main]\[Main].csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentConsole" Version="0.8.4-netstandard-160712" />
+    <PackageReference Include="JetBrains.Annotations" Version="10.1.5" />
+  </ItemGroup>
+
+</Project>

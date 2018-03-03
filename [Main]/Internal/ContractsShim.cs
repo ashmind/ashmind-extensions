@@ -1,4 +1,4 @@
-﻿#if !Contracts
+#if No_Contracts
 // ReSharper disable once CheckNamespace
 namespace System.Diagnostics.Contracts {
     internal class PureAttribute : Attribute {}

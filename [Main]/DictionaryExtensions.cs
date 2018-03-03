@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
 
@@ -58,7 +57,7 @@ namespace AshMind.Extensions {
             return value;
         }
 
-        #if IReadOnlyDictionary
+        #if !No_ReadOnlyCollections
         /// <summary>
         /// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="IReadOnlyDictionary{TKey, TValue}" />.
         /// </summary>

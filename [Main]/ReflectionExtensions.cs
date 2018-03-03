@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on reflection classes.
     /// </summary>
     public static class ReflectionExtensions {
-        #if ICustomAttributeProvider
+        #if !No_ICustomAttributeProvider
         /// <summary>
         /// Gets the custom attributes of the specified type defined on this member.
         /// </summary>
@@ -284,7 +284,7 @@ namespace AshMind.Extensions {
             return type.GetGenericTypeDefinition() == otherType;
         }
 
-        #if !MethodInfo_CreateDelegate
+        #if No_MethodInfo_CreateDelegate
         /// <summary>
         /// Creates a delegate of the specified type from a specified method.
         /// </summary>
@@ -348,7 +348,6 @@ namespace AshMind.Extensions {
             return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate), target);
         }
 
-        #if !TypeInfo
         /// <summary>
         /// Determines whether the specified interface is implemented by the specified type.
         /// </summary>
@@ -377,11 +376,14 @@ namespace AshMind.Extensions {
             if (interfaceType == null) throw new ArgumentNullException(nameof(interfaceType));
             Contract.EndContractBlock();
 
+            #if TypeInfo
+            return type.ImplementedInterfaces.Contains(interfaceType);
+            #else
             return type.GetInterfaces().Contains(interfaceType);
+            #endif
         }
-        #endif
 
-        #if !Net45_Property_SetValue
+        #if No_Property_SetValue_NoIndex
         public static void SetValue([NotNull] this PropertyInfo property, [CanBeNull] object obj, [CanBeNull] object value) {
             if (property == null) throw new ArgumentNullException("property");
             Contract.EndContractBlock();
