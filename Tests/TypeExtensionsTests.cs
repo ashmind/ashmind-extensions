@@ -1,9 +1,8 @@
 using System;
-using System.Reflection;
 using Xunit;
 
 namespace AshMind.Extensions.Tests {
-    public class ReflectionExtensionsTests {
+    public class TypeExtensionsTests {
         #region Test Classes
         public interface IInterface {}
         public interface ISubInterface : IInterface { }
@@ -21,7 +20,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(typeof(IInterface), false)]
         [InlineData(typeof(ClassWithoutInterface), false)]
         public void HasInterface(Type type, bool expectedResult) {
-            Assert.Equal(expectedResult, type.GetTypeInfo().HasInterface<IInterface>());
+            Assert.Equal(expectedResult, type.HasInterface<IInterface>());
         }
     }
 }

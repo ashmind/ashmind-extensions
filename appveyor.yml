@@ -18,5 +18,5 @@ deploy:
     on:
       branch: /^(master|\d\.\d)$/
     api_key:
-      secure: Q8MAs0RyoOziAiHr0nJl2WnKJm/9xqYmIinxQMBnsPzf16moCMncQmI6jtIcin5P
+      secure: Tz4nbtNMTV00UjCtvQB7yiSC/F8BiSE5Iob9qb8QvO57jrwzFoBXIlcVV+fyTVwE
     artifact: /.*\.nupkg/
