@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -15,9 +15,9 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void Predicate_AsFunction() {
+        public void Predicate_AsFunc() {
             Predicate<string> predicate = x => x == "test";
-            var func = predicate.AsFunction();
+            var func = predicate.AsFunc();
 
             Assert.Same(predicate.Target, func.Target);
             Assert.Same(predicate.Method, func.Method);
@@ -33,9 +33,9 @@ namespace AshMind.Extensions.Tests {
         }
 
         [Fact]
-        public void Comparison_AsFunction() {
+        public void Comparison_AsFunc() {
             Comparison<string> comparison = (x, y) => x.CompareTo(y);
-            var func = comparison.AsFunction();
+            var func = comparison.AsFunc();
 
             Assert.Same(comparison.Target, func.Target);
             Assert.Same(comparison.Method, func.Method);

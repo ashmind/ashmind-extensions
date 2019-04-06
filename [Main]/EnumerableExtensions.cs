@@ -65,28 +65,6 @@ namespace AshMind.Extensions {
             return false;
         }
 
-        public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource> action) {
-            if (source == null) throw new ArgumentNullException(nameof(source));
-            if (action == null) throw new ArgumentNullException(nameof(action));
-            Contract.EndContractBlock();
-
-            foreach (var item in source) {
-                action(item);
-            }
-        }
-
-        public static void ForEach<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] [InstantHandle] Action<TSource, int> action) {
-            if (source == null) throw new ArgumentNullException(nameof(source));
-            if (action == null) throw new ArgumentNullException(nameof(action));
-            Contract.EndContractBlock();
-
-            var index = 0;
-            foreach (var item in source) {
-                action(item, index);
-                index += 1;
-            }
-        }
-
         /// <summary>
         /// Creates a new sequence that consists of all items in the original sequence except the provided item.
         /// </summary>
@@ -465,24 +443,8 @@ namespace AshMind.Extensions {
             return (source as IReadOnlyList<TElement>) ?? new ReadOnlyCollection<TElement>(source.AsList());
         }
         #endif
-        
-        /// <summary>
-        ///   Converts an <see cref="IEnumerable{T}" /> to an <see cref="ISet{T}" />.
-        /// </summary>
-        /// <typeparam name="TElement">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <param name="source">A sequence to convert.</param>
-        /// <returns>
-        /// Either <paramref name="source"/> if it can be cast to <see cref="ISet{T}"/>; or a new ISet&lt;T&gt; created from <c>source</c>.
-        /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
-        [Contracts.Pure] [Pure] [NotNull]
-        public static ISet<TElement> AsSet<TElement>([NotNull] this IEnumerable<TElement> source) {
-            if (source == null) throw new ArgumentNullException(nameof(source));
-            Contract.EndContractBlock();
 
-            return (source as ISet<TElement>) ?? new HashSet<TElement>(source);
-        }
-
+        #if No_Enumerable_ToHashSet
         /// <summary>
         ///   Creates a <see cref="HashSet{T}" /> from an <see cref="IEnumerable{T}" />.
         /// </summary>
@@ -496,7 +458,7 @@ namespace AshMind.Extensions {
         ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
-        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source) {
+        public static HashSet<TSource> ToHashSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source) {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
@@ -520,12 +482,13 @@ namespace AshMind.Extensions {
         ///   A <see cref="HashSet{T}" /> that contains elements from the input sequence.
         /// </returns>
         [Contracts.Pure] [Pure] [NotNull]
-        public static HashSet<TSource> ToSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
+        public static HashSet<TSource> ToHashSet<TSource>([NotNull] [InstantHandle] this IEnumerable<TSource> source, [NotNull] IEqualityComparer<TSource> comparer) {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
             Contract.EndContractBlock();
 
             return new HashSet<TSource>(source, comparer);
         }
+        #endif
     }
 }

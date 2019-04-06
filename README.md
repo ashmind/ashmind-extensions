@@ -10,6 +10,8 @@ Below is an auto-generated list of the methods provided:
   4. Sort
 
 ### Assembly
+  1. GetAssemblyFile
+  2. GetAssemblyFileFromCodeBase
 
 ### Char
   1. IsControl
@@ -36,6 +38,11 @@ Below is an auto-generated list of the methods provided:
   2. RemoveAll
   3. RemoveWhere
 
+### CustomAttributeProvider
+  1. GetCustomAttribute
+  2. GetCustomAttributes
+  3. IsDefined
+
 ### DateTime
   1. TruncateToHours
   2. TruncateToMilliseconds
@@ -44,7 +51,7 @@ Below is an auto-generated list of the methods provided:
 
 ### Delegate
   1. AsComparison
-  2. AsFunction
+  2. AsFunc
   3. AsPredicate
   4. ToComparer
 
@@ -65,35 +72,25 @@ Below is an auto-generated list of the methods provided:
   3. AsList
   4. AsReadOnlyCollection
   5. AsReadOnlyList
-  6. AsSet
-  7. Concat
-  8. EmptyIfNull
-  9. Except
-  10. ForEach
-  11. GroupAdjacentBy
-  12. HavingMax
-  13. HavingMin
-  14. ToSet
+  6. Concat
+  7. EmptyIfNull
+  8. Except
+  9. GroupAdjacentBy
+  10. HavingMax
+  11. HavingMin
+  12. ToHashSet
 
 ### Formattable
   1. ToInvariantString
   2. ToString
-
-### Int32
-  1. Times
 
 ### List
   1. EnumerateRange
   2. InsertRange
   3. RemoveRange
 
-### Reflection
+### MethodInfo
   1. CreateDelegate
-  2. IsAssignableFrom
-  3. IsAssignableTo
-  4. IsGenericTypeDefinedAs
-  5. IsSameAsOrSubclassOf
-  6. IsSubclassOf
 
 ### StringBuilder
   1. AppendJoin
@@ -112,27 +109,10 @@ Below is an auto-generated list of the methods provided:
   11. SubstringBeforeLast
   12. TruncateEnd
 
-### Time
-  1. Day
-  2. Days
-  3. Hour
-  4. Hours
-  5. Millisecond
-  6. Milliseconds
-  7. Minute
-  8. Minutes
-  9. Second
-  10. Seconds
-
-ime
-  1. Day
-  2. Days
-  3. Hour
-  4. Hours
-  5. Millisecond
-  6. Milliseconds
-  7. Minute
-  8. Minutes
-  9. Second
-  10. Seconds
+### Type
+  1. HasInterface
+  2. IsAssignableFrom
+  3. IsAssignableTo
+  4. IsGenericTypeDefinedAs
+  5. IsSameAsOrSubclassOf
 

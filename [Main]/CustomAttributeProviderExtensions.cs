@@ -11,7 +11,7 @@ namespace AshMind.Extensions {
     /// <summary>
     /// Provides a set of extension methods for operations on <see cref="ICustomAttributeProvider" />.
     /// </summary>
-    public static class ReflectionExtensions {
+    public static class CustomAttributeProviderExtensions {
         /// <summary>
         /// Gets the custom attributes of the specified type defined on this member.
         /// </summary>

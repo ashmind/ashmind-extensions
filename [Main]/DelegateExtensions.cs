@@ -41,7 +41,7 @@ namespace AshMind.Extensions {
         /// <param name="predicate">A predicate to convert.</param>
         /// <returns>Func{T, bool} identical to the original predicate.</returns>
         [Contracts.Pure] [Pure] [NotNull]
-        public static Func<T, bool> AsFunction<T>([NotNull] this Predicate<T> predicate) {
+        public static Func<T, bool> AsFunc<T>([NotNull] this Predicate<T> predicate) {
             return As<Func<T, bool>>(predicate);
         }
 
@@ -61,7 +61,7 @@ namespace AshMind.Extensions {
         /// <param name="comparison">A comparison to convert.</param>
         /// <returns>Func{T, T, int} identical to the original comparison.</returns>
         [Contracts.Pure] [Pure] [NotNull]
-        public static Func<T, T, int> AsFunction<T>([NotNull] this Comparison<T> comparison) {
+        public static Func<T, T, int> AsFunc<T>([NotNull] this Comparison<T> comparison) {
             return As<Func<T, T, int>>(comparison);
         }
 

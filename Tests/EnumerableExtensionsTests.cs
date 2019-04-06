@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -204,26 +204,12 @@ namespace AshMind.Extensions.Tests {
             // ReSharper restore PossibleMultipleEnumeration
         }
 
-        [Fact]
-        public void AsSet_UsesSameInstance_ForSet() {
-            var set = new HashSet<int>();
-            Assert.Same(set, set.AsSet());
-        }
-
-        [Fact]
-        public void AsSet_CreatesNewSet_ForEnumerable() {
-            var enumerable = Enumerable.Range(1, 5);
-            // ReSharper disable PossibleMultipleEnumeration
-            Assert.Equal(enumerable, enumerable.AsSet());
-            // ReSharper restore PossibleMultipleEnumeration
-        }
-
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void ToSet_IncludesAllItems(bool withComparer) {
+        public void ToHashSet_IncludesAllItems(bool withComparer) {
             var list = new[] { 0, 1, 2, 3 };
-            var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
+            var set = withComparer ? list.ToHashSet(EqualityComparer<int>.Default) : list.ToHashSet();
 
             Assert.Equal(list, set);
         }
@@ -231,43 +217,19 @@ namespace AshMind.Extensions.Tests {
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
-        public void ToSet_CollapsesDuplicateItems(bool withComparer) {
+        public void ToHashSet_CollapsesDuplicateItems(bool withComparer) {
             var list = new[] { 0, 1, 2, 3, 2 };
-            var set = withComparer ? list.ToSet(EqualityComparer<int>.Default) : list.ToSet();
+            var set = withComparer ? list.ToHashSet(EqualityComparer<int>.Default) : list.ToHashSet();
 
             Assert.Equal(list.Distinct(), set);
         }
 
         [Fact]
-        public void ToSet_UsesCorrectComparer() {
+        public void ToHashSet_UsesCorrectComparer() {
             var list = new[] { "a", "b" };
-            var set = list.ToSet(StringComparer.InvariantCultureIgnoreCase);
+            var set = list.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
 
             Assert.False(set.Add("A"));
         }
-
-        //[StaticTestFactory]
-        //public static IEnumerable<Test> GetCommonTests() {
-        //    var methods = typeof(EnumerableExtensions).GetMethods(BindingFlags.Static | BindingFlags.Public);
-        //    foreach (var method in methods) {
-        //        var methodFixed = method;
-        //        if (method.ContainsGenericParameters)
-        //            methodFixed = methodFixed.MakeGenericMethod(methodFixed.GetGenericArguments().Select(a => typeof(object)).ToArray());
-
-        //        Gallio.Common.Action testMethodHandlesNullCorrectly = () => {
-        //            try {
-        //                methodFixed.Invoke(null, methodFixed.GetParameters().Select(p => (object)null).ToArray());
-        //            }
-        //            catch (TargetInvocationException ex) {
-        //                throw ex.InnerException;
-        //            }
-        //        };
-
-        //        yield return new TestCase(
-        //            "Test" + method.Name + "HandlesNullCorrectly",
-        //            () => Assert.Throws<ArgumentNullException>(testMethodHandlesNullCorrectly)
-        //        );
-        //    }
-        //}
     }
 }
