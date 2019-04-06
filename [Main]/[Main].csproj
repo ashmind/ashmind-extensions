@@ -9,13 +9,13 @@
     <AssemblyName>AshMind.Extensions</AssemblyName>
     <PackageTags>extensions</PackageTags>
     <PackageReleaseNotes>
-      3.0.0 (pre-release) Removed Ruby-like APIs and improved naming in few other cases.
-      2.0.0 (pre-release) Added support for .NET Standard. Removed multiple obsolete APIs. Improved consistency of AsReadOnly*() overloads.
-      1.8.1 (!Please upgrade to this if you use SubstringAfter!) Fixed bug in SubstringAfter.
-      1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List&lt;T&gt;. Added StringBuilder.AppendJoin().
-      1.7.2 Added [ContractAnnotation("null=&gt;null")] to String.IsNullOrEmpty().
-      1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() to improve performance.
-      1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().
+3.0.0 (pre-release) Removed Ruby-like APIs and improved naming in few other cases.
+2.0.0 (pre-release) Added support for .NET Standard. Removed multiple obsolete APIs. Improved consistency of AsReadOnly*() overloads.
+1.8.1 (!Please upgrade to this if you use SubstringAfter!) Fixed bug in SubstringAfter.
+1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List&lt;T&gt;. Added StringBuilder.AppendJoin().
+1.7.2 Added [ContractAnnotation("null=&gt;null")] to String.IsNullOrEmpty().
+1.7.1 Removed unnecessary ForEach() call from Collection.AddRange()/RemoveRange() to improve performance.
+1.7.0 Added StringComparison overloads to String.RemoveStart() and String.RemoveEnd().
     </PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/ashmind/ashmind-extensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ashmind/ashmind-extensions.git</RepositoryUrl>
