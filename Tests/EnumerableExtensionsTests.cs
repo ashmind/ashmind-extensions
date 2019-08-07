@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xunit;
-using Xunit.Extensions;
 
 // ReSharper disable PossibleNullReferenceException
 
-namespace AshMind.Extensions.Tests {
+namespace AshMind.Extensions.Tests
+{
     public class EnumerableExtensionsTests {
         [Fact]
         public void EmptyIfNull_WhenEnumerableIsNotNull_ReturnsSameEnumerable() {
@@ -18,7 +18,7 @@ namespace AshMind.Extensions.Tests {
         [Fact]
         public void EmptyIfNull_WhenEnumerableIsNull_ReturnsEmptyEnmumerable() {
             // ReSharper disable once ExpressionIsAlwaysNull
-            var result = ((IEnumerable<int>)null).EmptyIfNull();
+            var result = ((IEnumerable<int>?)null).EmptyIfNull();
             Assert.NotNull(result);
             Assert.Equal(Enumerable.Empty<int>(), result);
         }

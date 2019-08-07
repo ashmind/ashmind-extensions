@@ -27,7 +27,7 @@ namespace AshMind.Extensions {
         /// <param name="source">The sequence to process.</param>
         /// <returns><paramref name="source"/> if it is not <c>null</c>; otherwise, <see cref="Enumerable.Empty{TSource}"/>.</returns>
         [Contracts.Pure] [Pure] [NotNull]
-        public static IEnumerable<TSource> EmptyIfNull<TSource>([CanBeNull] this IEnumerable<TSource> source) {
+        public static IEnumerable<TSource> EmptyIfNull<TSource>([CanBeNull] this IEnumerable<TSource>? source) {
             return source ?? Enumerable.Empty<TSource>();
         }
 
@@ -123,7 +123,7 @@ namespace AshMind.Extensions {
             if (selector == null) throw new ArgumentNullException(nameof(selector));
 
             var selectedItems = new List<TSource>();
-            var selectedValue = default(TValue);
+            var selectedValue = default(TValue)!; // not actually !, but limitation of NRT + generics
             var selected = false;
 
             var comparer = Comparer<TValue>.Default;
@@ -239,7 +239,7 @@ namespace AshMind.Extensions {
             [NotNull] this IEnumerable<TSource> source,
             [NotNull] [InstantHandle] Func<TSource, TKey> keySelector,
             [NotNull] [InstantHandle] Func<TSource, TElement> elementSelector,
-            [CanBeNull] IEqualityComparer<TKey> comparer
+            [CanBeNull] IEqualityComparer<TKey>? comparer
         ) {
             if (source == null)          throw new ArgumentNullException(nameof(source));
             if (keySelector == null)     throw new ArgumentNullException(nameof(keySelector));
@@ -342,7 +342,7 @@ namespace AshMind.Extensions {
             [NotNull] Func<TSource, TKey> keySelector,
             [NotNull] Func<TSource, TElement> elementSelector,
             [NotNull] Func<TKey, IEnumerable<TElement>, TResult> resultSelector,
-            [CanBeNull] IEqualityComparer<TKey> comparer
+            [CanBeNull] IEqualityComparer<TKey>? comparer
         ) {
             if (source == null)          throw new ArgumentNullException(nameof(source));
             if (keySelector == null)     throw new ArgumentNullException(nameof(keySelector));
@@ -352,8 +352,8 @@ namespace AshMind.Extensions {
 
             comparer = comparer ?? EqualityComparer<TKey>.Default;
 
-            var lastKey = default(TKey);
-            var lastGroup = (List<TElement>)null;
+            var lastKey = default(TKey)!; // not actually !, but this is a limitation of NRT
+            var lastGroup = (List<TElement>?)null;
             foreach (var item in source) {
                 var key = keySelector(item);
 

@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
-namespace AshMind.Extensions.Tests {
+namespace AshMind.Extensions.Tests
+{
     public class DictionaryExtensionsTests {
         [Fact]
         public void GetValueOrDefault_GetsDefault_IfValueIsNotPresent_ForReferenceType() {
@@ -91,7 +90,7 @@ namespace AshMind.Extensions.Tests {
         [Fact]
         public void GetOrAdd_WithFunction_WhenKeyIsNotPresent_CallsFunctionWithCorrectKey() {
             var dictionary = new Dictionary<string, string>();
-            string key = null;
+            string? key = null;
             dictionary.GetOrAdd("key", k => key = k);
 
             Assert.Equal("key", key);

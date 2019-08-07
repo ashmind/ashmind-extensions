@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net4.0;net472;netcoreapp3.0</TargetFrameworks>
+    <AssemblyName>AshMind.Extensions.Tests.Compilation</AssemblyName>
+    <RootNamespace>AshMind.Extensions.Tests.Compilation</RootNamespace>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\[Main]\[Main].csproj" />
+  </ItemGroup>
+</Project>

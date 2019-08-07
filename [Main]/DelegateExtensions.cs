@@ -73,7 +73,11 @@ namespace AshMind.Extensions {
         #else
         [Contracts.Pure] [NotNull]
         private static TDelegate As<TDelegate>([NotNull] Delegate @delegate) {
-            return (TDelegate)(object)@delegate.GetMethodInfo().CreateDelegate(typeof(TDelegate), @delegate.Target);
+            var method = @delegate.GetMethodInfo();
+            if (method == null)
+                throw new ArgumentException("Delegate does not have a method info.", nameof(@delegate));
+
+            return (TDelegate)(object)method.CreateDelegate(typeof(TDelegate), @delegate.Target);
         }
         #endif
 

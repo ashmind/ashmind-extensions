@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
-using Xunit.Extensions;
+
+#pragma warning disable xUnit1019 // https://github.com/xunit/xunit/issues/1897
 
 namespace AshMind.Extensions.Tests {
     public class CollectionExtensionsTests {

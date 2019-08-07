@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -9,6 +9,7 @@ namespace AshMind.Extensions.Tests {
         [Theory]
         [InlineData(0)]
         [InlineData(Double.NaN)]
+        [Obsolete("To be removed in v4.")]
         public void IsNaN_IsEqualTo_Double_IsNaN(double value) {
             Assert.Equal(value.IsNaN(), Double.IsNaN(value));
         }
@@ -17,6 +18,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(0)]
         [InlineData(Double.PositiveInfinity)]
         [InlineData(Double.NegativeInfinity)]
+        [Obsolete("To be removed in v4.")]
         public void IsInfinity_IsEqual_ToDoubleIsInfinity(double value) {
             Assert.Equal(value.IsInfinity(), Double.IsInfinity(value));
         }
@@ -25,6 +27,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(0)]
         [InlineData(Double.PositiveInfinity)]
         [InlineData(Double.NegativeInfinity)]
+        [Obsolete("To be removed in v4.")]
         public void IsPositiveInfinity_IsEqual_ToDoubleIsPositiveInfinity(double value) {
             Assert.Equal(value.IsPositiveInfinity(), Double.IsPositiveInfinity(value));
         }
@@ -33,6 +36,7 @@ namespace AshMind.Extensions.Tests {
         [InlineData(0)]
         [InlineData(Double.PositiveInfinity)]
         [InlineData(Double.NegativeInfinity)]
+        [Obsolete("To be removed in v4.")]
         public void IsNegativeInfinity_IsEqual_ToDoubleIsNegativeInfinity(double value) {
             Assert.Equal(value.IsNegativeInfinity(), Double.IsNegativeInfinity(value));
         }

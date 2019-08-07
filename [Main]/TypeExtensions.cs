@@ -71,7 +71,7 @@ namespace AshMind.Extensions {
         /// </returns>
         [ContractAnnotation("other:null=>false")]
         [Contracts.Pure] [Pure]
-        public static bool IsAssignableTo([NotNull] this Type type, [CanBeNull] Type other)
+        public static bool IsAssignableTo([NotNull] this Type type, [CanBeNull] Type? other)
         {
             if (type == null) throw new ArgumentNullException(nameof(type));
             Contract.EndContractBlock();

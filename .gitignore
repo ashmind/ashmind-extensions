@@ -6,3 +6,4 @@ obj/
 *.suo
 *.user
 *.lock.json
+*.nupkg

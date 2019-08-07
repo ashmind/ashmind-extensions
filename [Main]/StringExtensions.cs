@@ -4,6 +4,8 @@ using JetBrains.Annotations;
 using PureAttribute = JetBrains.Annotations.PureAttribute;
 using Contracts = System.Diagnostics.Contracts;
 
+using static AshMind.Extensions.Internal.ObsoleteMessages;
+
 namespace AshMind.Extensions {
     /// <summary>
     /// Provides a set of extension methods for operations on String.
@@ -16,7 +18,8 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure]
         [ContractAnnotation("value:null=>true")]
-        public static bool IsNullOrEmpty([CanBeNull] this string value) {
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
+        public static bool IsNullOrEmpty([CanBeNull] this string? value) {
             return string.IsNullOrEmpty(value);
         }
 
@@ -30,7 +33,7 @@ namespace AshMind.Extensions {
         /// </returns>
         [Contracts.Pure] [Pure] [CanBeNull]
         [ContractAnnotation("value:null=>null")]
-        public static string NullIfEmpty([CanBeNull] this string value) {
+        public static string? NullIfEmpty([CanBeNull] this string? value) {
             return !string.IsNullOrEmpty(value) ? value : null;
         }
 
@@ -44,7 +47,8 @@ namespace AshMind.Extensions {
         /// <seealso cref="string.IsNullOrWhiteSpace" />
         [Contracts.Pure] [Pure]
         [ContractAnnotation("value:null=>true")]
-        public static bool IsNullOrWhiteSpace([CanBeNull] this string value) {
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
+        public static bool IsNullOrWhiteSpace([CanBeNull] this string? value) {
             return string.IsNullOrWhiteSpace(value);
         }
 
@@ -58,7 +62,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="string.Split(string[], System.StringSplitOptions)" />
         [Contracts.Pure] [Pure] [NotNull]
-        public static string[] Split([NotNull] this string value, [CanBeNull] string separator) {
+        public static string[] Split([NotNull] this string value, [CanBeNull] string? separator) {
             return value.Split(separator, StringSplitOptions.None);
         }
 
@@ -72,7 +76,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="string.Split(string[], System.StringSplitOptions)" />
         [Contracts.Pure] [Pure] [NotNull]
-        public static string[] Split([NotNull] this string value, [CanBeNull] params string[] separator) {
+        public static string[] Split([NotNull] this string value, [CanBeNull] params string[]? separator) {
             return value.Split(separator, StringSplitOptions.None);
         }
 
@@ -87,7 +91,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="string.Split(string[], System.StringSplitOptions)" />
         [Contracts.Pure] [Pure] [NotNull]
-        public static string[] Split([NotNull]this string value, [CanBeNull] string separator, StringSplitOptions options) {
+        public static string[] Split([NotNull] this string value, [CanBeNull] string? separator, StringSplitOptions options) {
             var separators = separator != null ? new[] { separator } : new string[0];
             return value.Split(separators, options);
         }
@@ -329,7 +333,7 @@ namespace AshMind.Extensions {
         /// followed by <paramref name="suffix" />, where <c>n</c> is equal to <paramref name="maxLength"/> - length of 
         /// <see cref="suffix"/>.</returns>
         [Contracts.Pure] [Pure] [NotNull]
-        public static string TruncateEnd([NotNull] this string original, int maxLength, [CanBeNull] string suffix) {
+        public static string TruncateEnd([NotNull] this string original, int maxLength, [CanBeNull] string? suffix) {
             if (original == null) throw new ArgumentNullException(nameof(original));
             if (maxLength < 0)    throw new ArgumentOutOfRangeException(nameof(maxLength));
             Contract.EndContractBlock();

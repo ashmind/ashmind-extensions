@@ -3,7 +3,10 @@ using System.Globalization;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
 
+using static AshMind.Extensions.Internal.ObsoleteMessages;
+
 namespace AshMind.Extensions {
+
     /// <summary>
     /// Provides a set of extension methods for operations on Char.
     /// </summary>
@@ -17,6 +20,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsLetter(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsLetter(this char c) {
             return Char.IsLetter(c);
         }
@@ -30,6 +34,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsDigit(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsDigit(this char c) {
             return Char.IsDigit(c);
         }
@@ -43,6 +48,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsLetterOrDigit(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsLetterOrDigit(this char c) {
             return Char.IsLetterOrDigit(c);
         }
@@ -56,6 +62,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsNumber(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsNumber(this char c) {
             return Char.IsNumber(c);
         }
@@ -69,6 +76,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsSymbol(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsSymbol(this char c) {
             return Char.IsSymbol(c);
         }
@@ -82,6 +90,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsControl(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsControl(this char c) {
             return Char.IsControl(c);
         }
@@ -95,6 +104,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsPunctuation(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsPunctuation(this char c) {
             return Char.IsPunctuation(c);
         }
@@ -108,6 +118,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsSeparator(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsSeparator(this char c) {
             return Char.IsSeparator(c);
         }
@@ -123,6 +134,7 @@ namespace AshMind.Extensions {
         /// <seealso cref="CharExtensions.IsHighSurrogate(char)" />
         /// <seealso cref="CharExtensions.IsLowSurrogate(char)" /> 
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsSurrogate(this char c) {
             return Char.IsSurrogate(c);
         }
@@ -136,6 +148,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsHighSurrogate(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsHighSurrogate(this char c) {
             return Char.IsHighSurrogate(c);
         }
@@ -149,6 +162,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsLowSurrogate(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsLowSurrogate(this char c) {
             return Char.IsLowSurrogate(c);
         }
@@ -162,6 +176,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsWhiteSpace(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsWhiteSpace(this char c) {
             return Char.IsWhiteSpace(c);
         }
@@ -175,6 +190,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsLower(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsLower(this char c) {
             return Char.IsLower(c);
         }
@@ -188,6 +204,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.IsUpper(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsUpper(this char c) {
             return Char.IsUpper(c);
         }
@@ -201,6 +218,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.ToLower(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static char ToLower(this char c) {
             return Char.ToLower(c);
         }
@@ -218,6 +236,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.ToLower(char, CultureInfo)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static char ToLower(this char c, [NotNull] CultureInfo culture) {
             return Char.ToLower(c, culture);
         }
@@ -232,6 +251,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.ToLowerInvariant(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static char ToLowerInvariant(this char c) {
             return Char.ToLowerInvariant(c);
         }
@@ -245,6 +265,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.ToUpper(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static char ToUpper(this char c) {
             return Char.ToUpper(c);
         }
@@ -262,6 +283,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.ToUpper(char, CultureInfo)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static char ToUpper(this char c, [NotNull] CultureInfo culture) {
             return Char.ToUpper(c, culture);
         }
@@ -276,6 +298,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Char.ToUpperInvariant(char)" />
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static char ToUpperInvariant(this char c) {
             return Char.ToUpperInvariant(c);
         }

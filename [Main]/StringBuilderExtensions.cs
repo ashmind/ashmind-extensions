@@ -9,6 +9,7 @@ namespace AshMind.Extensions {
     /// Provides a set of extension methods for operations on StringBuilder.
     /// </summary>
     public static class StringBuilderExtensions {
+        #if No_StringBuilder_AppendJoin
         /// <summary>
         /// Appends all the elements of a string array, using the specified separator between each member.
         /// </summary>
@@ -25,7 +26,7 @@ namespace AshMind.Extensions {
         ///   If <paramref name="separator"/> is <c>null</c>, an empty string (<see cref="String.Empty"/>) is used instead.
         ///   If any member of <paramref name="values"/> is <c>null</c>, an empty string is used instead.
         /// </remarks>
-        public static StringBuilder AppendJoin([NotNull] this StringBuilder builder, [CanBeNull] string separator, [NotNull, ItemCanBeNull] params string[] values) {
+        public static StringBuilder AppendJoin([NotNull] this StringBuilder builder, [CanBeNull] string? separator, [NotNull, ItemCanBeNull] params string?[] values) {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (values == null) throw new ArgumentNullException(nameof(values));
             Contract.EndContractBlock();
@@ -41,7 +42,6 @@ namespace AshMind.Extensions {
             return builder;
         }
 
-        #if No_StringBuilder_AppendJoin
         /// <summary>
         /// Appends the members of a collection, using the specified separator between each member.
         /// </summary>
@@ -59,7 +59,7 @@ namespace AshMind.Extensions {
         ///   If <paramref name="separator"/> is <c>null</c>, an empty string (<see cref="String.Empty"/>) is used instead.
         ///   If any member of <paramref name="values"/> is <c>null</c>, an empty string is used instead.
         /// </remarks>
-        public static StringBuilder AppendJoin<T>([NotNull] this StringBuilder builder, [CanBeNull] string separator, [NotNull, ItemCanBeNull] IEnumerable<T> values) {
+        public static StringBuilder AppendJoin<T>([NotNull] this StringBuilder builder, [CanBeNull] string? separator, [NotNull, ItemCanBeNull] IEnumerable<T> values) {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (values == null) throw new ArgumentNullException(nameof(values));
             Contract.EndContractBlock();

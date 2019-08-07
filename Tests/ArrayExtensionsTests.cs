@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Xunit;
 
+#pragma warning disable xUnit1019 // https://github.com/xunit/xunit/issues/1897
+
 namespace AshMind.Extensions.Tests {
     public class ArrayExtensionsTests {
         [Theory]
@@ -44,16 +46,13 @@ namespace AshMind.Extensions.Tests {
             foreach (var method in extensionMethods) {
                 var arrayMethod = arrayMethods.Where(m => Matches(m, method))
                                               .OrderByDescending(m => m.IsGenericMethodDefinition ? 1 : 0)
-                                              .FirstOrDefault();
+                                              .First();
 
                 yield return new object[] { MakeCall<TDelegate>(method), MakeCall<TDelegate>(arrayMethod) };
             }
         }
 
         private static Expression<TDelegate> MakeCall<TDelegate>(MethodInfo method) {
-            if (method == null)
-                return null;
-
             if (method.IsGenericMethodDefinition)
                 method = method.MakeGenericMethod(typeof(int));
 

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
-using Xunit.Extensions;
 
 namespace AshMind.Extensions.Tests {
     public class StringBuilderExtensionsTests {
-#if No_StringBuilder_AppendJoin
+        #if No_StringBuilder_AppendJoin
         [Theory]
         [InlineData(",", new[] { 1, 2 }, "[1,2]")]
         [InlineData(null, new[] { 1, 2 }, "[12]")]
@@ -50,7 +49,7 @@ namespace AshMind.Extensions.Tests {
         public void AppendJoin_ThrowsArgumentNullException_IfBuilderIsNull() {
             Assert.Throws<ArgumentNullException>(
                 // ReSharper disable once AssignNullToNotNullAttribute
-                () => ((StringBuilder)null).AppendJoin(",", new[] {1, 2})
+                () => ((StringBuilder?)null)!.AppendJoin(",", new[] {1, 2})
             );
         }
 
@@ -58,7 +57,7 @@ namespace AshMind.Extensions.Tests {
         public void AppendJoin_ThrowsArgumentNullException_IfBuilderIsNullForStringParamsOverload() {
             Assert.Throws<ArgumentNullException>(
                 // ReSharper disable once AssignNullToNotNullAttribute
-                () => ((StringBuilder)null).AppendJoin(",", "a", "b")
+                () => ((StringBuilder?)null)!.AppendJoin(",", "a", "b")
             );
         }
 
@@ -66,7 +65,7 @@ namespace AshMind.Extensions.Tests {
         public void AppendJoin_ThrowsArgumentNullException_IfItemsAreNull() {
             Assert.Throws<ArgumentNullException>(
                 // ReSharper disable once AssignNullToNotNullAttribute
-                () => new StringBuilder().AppendJoin<string>(",", null)
+                () => new StringBuilder().AppendJoin<string>(",", null!)
             );
         }
 
@@ -74,7 +73,7 @@ namespace AshMind.Extensions.Tests {
         public void AppendJoin_ThrowsArgumentNullException_IfItemsAreNullForStringParamsOverload() {
             Assert.Throws<ArgumentNullException>(
                 // ReSharper disable once AssignNullToNotNullAttribute
-                () => new StringBuilder().AppendJoin(",", null)
+                () => new StringBuilder().AppendJoin(",", null!)
             );
         }
 

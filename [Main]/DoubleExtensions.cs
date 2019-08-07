@@ -2,6 +2,8 @@ using System;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
 
+using static AshMind.Extensions.Internal.ObsoleteMessages;
+
 namespace AshMind.Extensions {
     /// <summary>
     /// Provides a set of extension methods for operations on Double.
@@ -12,6 +14,7 @@ namespace AshMind.Extensions {
         /// <returns>true if <paramref name="value" /> evaluates to <see cref="Double.NaN" />; otherwise, false.</returns>
         /// <seealso cref="Double.IsNaN"/>
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsNaN(this double value) {
             return Double.IsNaN(value);
         }
@@ -25,6 +28,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Double.IsInfinity"/>
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsInfinity(this double value) {
             return Double.IsInfinity(value);
         }
@@ -38,6 +42,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Double.IsPositiveInfinity"/>
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsPositiveInfinity(this double value) {
             return Double.IsPositiveInfinity(value);
         }
@@ -51,6 +56,7 @@ namespace AshMind.Extensions {
         /// </returns>
         /// <seealso cref="Double.IsPositiveInfinity"/>
         [Contracts.Pure] [Pure]
+        [Obsolete(MethodWillBeRemovedInVersion4StaticConsistency)]
         public static bool IsNegativeInfinity(this double value) {
             return Double.IsNegativeInfinity(value);
         }

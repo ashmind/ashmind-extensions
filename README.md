@@ -14,24 +14,6 @@ Below is an auto-generated list of the methods provided:
   2. GetAssemblyFileFromCodeBase
 
 ### Char
-  1. IsControl
-  2. IsDigit
-  3. IsHighSurrogate
-  4. IsLetter
-  5. IsLetterOrDigit
-  6. IsLower
-  7. IsLowSurrogate
-  8. IsNumber
-  9. IsPunctuation
-  10. IsSeparator
-  11. IsSurrogate
-  12. IsSymbol
-  13. IsUpper
-  14. IsWhiteSpace
-  15. ToLower
-  16. ToLowerInvariant
-  17. ToUpper
-  18. ToUpperInvariant
 
 ### Collection
   1. AddRange
@@ -61,10 +43,6 @@ Below is an auto-generated list of the methods provided:
   3. GetValueOrDefault
 
 ### Double
-  1. IsInfinity
-  2. IsNaN
-  3. IsNegativeInfinity
-  4. IsPositiveInfinity
 
 ### Enumerable
   1. Any
@@ -78,7 +56,6 @@ Below is an auto-generated list of the methods provided:
   9. GroupAdjacentBy
   10. HavingMax
   11. HavingMin
-  12. ToHashSet
 
 ### Formattable
   1. ToInvariantString
@@ -93,21 +70,18 @@ Below is an auto-generated list of the methods provided:
   1. CreateDelegate
 
 ### StringBuilder
-  1. AppendJoin
 
 ### String
   1. Contains
-  2. IsNullOrEmpty
-  3. IsNullOrWhiteSpace
-  4. NullIfEmpty
-  5. RemoveEnd
-  6. RemoveStart
-  7. Split
-  8. SubstringAfter
-  9. SubstringAfterLast
-  10. SubstringBefore
-  11. SubstringBeforeLast
-  12. TruncateEnd
+  2. NullIfEmpty
+  3. RemoveEnd
+  4. RemoveStart
+  5. Split
+  6. SubstringAfter
+  7. SubstringAfterLast
+  8. SubstringBefore
+  9. SubstringBeforeLast
+  10. TruncateEnd
 
 ### Type
   1. HasInterface

@@ -3,13 +3,13 @@
     <PackageId>AshMind.Extensions</PackageId>
     <RootNamespace>AshMind.Extensions</RootNamespace>
     <Description>Extension methods that could have been written by BCL authors.</Description>
-    <VersionPrefix>3.0.0-pre-20190406-01</VersionPrefix>
+    <VersionPrefix>3.0.0-pre-20190808-01</VersionPrefix>
     <Authors>Andrey Shchekin</Authors>
-    <TargetFrameworks>net40;net45;net472;netstandard1.1;netstandard1.3;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net40;net45;net472;netstandard1.1;netstandard1.3;netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
     <AssemblyName>AshMind.Extensions</AssemblyName>
     <PackageTags>extensions</PackageTags>
     <PackageReleaseNotes>
-3.0.0 (pre-release) Removed Ruby-like APIs and improved naming in few other cases.
+3.0.0 (pre-release) Removed Ruby-like APIs and improved naming in few other cases. Added nullable reference types. Obsoleted several "static-wrapper" APIs.
 2.0.0 (pre-release) Added support for .NET Standard. Removed multiple obsolete APIs. Improved consistency of AsReadOnly*() overloads.
 1.8.1 (!Please upgrade to this if you use SubstringAfter!) Fixed bug in SubstringAfter.
 1.8.0 Added [Obsolete] to several APIs that will be changed/removed. Added special case EnumerateRange for List&lt;T&gt;. Added StringBuilder.AppendJoin().
@@ -20,34 +20,53 @@
     <PackageProjectUrl>https://github.com/ashmind/ashmind-extensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ashmind/ashmind-extensions.git</RepositoryUrl>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>    
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
-    <DefineConstants>$(DefineConstants); No_MethodInfo_CreateDelegate;No_Char_ToUpperOrLower_Culture;No_ReadOnlyCollections; No_Property_SetValue_NoIndex; No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet</DefineConstants>
+    <DefineConstants>$(DefineConstants); No_MethodInfo_CreateDelegate; No_Char_ToUpperOrLower_Culture; No_ReadOnlyCollections; No_Property_SetValue_NoIndex; No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet; No_ReadOnlyDictionary_GetValueOrDefault; No_Nullability_Attributes</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <DefineConstants>$(DefineConstants); No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet</DefineConstants>
+    <DefineConstants>$(DefineConstants); No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet; No_ReadOnlyDictionary_GetValueOrDefault; No_Nullability_Attributes</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net472' ">
-    <DefineConstants>$(DefineConstants); No_StringBuilder_AppendJoin</DefineConstants>
+    <DefineConstants>$(DefineConstants); No_StringBuilder_AppendJoin; No_ReadOnlyDictionary_GetValueOrDefault; No_Nullability_Attributes</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
-    <DefineConstants>$(DefineConstants); TypeInfo; No_Contracts; No_FileInfo; No_Char_ToUpperOrLower_Culture; No_ICustomAttributeProvider; No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet</DefineConstants>
+    <DefineConstants>$(DefineConstants); TypeInfo; No_Contracts; No_FileInfo; No_Char_ToUpperOrLower_Culture; No_ICustomAttributeProvider; No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet; No_ReadOnlyDictionary_GetValueOrDefault; No_Nullability_Attributes</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-    <DefineConstants>$(DefineConstants); TypeInfo; No_Contracts; No_FileInfo; No_Char_ToUpperOrLower_Culture; No_ICustomAttributeProvider; No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet</DefineConstants>
+    <DefineConstants>$(DefineConstants); TypeInfo; No_Contracts; No_FileInfo; No_Char_ToUpperOrLower_Culture; No_ICustomAttributeProvider; No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet; No_ReadOnlyDictionary_GetValueOrDefault; No_Nullability_Attributes</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-    <DefineConstants>$(DefineConstants); No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet</DefineConstants>
+    <DefineConstants>$(DefineConstants); No_StringBuilder_AppendJoin; No_Enumerable_ToHashSet; No_ReadOnlyDictionary_GetValueOrDefault; No_Nullability_Attributes</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
+    <DefineConstants>$(DefineConstants); No_Nullability_Attributes</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <DefineConstants>$(DefineConstants); No_Nullability_Attributes</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
+    <DefineConstants>$(DefineConstants); No_Nullability_Attributes</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.2' ">
+    <DefineConstants>$(DefineConstants); No_Nullability_Attributes</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
     <DefineConstants>$(DefineConstants);</DefineConstants>
   </PropertyGroup>
 

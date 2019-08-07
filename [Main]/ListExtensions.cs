@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
-using System.Linq;
 using JetBrains.Annotations;
 using Contracts = System.Diagnostics.Contracts;
 using PureAttribute = JetBrains.Annotations.PureAttribute;
 
-namespace AshMind.Extensions {
+namespace AshMind.Extensions
+{
     /// <summary>
     /// Provides a set of extension methods for operations on <see cref="IList{T}" />.
     /// </summary>
