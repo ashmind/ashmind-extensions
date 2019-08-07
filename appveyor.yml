@@ -17,7 +17,7 @@ build_script:
 - dotnet build --configuration Release
   
 after_test:
-- dotnet pack [Main] --configuration Release --output ..
+- dotnet pack [Main] --configuration Release --output .
 
 artifacts:
 - path: '*.nupkg'
